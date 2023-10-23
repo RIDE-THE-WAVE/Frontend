@@ -42,4 +42,10 @@ function App() {
 //   );
 // }
 
+// #469597
+// #5BA199
+// #BBC6C8
+// #E5E3E4
+// #DDBEAA
+
 export default App;
