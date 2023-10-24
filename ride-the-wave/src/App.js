@@ -14,7 +14,6 @@ const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
 function App() {
   return (
     <Router>
-      <div className="App">
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -23,7 +22,6 @@ function App() {
             <Route path="/myrecord" element={<MyRecord />} />
           </Routes>
         </Suspense>
-      </div>
     </Router>
   );
 }
