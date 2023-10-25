@@ -1,12 +1,12 @@
-.Review {
+.GroupRecords {
     width: 95%; /* 추후에 100% 으로 바꾸기 */
     height: 100vh;
     max-width: 1240px;
     margin: 0 auto; /* center the form */
     display: grid; /* grid container */
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 4fr 0.5fr;
-    gap: 20px;
+    grid-template-rows: 1fr repeat(3, 0.3fr) 3fr 0.5fr;
+    gap: 5px;
     outline: 3px solid red;
     background-color: #73D5FF;
     color: white;    
@@ -21,6 +21,24 @@
     background-color: #73D5F1;
 }
 
+.item_2_2 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    color: white;
+    outline: 3px solid blue;
+    background-color: #73D5F1;
+}
+
+.item_2_3 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    color: white;
+    outline: 3px solid blue;
+    background-color: #73D5F1;
+}
+
 .item_3 {
     display: flex;
     justify-content: center;
@@ -30,15 +48,13 @@
     background-color: #0093ff;
 }
 
-.item_3_2_1 {
-    /* display: flex */
-    /* justify-content: right; */
-    text-align: right;
-    width: 80%;
-    margin-bottom: 10px;
+.item_3_2 {
+    flex: 0.25;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
     color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
+    background-color: #9993ff;
 }
 
 .item_3_2_2 {
@@ -53,6 +69,25 @@
 }
 
 .item_3_3 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 16%;
+    color: white;
+    outline: 3px solid green;
+    background-color: #0093ff;
+}
+
+/* 여기 수정해야함 */
+.item_3_4 {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    color: white;
+    outline: 3px solid green;
+    background-color: #0093ff;
+}
+
+.item_3_6 {
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -71,6 +106,15 @@
 }
 
 .item_4_2 {
+    flex: 0.25;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
+
+.item_4_6 {
     flex: 0.3;
     display: flex;
     justify-content: space-between;
@@ -86,10 +130,17 @@
     background-color: #5553ff;
 }
 
-
+.item_5_5 {
+    flex: 0.25;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid cyan;
+    color: white;
+    background-color: #5553ff;
+}
 
 @media screen and (min-width:500px) {
-    .Review {
+    .GroupRecords {
         grid-template-columns: 1fr;
     }
     /* .itme-2 {
@@ -98,7 +149,7 @@
 }
 
 @media screen and (min-width:850px) {
-    .Review {
+    .GroupRecords {
         grid-template-columns: 1fr;
     }
 }
