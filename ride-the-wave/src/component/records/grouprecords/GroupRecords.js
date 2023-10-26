@@ -1,6 +1,8 @@
 import React from 'react';
-import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import styles from './GroupRecords.module.css';
+import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
+import { Link } from 'react-router-dom';
+
 
 
 function GroupRecords() {
@@ -151,11 +153,11 @@ function GroupRecords() {
             <div className={styles.item_2}>2
                 <div className={styles.item_3_6}>
                   {/* 하단 클릭바 */}
-                  <div className={styles.item_4_6}>4
+                  <div className={styles.item_4_6}>4 <Link to="/review"><span>리뷰</span></Link>
                   </div>
-                  <div className={styles.item_4_6}>4
+                  <div className={styles.item_4_6}>4 전체기록
                   </div>
-                  <div className={styles.item_4_6}>4
+                  <div className={styles.item_4_6}>4 <Link to="/myrecord"><span>마이페이지</span></Link>
                   </div>
                 </div>
             </div>

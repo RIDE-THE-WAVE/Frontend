@@ -1,11 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// import Login from "./component/login/Login";
-// import Review from "./component/review/Review";
-// import GroupRecords from "./component/records/grouprecords/GroupRecords";
-// import MyRecord from "./component/records/myrecord/MyRecord";
-
+// 전처리 때 하지 않고 필요할 때만 불러오기 때문에 현재 상황에서는 효과적이다.
 const Login = lazy(() => import('./component/login/Login'));
 const Review = lazy(() => import('./component/review/Review'));
 const GroupRecords = lazy(() => import('./component/records/grouprecords/GroupRecords'));
