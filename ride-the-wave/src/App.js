@@ -1,37 +1,45 @@
-import { useEffect, useState } from "react";
-import firestore from "./Firebase/Firestore";
-import { doc, getDoc } from "firebase/firestore";
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// 전처리 때 하지 않고 필요할 때만 불러오기 때문에 현재 상황에서는 효과적이다.
+const Login = lazy(() => import('./component/login/Login'));
+const Review = lazy(() => import('./component/review/Review'));
+const GroupRecords = lazy(() => import('./component/records/grouprecords/GroupRecords'));
+const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
 
 function App() {
-  const [document, setDocument] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // const docRef = doc(firestore, "users", "user_id_001");
-      const docRef = doc(firestore, "records", "user_id_001");
-      const docRef2 = doc(docRef, "freestyle", "freestyle");
-      const docSnap = await getDoc(docRef2);
-  
-      if (docSnap.exists()) {
-          console.log("Document data:", docSnap.data());
-          setDocument(docSnap.data().start_50);
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-      }
-    };
-
-    fetchData();
-  }, [])
-
   return (
-    <div className="App">
-        <p>
-        {/* Document Data: {JSON.stringify(documentData)} */}
-        Document Data: {document}
-        </p>
-    </div>
+    <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/review" element={<Review />} />
+            <Route path="/grouprecords" element={<GroupRecords />} />
+            <Route path="/myrecord" element={<MyRecord />} />
+          </Routes>
+        </Suspense>
+    </Router>
   );
 }
+
+// import React, { Suspense } from 'react';
+
+// const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+// function MyComponent() {
+//   return (
+//     <div>
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <OtherComponent />
+//       </Suspense>
+//     </div>
+//   );
+// }
+
+// #469597
+// #5BA199
+// #BBC6C8
+// #E5E3E4
+// #DDBEAA
 
 export default App;
