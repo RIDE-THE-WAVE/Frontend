@@ -11,7 +11,7 @@ function GroupRecords() {
             <div className={styles.item_2}>2
                 GroupRecords
                 <div className={styles.item_3}>3
-                    <img src={logo} alt="logo" />
+                    <Link to="/grouprecords"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={styles.item_3}>3
                     <div className={styles.item_4}>
