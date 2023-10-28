@@ -1,0 +1,29 @@
+.BottomNav_wrapper {
+    /* display: flex; */
+    width: 90%;
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 5%;
+    align-items: center;
+    flex-direction: column;
+    outline: 3px solid blue;
+    color: white;
+    background-color: #73D5F1;
+}
+
+.BottomNav {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    outline: 3px solid green;
+    background-color: #0093ff;
+}
+
+.BottomNav_item {
+    flex: 0.3;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
