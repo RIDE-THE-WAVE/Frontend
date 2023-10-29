@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
 import logo from '../img/logo.png';
+import search_client from '../img/search_client.png';
 import { Link } from 'react-router-dom';
 
 function Login() {
@@ -20,7 +21,12 @@ function Login() {
                         <div className={styles.item_5}>5 이름을 입력하세요
                         </div>
                         <div className={styles.item_5}>
-                            <Link to="/myrecord"><span>5 버튼 + 이미지</span></Link>
+                            {/* 버튼 클릭하면 회원 정보 확인 및 권한 부여 후 다음 페이지로 넘어가는 기능 구현 */}
+                            <Link to="/myrecord">
+                                {/* <span> */}
+                                    <img src={search_client} alt="search_client" width='100%'/>
+                                {/* </span> */}
+                            </Link>
                         </div>
                     </div>
                 </div>
