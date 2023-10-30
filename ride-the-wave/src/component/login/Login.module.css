@@ -1,5 +1,5 @@
 .Login {
-    width: 95%; /* 추후에 100% 으로 바꾸기 */
+    width: 100%;
     height: 100vh;
     max-width: 1240px;
     margin: 0 auto; /* center the form */
@@ -7,26 +7,21 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    outline: 3px solid red;
     background-color: #73D5FF;
-    color: white;    
+    /* outline: 3px solid red; */
+    /* color: white;     */
 }
 
-.item_2 {
+.center_box {
     display: flex;
     align-items: center;
     flex-direction: column;
-    outline: 3px solid blue;
-    color: white;
-    background-color: #73D5F1;
+    /* outline: 3px solid blue; */
+    /* color: white; */
+    /* background-color: #73D5F1; */
 }
 
-/* 내가 원하는 것
-1. 3번이 전체 너비를 차지하는 것
-2. 4번이 가운데 위치하고 1/3 의 너비를 가지는 것
-*/
-
-.item_3 {
+.center_inner_box {
     display: flex;
     justify-content: center;
     width: 90%;
@@ -35,7 +30,7 @@
     background-color: #0093ff;
 }
 
-.item_4 {
+.search_box {
     flex: 0.5;
     display: flex;
     justify-content: space-between;
@@ -44,7 +39,14 @@
     background-color: #9993ff;
 }
 
-.item_5 {
+.put_search_data_section {
+    flex: 0.4;
+    outline: 3px solid cyan;
+    color: white;
+    background-color: #5553ff;
+}
+
+.search_img {
     flex: 0.4;
     outline: 3px solid cyan;
     color: white;
