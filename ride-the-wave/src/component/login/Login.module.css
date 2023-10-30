@@ -8,49 +8,80 @@
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
     background-color: #73D5FF;
-    /* outline: 3px solid red; */
-    /* color: white;     */
+    /* outline: 3px solid red;
+    color: white;     */
 }
 
 .center_box {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* outline: 3px solid blue; */
-    /* color: white; */
-    /* background-color: #73D5F1; */
+    /* outline: 3px solid blue;
+    color: white;
+    background-color: #73D5F1; */
 }
 
-.center_inner_box {
+.center_upper_inner_box {
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
+    /* outline: 3px solid green;
+    background-color: #0093ff; */
+}
+
+.center_under_inner_box {
+    display: flex;
+    flex: 0.3;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    /* outline: 3px solid green;
+    background-color: #0093ff; */
 }
 
 .search_box {
-    flex: 0.5;
+    flex: 0.7;
     display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
+    border: 4px solid #73D5FF;
+    border-radius: 30px; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3); 
     color: white;
-    background-color: #9993ff;
+    background-color: white;
+    /* outline: 3px solid purple; */
+    /* background-color: #9993ff; */
 }
 
 .put_search_data_section {
-    flex: 0.4;
-    outline: 3px solid cyan;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     color: white;
-    background-color: #5553ff;
+    /* outline: 3px solid cyan; */
+    /* background-color: #5553ff; */
+}
+
+.put_search_data_section > span {
+    margin-right: 2em;
+    font-weight: bold;
+    color: #2457C5;
 }
 
 .search_img {
-    flex: 0.4;
-    outline: 3px solid cyan;
     color: white;
-    background-color: #5553ff;
+    align-items: end;
+    background-color: #2457C5;
+    border-radius: 50%;
+    margin: 10%;
+    /* outline: 3px solid cyan; */
+    /* background-color: #5553ff; */
+}
+
+.search_img > img {
+    width: 50%;
+    height: 50%;
+    margin: 25%;
 }
 
 
