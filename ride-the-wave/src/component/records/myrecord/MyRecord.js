@@ -11,56 +11,68 @@ import { Link } from 'react-router-dom';
 function MyRecord() {
     return (
         <div className={styles.MyRecord}>
-            <div className={styles.item_2}>2
-                MyRecord
-                <div className={styles.item_3}>3
-                    <Link to="/myrecord"><img src={logo} alt="logo" /></Link>
-                </div>
-                <div className={styles.item_3}>3
-                    <div className={styles.item_4}>
-                        4 김 재 환
+            <div className={styles.header}>
+                <Link to="/myrecord">
+                    <div className={styles.logo_box}>
+                        <img src={logo} alt="logo" />
+                    </div>
+                </Link>
+                <div className={styles.user_name_box}>
+                    <div className={styles.user_name}>
+                        <span>김재환B</span>
                     </div>
                 </div>
             </div>
-            <div className={styles.item_2_2}>
+            <div className={styles.contents_info_toggle_box}>
                 {/* 
                     토글 넣기 - 디비에서 긁어서 
                     myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
                 */}
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 날짜 3
+                <div className={styles.contents_period_toggle}>
+                    <span><img src={arrow} alt="arrow" width='50%'/></span>
+                    <span>2023.06 - 12</span>
                 </div>
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 시간 3
+                <div className={styles.contents_class_toggle}>
+                    <span><img src={arrow} alt="arrow" width='50%'/></span>
+                    <span>6AM</span>
                 </div>
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 영법 3
+                <div className={styles.contents_type_toggle}>
+                    <span><img src={arrow} alt="arrow" width='50%'/></span>
+                    <span>자유형</span>
                 </div>
             </div>
-            <div className={styles.item_2_3}>
-                  <div className={styles.item_3_3}>3
+            <div className={styles.contents_turn_type}>
+                  <div className={styles.turn_type}>
+                    <span>사이드</span>
                   </div>
-                  <div className={styles.item_3_3}>3
+                  <div className={styles.turn_type}>
+                    <span>플립</span>
                   </div>
-                  <div className={styles.item_3_3}>3
+                  <div className={styles.turn_type}>
+                    <span>스타트</span>
                   </div>
-                  <div className={styles.item_3_3}>3
+                  <div className={styles.turn_type}>
+                    <span>오리발</span>
                   </div>
-                  <div className={styles.item_3_3}>3
+                  <div className={styles.turn_type}>
+                    <span>전체</span>
                   </div>
             </div>
-            <div className={styles.item_2}>
-              <div className={styles.item_3_2_2}>
-                    <div className={styles.item_4_4}>
-                        <div className={styles.item_5_4}>4 25
+            <div className={styles.contents_length_option_box}>
+              <div className={styles.length_option_inner_box}>
+                    <div className={styles.length_option_top_box}>
+                        <div className={styles.length_option}>
+                            <span>25</span>
                         </div>
-                        <div className={styles.item_5_4}>4 50
+                        <div className={styles.length_option}>
+                            <span>50</span>
                         </div>
-                        <div className={styles.item_5_4}>4 전체
+                        <div className={styles.length_option}>
+                            <span>전체</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_4_1}>
-                        <div className={styles.item_5_4_1}>
+                    <div className={styles.length_option_bottom_box}>
+                        <div className={styles.show_box}>
                             <span><img src={question} alt="question" width='20%'/></span>
                             <span><img src={hide} alt="hide" width='20%'/></span>
                             <span><img src={eye} alt="eye" width='20%'/></span>
@@ -68,57 +80,69 @@ function MyRecord() {
                     </div>
                 </div>
             </div>
-            <div className={styles.item_2}>
-              <div className={styles.item_3_5}>
-                    <div className={styles.item_4_5}>
-                        <div className={styles.item_5_5}>
-                            <div className={styles.item_6_5}>5 사이드
+            <div className={styles.contents_box}>
+              <div className={styles.contents}>
+                    <div className={styles.record_of_turn_type_box}>
+                        <div className={styles.records}>
+                            <div className={styles.record}>
+                                <span>사이드</span>
                             </div>
-                            <div className={styles.item_6_5}>5 25m
+                            <div className={styles.record}>
+                                <span>25m</span>
                             </div>
-                            <div className={styles.item_6_5}>5 50m
+                            <div className={styles.record}>
+                                <span>50m</span>
                             </div>
                         </div>
-                        <div className={styles.item_5_5_2}>
+                        <div className={styles.show}>
                             <span><img src={eye} alt="eye" width='50%'/></span>
                         </div>
                     </div>
-                    <div className={styles.item_4_5}>
-                        <div className={styles.item_5_5}>
-                            <div className={styles.item_6_5}>5 플립
+                    <div className={styles.record_of_turn_type_box}>
+                        <div className={styles.records}>
+                            <div className={styles.record}>
+                                <span>플립</span>
                             </div>
-                            <div className={styles.item_6_5}>5 25m
+                            <div className={styles.record}>
+                                <span>25m</span>
                             </div>
-                            <div className={styles.item_6_5}>5 50m
+                            <div className={styles.record}>
+                                <span>50m</span>
                             </div>
                         </div>
-                        <div className={styles.item_5_5_2}>
+                        <div className={styles.show}>
                             <span><img src={eye} alt="eye" width='50%'/></span>
                         </div>
                     </div>
-                    <div className={styles.item_4_5}>
-                        <div className={styles.item_5_5}>
-                            <div className={styles.item_6_5}>5 스타트
+                    <div className={styles.record_of_turn_type_box}>
+                        <div className={styles.records}>
+                            <div className={styles.record}>
+                                <span>스타트</span>
                             </div>
-                            <div className={styles.item_6_5}>5 25m
+                            <div className={styles.record}>
+                                <span>25m</span>
                             </div>
-                            <div className={styles.item_6_5}>5 50m
+                            <div className={styles.record}>
+                                <span>50m</span>
                             </div>
                         </div>
-                        <div className={styles.item_5_5_2}>
+                        <div className={styles.show}>
                             <span><img src={eye} alt="eye" width='50%'/></span>
                         </div>
                     </div>
-                    <div className={styles.item_4_5}>
-                        <div className={styles.item_5_5}>
-                            <div className={styles.item_6_5}>5 오리발
+                    <div className={styles.record_of_turn_type_box}>
+                        <div className={styles.records}>
+                            <div className={styles.record}>
+                                <span>오리발</span>
                             </div>
-                            <div className={styles.item_6_5}>5 25m
+                            <div className={styles.record}>
+                                <span>25m</span>
                             </div>
-                            <div className={styles.item_6_5}>5 50m
+                            <div className={styles.record}>
+                                <span>50m</span>
                             </div>
                         </div>
-                        <div className={styles.item_5_5_2}>
+                        <div className={styles.show}>
                             <span><img src={eye} alt="eye" width='50%'/></span>
                         </div>
                     </div>

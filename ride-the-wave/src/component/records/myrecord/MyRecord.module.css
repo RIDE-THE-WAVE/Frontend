@@ -1,27 +1,84 @@
 .MyRecord {
-    width: 95%; /* 추후에 100% 으로 바꾸기 */
+    width: 100%;
     height: 100vh;
     max-width: 1240px;
-    margin: 0 auto; /* center the form */
-    display: grid; /* grid container */
+    /* center the form */
+    margin: 0 auto;
+    /* grid container */
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr repeat(3, 0.3fr) 3fr 0.5fr;
-    gap: 5px;
     outline: 3px solid red;
     background-color: #73D5FF;
     color: white;    
 }
 
-.item_2 {
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 1rem;
+    /* outline: 3px solid blue; */
+    /* color: white; */
+    /* background-color: #73D5F1; */
+}
+
+.logo_box {
+    display: flex;
+    justify-content: center;
+    /* color: white; */
+    /* outline: 3px solid green; */
+    /* background-color: #0093ff; */
+}
+
+.logo_box > img {
+    width: 3.5rem;
+}
+
+.user_name_box {
+    flex: 0.6;
+    width: 20rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3); 
+    background-color: #2457C5;
+    /* outline: 3px solid green; */
+}
+
+.user_name {
+    font-weight: bolder;
+    font-size: 1rem;
+    /* justify-content: space-between; */
+    /* outline: 3px solid purple; */
+    /* color: white; */
+    /* background-color: #9993ff; */
+}
+
+/* ****************** */
+
+.contents_length_option_box {
     display: flex;
     align-items: center;
     flex-direction: column;
-    outline: 3px solid blue;
-    color: white;
-    background-color: #73D5F1;
+    /* outline: 3px solid blue; */
+    /* color: white; */
+    /* background-color: #73D5F1; */
 }
 
-.item_2_2 {
+.contents_box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* outline: 3px solid blue; */
+    /* color: white; */
+    /* background-color: #73D5F1; */
+}
+
+.contents_info_toggle_box {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
@@ -30,7 +87,7 @@
     background-color: #73D5F1;
 }
 
-.item_2_3 {
+.contents_turn_type {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
@@ -39,16 +96,7 @@
     background-color: #73D5F1;
 }
 
-.item_3 {
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
-}
-
-.item_3_2 {
+.contents_period_toggle {
     flex: 0.25;
     display: flex;
     justify-content: space-between;
@@ -57,7 +105,25 @@
     background-color: #9993ff;
 }
 
-.item_3_2_2 {
+.contents_class_toggle {
+    flex: 0.25;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
+
+.contents_type_toggle {
+    flex: 0.25;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
+
+.length_option_inner_box {
     display: grid;
     grid-template-columns: repeat(2, 0.4fr);
     justify-content: space-between;
@@ -68,7 +134,7 @@
     background-color: #0093ff;
 }
 
-.item_3_3 {
+.turn_type {
     display: flex;
     justify-content: space-evenly;
     width: 16%;
@@ -77,17 +143,7 @@
     background-color: #0093ff;
 }
 
-/* 여기 수정해야함 */
-.item_3_4 {
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
-    color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
-}
-
-.item_3_5 {
+.contents {
     display: grid;
     grid-template-columns: 0.8fr;
     justify-content: center;
@@ -99,34 +155,7 @@
     background-color: #0093ff;
 }
 
-.item_3_6 {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
-}
-
-.item_4 {
-    flex: 0.5;
-    display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
-    color: white;
-    background-color: #9993ff;
-}
-
-.item_4_2 {
-    flex: 0.25;
-    display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
-    color: white;
-    background-color: #9993ff;
-}
-
-.item_4_4 {
+.length_option_top_box {
     display: flex;
     justify-content: space-between;
     color: white;
@@ -134,7 +163,7 @@
     background-color: #0093ff;
 }
 
-.item_4_4_1 {
+.length_option_bottom_box {
     display: flex;
     justify-content: end;
     color: white;
@@ -142,7 +171,7 @@
     background-color: #0093ff;
 }
 
-.item_4_5 {
+.record_of_turn_type_box {
     display: flex;
     justify-content: space-between;
     outline: 3px solid purple;
@@ -150,29 +179,20 @@
     background-color: #9993ff;
 }
 
-.item_4_6 {
-    flex: 0.3;
-    display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
-    color: white;
-    background-color: #9993ff;
-}
-
-.item_5_4 {
+.length_option {
     flex: 0.25;
     outline: 3px solid purple;
     color: white;
     background-color: #9993ff;
 }
 
-.item_5_4_1 {
+.show_box {
     outline: 3px solid purple;
     color: white;
     background-color: #9993ff;
 }
 
-.item_5_5 {
+.records {
     display: flex;
     flex: 0.8;
     justify-content: space-between;
@@ -181,14 +201,14 @@
     background-color: #5553ff;
 }
 
-.item_5_5_2 {
+.show {
     flex: 0.15;
     outline: 3px solid cyan;
     color: white;
     background-color: #5553ff;
 }
 
-.item_6_5 {
+.record {
     flex: 0.25;
     display: flex;
     justify-content: space-between;
