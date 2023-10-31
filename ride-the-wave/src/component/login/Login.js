@@ -10,10 +10,10 @@ function Login() {
         <div className={styles.Login}>
             <div></div>
             <div className={styles.center_box}>
-                <div className={styles.center_upper_inner_box}>
+                <div className={styles.center_top_inner_box}>
                     <Link to="/"><img src={logo} alt="logo" /></Link>
                 </div>
-                <div className={styles.center_under_inner_box}>
+                <div className={styles.center_bottom_inner_box}>
                     <div className={styles.search_box}>
                         {/* 이름 입력 박스가 들어갈 예정 */}
                         <div className={styles.put_search_data_section}>
