@@ -12,21 +12,21 @@ function BottomNav() {
     return (
         <div className={styles.BottomNav_wrapper}>
             <div className={styles.BottomNav}>
-                <div className={styles.BottomNav_item}> 
-                    <Link to="/review">
-                        <span><img src={review} alt="review"/></span> 리뷰
-                    </Link>
-                </div>
-                <div className={styles.BottomNav_item}>
-                    <Link to="/grouprecords">
-                        <span><img src={timer} alt="timer"/></span> 전체기록
-                    </Link>
-                </div>
-                <div className={styles.BottomNav_item}>
-                    <Link to="/myrecord">
-                        <span><img src={mypage} alt="mypage"/></span> 마이페이지
-                    </Link>
-                </div>
+                <Link to="/review">
+                    <div className={styles.BottomNav_item}> 
+                        <img src={review} alt="review"/>
+                    </div>
+                </Link>
+                <Link to="/grouprecords">
+                    <div className={styles.BottomNav_item}>
+                        <img src={timer} alt="timer"/>
+                    </div>
+                </Link>
+                <Link to="/myrecord">
+                    <div className={styles.BottomNav_item}>
+                        <img src={mypage} alt="mypage"/>
+                    </div>
+                </Link>
             </div>
         </div>
     );
