@@ -29,16 +29,16 @@ function MyRecord() {
                     myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
                 */}
                 <div className={styles.contents_period_toggle}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span>
-                    <span>2023.06 - 12</span>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;2023.06 - 12</span>
                 </div>
                 <div className={styles.contents_class_toggle}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span>
-                    <span>6AM</span>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;6AM</span>
                 </div>
                 <div className={styles.contents_type_toggle}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span>
-                    <span>자유형</span>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;자유형</span>
                 </div>
             </div>
             <div className={styles.contents_turn_type}>
@@ -60,7 +60,7 @@ function MyRecord() {
             </div>
             <div className={styles.contents_length_option_box}>
               <div className={styles.length_option_inner_box}>
-                    <div className={styles.length_option_top_box}>
+                    <div className={styles.length_option_left_box}>
                         <div className={styles.length_option}>
                             <span>25</span>
                         </div>
@@ -71,12 +71,12 @@ function MyRecord() {
                             <span>전체</span>
                         </div>
                     </div>
-                    <div className={styles.length_option_bottom_box}>
-                        <div className={styles.show_box}>
-                            <span><img src={question} alt="question" width='20%'/></span>
-                            <span><img src={hide} alt="hide" width='20%'/></span>
-                            <span><img src={eye} alt="eye" width='20%'/></span>
-                        </div>
+                    <div className={styles.length_option_right_box}>
+                        {/* <div className={styles.show_box}> */}
+                            <img src={question} alt="question" width='20%'/>
+                            <img src={hide} alt="hide" width='20%'/>
+                            <img src={eye} alt="eye" width='20%'/>
+                        {/* </div> */}
                     </div>
                 </div>
             </div>
@@ -88,14 +88,14 @@ function MyRecord() {
                                 <span>사이드</span>
                             </div>
                             <div className={styles.record}>
-                                <span>25m</span>
+                                <span>10.00</span>
                             </div>
                             <div className={styles.record}>
-                                <span>50m</span>
+                                <span>21.00</span>
                             </div>
                         </div>
                         <div className={styles.show}>
-                            <span><img src={eye} alt="eye" width='50%'/></span>
+                            <img src={eye} alt="eye"/>
                         </div>
                     </div>
                     <div className={styles.record_of_turn_type_box}>
@@ -104,14 +104,14 @@ function MyRecord() {
                                 <span>플립</span>
                             </div>
                             <div className={styles.record}>
-                                <span>25m</span>
+                                <span>10.00</span>
                             </div>
                             <div className={styles.record}>
-                                <span>50m</span>
+                                <span>21.00</span>
                             </div>
                         </div>
                         <div className={styles.show}>
-                            <span><img src={eye} alt="eye" width='50%'/></span>
+                            <img src={eye} alt="eye"/>
                         </div>
                     </div>
                     <div className={styles.record_of_turn_type_box}>
@@ -120,14 +120,14 @@ function MyRecord() {
                                 <span>스타트</span>
                             </div>
                             <div className={styles.record}>
-                                <span>25m</span>
+                                <span>10.00</span>
                             </div>
                             <div className={styles.record}>
-                                <span>50m</span>
+                                <span>21.00</span>
                             </div>
                         </div>
                         <div className={styles.show}>
-                            <span><img src={eye} alt="eye" width='50%'/></span>
+                            <img src={hide} alt="eye"/>
                         </div>
                     </div>
                     <div className={styles.record_of_turn_type_box}>
@@ -136,14 +136,14 @@ function MyRecord() {
                                 <span>오리발</span>
                             </div>
                             <div className={styles.record}>
-                                <span>25m</span>
+                                <span>10.00</span>
                             </div>
                             <div className={styles.record}>
-                                <span>50m</span>
+                                <span>21.00</span>
                             </div>
                         </div>
                         <div className={styles.show}>
-                            <span><img src={eye} alt="eye" width='50%'/></span>
+                            <img src={eye} alt="eye"/>
                         </div>
                     </div>
                   </div>
