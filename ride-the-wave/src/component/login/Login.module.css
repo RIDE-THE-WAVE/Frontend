@@ -1,54 +1,86 @@
 .Login {
-    width: 95%; /* 추후에 100% 으로 바꾸기 */
+    width: 100%;
     height: 100vh;
     max-width: 1240px;
     margin: 0 auto; /* center the form */
     display: grid; /* grid container */
-    grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    outline: 3px solid red;
     background-color: #73D5FF;
-    color: white;    
+    /* outline: 3px solid red;
+    color: white;     */
 }
 
-.item_2 {
+.center_box {
     display: flex;
     align-items: center;
     flex-direction: column;
-    outline: 3px solid blue;
+    /* outline: 3px solid blue;
     color: white;
-    background-color: #73D5F1;
+    background-color: #73D5F1; */
 }
 
-/* 내가 원하는 것
-1. 3번이 전체 너비를 차지하는 것
-2. 4번이 가운데 위치하고 1/3 의 너비를 가지는 것
-*/
-
-.item_3 {
+.center_top_inner_box {
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
+    /* outline: 3px solid green;
+    background-color: #0093ff; */
 }
 
-.item_4 {
-    flex: 0.5;
+.center_bottom_inner_box {
     display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
+    flex: 0.3;
+    justify-content: center;
+    width: 100%;
     color: white;
-    background-color: #9993ff;
+    /* outline: 3px solid green;
+    background-color: #0093ff; */
 }
 
-.item_5 {
-    flex: 0.4;
-    outline: 3px solid cyan;
+.search_box {
+    flex: 0.7;
+    display: flex;
+    border: 0.2rem solid #73D5FF;
+    border-radius: 2rem; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3); 
     color: white;
-    background-color: #5553ff;
+    background-color: white;
+    /* outline: 3px solid purple; */
+    /* background-color: #9993ff; */
+}
+
+.put_search_data_section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    /* outline: 3px solid cyan; */
+    /* background-color: #5553ff; */
+}
+
+.put_search_data_section > span {
+    margin-right: 2em;
+    font-weight: bold;
+    color: #2457C5;
+}
+
+.search_img {
+    color: white;
+    align-items: end;
+    background-color: #2457C5;
+    border-radius: 50%;
+    margin: 10%;
+    /* outline: 3px solid cyan; */
+    /* background-color: #5553ff; */
+}
+
+.search_img > img {
+    width: 50%;
+    height: 50%;
+    margin: 25%;
 }
 
 
