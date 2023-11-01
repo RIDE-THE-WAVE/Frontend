@@ -4,7 +4,6 @@
     max-width: 1240px;
     margin: 0 auto; /* center the form */
     display: grid; /* grid container */
-    grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
     background-color: #73D5FF;

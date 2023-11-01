@@ -4,7 +4,6 @@
     max-width: 1240px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.2fr 0.35fr 0.5fr 3fr 0.7fr;
     color: white;
     background-color: #73D5FF;
