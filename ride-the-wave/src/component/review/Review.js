@@ -10,54 +10,77 @@ import BottomNav from '../common/BottomNav';
 function Review() {
   return (
     <div className={styles.Review}>
-        <div className={styles.item_2}>2
-            Review
-            <div className={styles.item_3}>3
-                <Link to="/review"><img src={logo} alt="logo" /></Link>
-            </div>
-            <div className={styles.item_3}>3
-                <div className={styles.item_4}>4
+        <div className={styles.header}>
+            <Link to="/review">
+              <div className={styles.logo_box}>
+                  <img src={logo} alt="logo" />
+              </div>
+            </Link>
+            <div className={styles.title_box}>
+                <div className={styles.title_inner_box}>
                     {/* 제목 박스가 들어갈 예정 */}
-                    <div className={styles.item_5}>5 아무말 대잔치
+                    <div className={styles.title}>
+                      <span>익명 게시판</span>
                     </div>
-                    <div className={styles.item_5}>5 
+                    <div className={styles.title_img}>
                       <span><img src={write} alt="write" width='50%'/></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div className={styles.item_2}>2
-          <div className={styles.item_3_2_1}>
-            <span><img src={question} alt="question" width='10%'/></span>
-            설명 - 오른쪽 정렬 (24시간 후 자동으로~)
-          </div>
-          <div className={styles.item_3_2_2}>
+        <div className={styles.contents_box}>
+          {/* 액자처럼 만들어야한다. */}
+          <div className={styles.contents}>
                 {/* 하단 클릭바 */}
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
-                <div className={styles.item_4_2}>4
-                </div>
-                <div className={styles.item_4_2}>4
-                </div>
-                <div className={styles.item_4_2}>4
-                </div>
-                <div className={styles.item_4_2}>4
+                <div className={styles.content}>
+                  <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
+                  <span className={styles.fix_button}>수정</span>
+                  <span className={styles.delete_button}>삭제</span>
                 </div>
               </div>
           </div>

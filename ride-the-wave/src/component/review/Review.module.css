@@ -1,18 +1,15 @@
 .Review {
-    width: 95%; /* 추후에 100% 으로 바꾸기 */
+    width: 100%; /* 추후에 100% 으로 바꾸기 */
     height: 100vh;
     max-width: 1240px;
-    margin: 0 auto; /* center the form */
     display: grid; /* grid container */
-    grid-template-columns: 1fr;
     grid-template-rows: 1fr 4fr 0.5fr;
-    gap: 20px;
-    outline: 3px solid red;
-    background-color: #73D5FF;
     color: white;    
+    background-color: #73D5FF;
+    /* outline: 3px solid red; */
 }
 
-.item_2 {
+.header {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -21,7 +18,7 @@
     background-color: #73D5F1;
 }
 
-.item_3 {
+.logo_box {
     display: flex;
     justify-content: center;
     width: 90%;
@@ -30,18 +27,51 @@
     background-color: #0093ff;
 }
 
-.item_3_2_1 {
-    /* display: flex */
-    /* justify-content: right; */
-    text-align: right;
-    width: 80%;
-    margin-bottom: 10px;
+.title_box {
+    display: flex;
+    justify-content: center;
+    width: 90%;
     color: white;
     outline: 3px solid green;
     background-color: #0093ff;
 }
 
-.item_3_2_2 {
+.title_inner_box {
+    flex: 0.5;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
+
+.title {
+    flex: 0.4;
+    outline: 3px solid cyan;
+    color: white;
+    background-color: #5553ff;
+}
+
+.title_img {
+    flex: 0.4;
+    outline: 3px solid cyan;
+    color: white;
+    background-color: #5553ff;
+}
+
+/* ********** */
+
+.contents_box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    outline: 3px solid blue;
+    color: white;
+    background-color: #73D5F1;
+}
+
+
+.contents {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,25 +82,7 @@
     background-color: #0093ff;
 }
 
-.item_3_3 {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    color: white;
-    outline: 3px solid green;
-    background-color: #0093ff;
-}
-
-.item_4 {
-    flex: 0.5;
-    display: flex;
-    justify-content: space-between;
-    outline: 3px solid purple;
-    color: white;
-    background-color: #9993ff;
-}
-
-.item_4_2 {
+.content {
     flex: 0.3;
     display: flex;
     justify-content: space-between;
@@ -79,14 +91,23 @@
     background-color: #9993ff;
 }
 
-.item_5 {
-    flex: 0.4;
-    outline: 3px solid cyan;
+.fix_button {
+    flex: 0.3;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
     color: white;
-    background-color: #5553ff;
+    background-color: #9993ff;
 }
 
-
+.post_button {
+    flex: 0.3;
+    display: flex;
+    justify-content: space-between;
+    outline: 3px solid purple;
+    color: white;
+    background-color: #9993ff;
+}
 
 @media screen and (min-width:500px) {
     .Review {
