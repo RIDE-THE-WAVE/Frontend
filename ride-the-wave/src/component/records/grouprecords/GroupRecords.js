@@ -21,10 +21,12 @@ function GroupRecords() {
                     <div className={styles.user_search_inner_box}>
                         {/* 제목 박스가 들어갈 예정 */}
                         <div className={styles.user_search_img}>
-                            <img src={search_record} alt="search_record" width='50%'/>
+                            <img src={search_record} alt="search_record" />
                         </div>
-                        <div className={styles.user_search}>검색창
+                        <div className={styles.user_search}>
+                            <span>이름</span>
                         </div>
+                        <div className={styles.empty}></div>
                     </div>
                 </div>
             </div>
@@ -92,8 +94,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -103,8 +105,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -114,8 +116,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -125,8 +127,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -136,8 +138,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -147,8 +149,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -158,8 +160,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -169,8 +171,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -180,8 +182,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -191,8 +193,8 @@ function GroupRecords() {
                     </div>
                     <div className={styles.records}>
                         <div className={styles.record}>
-                            <span>이름
-</span>                        </div>
+                            <span>이름</span>                        
+                        </div>
                         <div className={styles.record}>
                             <span>10.00.00</span>
                         </div>
@@ -202,7 +204,7 @@ function GroupRecords() {
                     </div>
                   </div>
               </div>
-            <BottomNav />
+                <BottomNav />
         </div>
     );
 }
