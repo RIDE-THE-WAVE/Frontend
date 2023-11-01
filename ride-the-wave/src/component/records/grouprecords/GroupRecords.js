@@ -11,148 +11,193 @@ import BottomNav from '../../common/BottomNav';
 function GroupRecords() {
     return (
         <div className={styles.GroupRecords}>
-            <div className={styles.item_2}>2
-                GroupRecords
-                <div className={styles.item_3}>3
-                    <Link to="/grouprecords"><img src={logo} alt="logo" /></Link>
-                </div>
-                <div className={styles.item_3}>3
-                    <div className={styles.item_4}>
+            <div className={styles.header}>
+                <Link to="/grouprecords">
+                    <div className={styles.logo_box}>
+                        <img src={logo} alt="logo" />
+                    </div>
+                </Link>
+                <div className={styles.user_search_box}>
+                    <div className={styles.user_search_inner_box}>
                         {/* 제목 박스가 들어갈 예정 */}
-                        <div className={styles.item_5}>
-                            <span><img src={search_record} alt="search_record" width='50%'/></span>
+                        <div className={styles.user_search_img}>
+                            <img src={search_record} alt="search_record" width='50%'/>
                         </div>
-                        <div className={styles.item_5}>검색창
+                        <div className={styles.user_search}>검색창
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={styles.item_2_2}>
+            <div className={styles.contents_info_toggle_box}>
                 {/* 
                     토글 넣기 - 디비에서 긁어서 
                     myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
                 */}
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 날짜 3
+                <div className={styles.contents_period_toggle}>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;2023.06 - 12</span>
                 </div>
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 시간 3
+                <div className={styles.contents_class_toggle}>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;6AM</span>
                 </div>
-                <div className={styles.item_3_2}>
-                    <span><img src={arrow} alt="arrow" width='50%'/></span> 영법 3
-                </div>
-            </div>
-            <div className={styles.item_2_3}>
-                  <div className={styles.item_3_3}>3
-                  </div>
-                  <div className={styles.item_3_3}>3
-                  </div>
-                  <div className={styles.item_3_3}>3
-                  </div>
-                  <div className={styles.item_3_3}>3
-                  </div>
-                  <div className={styles.item_3_3}>3
-                  </div>
-            </div>
-            <div className={styles.item_2}>
-                <div className={styles.item_3_4}>
-                  <div className={styles.item_4_2}>4 25
-                  </div>
-                  <div className={styles.item_4_2}>4 50
-                  </div>
-                  <div className={styles.item_4_2}>4 전체
-                  </div>
+                <div className={styles.contents_type_toggle}>
+                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    <span>&nbsp;자유형</span>
                 </div>
             </div>
-            <div className={styles.item_2}>2
-              <div className={styles.item_3_2_2}>
+            <div className={styles.contents_turn_type}>
+                  <div className={styles.turn_type}>
+                    <span>사이드</span>
+                  </div>
+                  <div className={styles.turn_type}>
+                    <span>플립</span>
+                  </div>
+                  <div className={styles.turn_type}>
+                    <span>스타트</span>
+                  </div>
+                  <div className={styles.turn_type}>
+                    <span>오리발</span>
+                  </div>
+                  <div className={styles.turn_type}>
+                    <span>전체</span>
+                  </div>
+            </div>
+            <div className={styles.contents_length_option_box}>
+                <div className={styles.length_option_inner_box}>
+                    <div className={styles.length_option}>
+                        <span>25</span>
+                    </div>
+                    <div className={styles.length_option}>
+                        <span>50</span>
+                    </div>
+                    <div className={styles.length_option}>
+                        <span>전체</span>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.contents_box}>
+              <div className={styles.contents}>
                     {/* 무한 스크롤 */}
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
+                        <div className={styles.record}>
+                            <span>-</span>
                         </div>
-                        <div className={styles.item_5_5}>5 50m
-                        </div>
-                    </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
-                        </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
+                        <div className={styles.record}>
+                            <span>-</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
-                        </div>
-                    </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
-                        </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
-                        </div>
-                    </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
-                        </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
-                        </div>
-                    </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
-                        </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
-                        </div>
-                    </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
-                        </div>
-                        <div className={styles.item_5_5}>5 25m
-                        </div>
-                        <div className={styles.item_5_5}>5 50m
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
                     </div>
-                    <div className={styles.item_4_2}>
-                        <div className={styles.item_5_5}>5 이름
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 25m
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
-                        <div className={styles.item_5_5}>5 50m
+                    </div>
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
+                        </div>
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
+                        </div>
+                    </div>
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
+                        </div>
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
+                        </div>
+                    </div>
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
+                        </div>
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
+                        </div>
+                    </div>
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
+                        </div>
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
+                        </div>
+                    </div>
+                    <div className={styles.records}>
+                        <div className={styles.record}>
+                            <span>이름
+</span>                        </div>
+                        <div className={styles.record}>
+                            <span>10.00.00</span>
+                        </div>
+                        <div className={styles.record}>
+                            <span>20.00.00</span>
                         </div>
                     </div>
                   </div>
