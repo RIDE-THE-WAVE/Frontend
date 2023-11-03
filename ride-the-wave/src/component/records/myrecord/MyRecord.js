@@ -7,10 +7,42 @@ import hide from '../../img/hide.png';
 import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
 import { Link } from 'react-router-dom';
+import MyRecordModal from '../../modal/MyRecordModal';
 
 function MyRecord() {
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
+    const [activeSide, setActiveSide] = useState(true);
+    const [activeFlip, setActiveFlip] = useState(true);
+    const [activeStart, setActiveStart] = useState(true);
+    const [activeFin, setActiveFin] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+        setShowModal(true);
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
+    }
+
+    // 바뀐 값들을 전체 기록에 적용해야한다.
+    // 기록이 기간별로 더 많아지면 어떡하지..?
+    const toggleActiveSide = () => {
+        setActiveSide(!activeSide);
+    }
+
+    const toggleActiveFlip = () => {
+        setActiveFlip(!activeFlip);
+    }
+
+    const toggleActiveStart = () => {
+        setActiveStart(!activeStart);
+    }
+
+    const toggleActiveFin= () => {
+        setActiveFin(!activeFin);
+    }
 
     return (
         <div className={styles.MyRecord}>
@@ -75,18 +107,20 @@ function MyRecord() {
                             <span>전체</span>
                         </div>
                     </div>
-                    <div className={styles.length_option_right_box}>
-                        {/* <div className={styles.show_box}> */}
-                            <img src={question} alt="question" width='20%'/>
-                            <img src={hide} alt="hide" width='20%'/>
-                            <img src={eye} alt="eye" width='20%'/>
-                        {/* </div> */}
+                    <div className={styles.length_option_right_box} onClick={openModal}>
+                        <img src={question} alt="question" width='20%'/>
+                        <img src={hide} alt="hide" width='20%'/>
+                        <img src={eye} alt="eye" width='20%'/>
                     </div>
+                    {showModal && 
+                        <div onClick={closeModal}>
+                            <MyRecordModal />
+                        </div>
+                    }
                 </div>
             </div>
             <div className={styles.contents_box}>
               <div className={styles.contents}>
-                    {/* <div className={styles.record_of_turn_type_box}> */}
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
@@ -99,8 +133,8 @@ function MyRecord() {
                                 <span>21.00</span>
                             </div>
                         </div>
-                        <div className={styles.show}>
-                            <img src={eye} alt="eye"/>
+                        <div className={styles.show} onClick={() => toggleActiveSide()} >
+                            {activeSide ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabFlip")) ? "" : styles.record_of_turn_type_box_unactive}`}>
@@ -115,8 +149,8 @@ function MyRecord() {
                                 <span>21.00</span>
                             </div>
                         </div>
-                        <div className={styles.show}>
-                            <img src={eye} alt="eye"/>
+                        <div className={styles.show} onClick={() => toggleActiveFlip()} >
+                            {activeFlip ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabStart")) ? "" : styles.record_of_turn_type_box_unactive}`}>
@@ -131,8 +165,8 @@ function MyRecord() {
                                 <span>21.00</span>
                             </div>
                         </div>
-                        <div className={styles.show}>
-                            <img src={hide} alt="eye"/>
+                        <div className={styles.show} onClick={() => toggleActiveStart()} >
+                            {activeStart ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabFin")) ? "" : styles.record_of_turn_type_box_unactive}`}>
@@ -147,8 +181,8 @@ function MyRecord() {
                                 <span>21.00</span>
                             </div>
                         </div>
-                        <div className={styles.show}>
-                            <img src={eye} alt="eye"/>
+                        <div className={styles.show} onClick={() => toggleActiveFin()} >
+                            {activeFin ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
                   </div>
