@@ -112,15 +112,26 @@
 }
 
 .turn_type {
+    /* flex: 0.15; */
+    /* display: flex; */
+    padding: 0.6rem;
+    border-radius: 1.7rem;
+    /* outline: 3px solid green; */
+    /* background-color: #0093ff; */
+}
+
+.turn_type_active {
+    background-color: #2457C5;
+}
+
+/* .turn_type {
     flex: 0.15;
     display: flex;
     justify-content: space-evenly;
     padding: 0.6rem;
     border-radius: 1.7rem;
     background-color: #2457C5;
-    /* outline: 3px solid green; */
-    /* background-color: #0093ff; */
-}
+} */
 
 /* ************** */
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './MyRecord.module.css';
 import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import arrow from '../../img/arrow.png';
@@ -9,6 +9,8 @@ import BottomNav from '../../common/BottomNav';
 import { Link } from 'react-router-dom';
 
 function MyRecord() {
+    const [activeTab, setActiveTab] = useState('tabEntire');
+
     return (
         <div className={styles.MyRecord}>
             <div className={styles.header}>
@@ -19,6 +21,7 @@ function MyRecord() {
                 </Link>
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
+                        {/* 로그인에서 입력 받은 값으로 출력하게 만들어야한다. */}
                         <span>김재환B</span>
                     </div>
                 </div>
@@ -42,19 +45,19 @@ function MyRecord() {
                 </div>
             </div>
             <div className={styles.contents_turn_type}>
-                  <div className={styles.turn_type}>
+                  <div className={`${styles.turn_type} ${activeTab === "tabSide" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabSide")}>
                     <span>사이드</span>
                   </div>
-                  <div className={styles.turn_type}>
+                  <div className={`${styles.turn_type} ${activeTab === "tabFlip" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabFlip")}>
                     <span>플립</span>
                   </div>
-                  <div className={styles.turn_type}>
+                  <div className={`${styles.turn_type} ${activeTab === "tabStart" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabStart")}>
                     <span>스타트</span>
                   </div>
-                  <div className={styles.turn_type}>
+                  <div className={`${styles.turn_type} ${activeTab === "tabFin" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabFin")}>
                     <span>오리발</span>
                   </div>
-                  <div className={styles.turn_type}>
+                  <div className={`${styles.turn_type} ${activeTab === "tabEntire" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabEntire")}>
                     <span>전체</span>
                   </div>
             </div>
