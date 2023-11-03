@@ -224,6 +224,10 @@
     /* background-color: #9993ff; */
 }
 
+.record_of_turn_type_box_unactive {
+    display:none;
+}
+
 .records {
     flex: 0.9;
     display: flex;

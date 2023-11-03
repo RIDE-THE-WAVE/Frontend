@@ -85,7 +85,8 @@ function MyRecord() {
             </div>
             <div className={styles.contents_box}>
               <div className={styles.contents}>
-                    <div className={styles.record_of_turn_type_box}>
+                    {/* <div className={styles.record_of_turn_type_box}> */}
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>사이드</span>
@@ -101,7 +102,7 @@ function MyRecord() {
                             <img src={eye} alt="eye"/>
                         </div>
                     </div>
-                    <div className={styles.record_of_turn_type_box}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabFlip")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>플립</span>
@@ -117,7 +118,7 @@ function MyRecord() {
                             <img src={eye} alt="eye"/>
                         </div>
                     </div>
-                    <div className={styles.record_of_turn_type_box}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabStart")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>스타트</span>
@@ -133,7 +134,7 @@ function MyRecord() {
                             <img src={hide} alt="eye"/>
                         </div>
                     </div>
-                    <div className={styles.record_of_turn_type_box}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabFin")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>오리발</span>
