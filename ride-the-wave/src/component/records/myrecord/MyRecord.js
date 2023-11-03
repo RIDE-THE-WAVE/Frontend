@@ -9,7 +9,8 @@ import BottomNav from '../../common/BottomNav';
 import { Link } from 'react-router-dom';
 
 function MyRecord() {
-    const [activeTab, setActiveTab] = useState('tabEntire');
+    const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
+    const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
 
     return (
         <div className={styles.MyRecord}>
@@ -45,32 +46,32 @@ function MyRecord() {
                 </div>
             </div>
             <div className={styles.contents_turn_type}>
-                  <div className={`${styles.turn_type} ${activeTab === "tabSide" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabSide")}>
+                  <div className={`${styles.turn_type} ${activeTurnTab === "tabSide" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabSide")}>
                     <span>사이드</span>
                   </div>
-                  <div className={`${styles.turn_type} ${activeTab === "tabFlip" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabFlip")}>
+                  <div className={`${styles.turn_type} ${activeTurnTab === "tabFlip" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabFlip")}>
                     <span>플립</span>
                   </div>
-                  <div className={`${styles.turn_type} ${activeTab === "tabStart" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabStart")}>
+                  <div className={`${styles.turn_type} ${activeTurnTab === "tabStart" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabStart")}>
                     <span>스타트</span>
                   </div>
-                  <div className={`${styles.turn_type} ${activeTab === "tabFin" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabFin")}>
+                  <div className={`${styles.turn_type} ${activeTurnTab === "tabFin" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabFin")}>
                     <span>오리발</span>
                   </div>
-                  <div className={`${styles.turn_type} ${activeTab === "tabEntire" ? styles.turn_type_active : ""}`} onClick={() => setActiveTab("tabEntire")}>
+                  <div className={`${styles.turn_type} ${activeTurnTab === "tabEntireTurn" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabEntireTurn")}>
                     <span>전체</span>
                   </div>
             </div>
             <div className={styles.contents_length_option_box}>
               <div className={styles.length_option_inner_box}>
                     <div className={styles.length_option_left_box}>
-                        <div className={styles.length_option}>
+                        <div className={`${styles.length_option} ${activeLengthTab === "tabHalf" ? styles.length_option_active : ""}`} onClick={() => setActiveLengthTab("tabHalf")}>
                             <span>25</span>
                         </div>
-                        <div className={styles.length_option}>
+                        <div className={`${styles.length_option} ${activeLengthTab === "tabFull" ? styles.length_option_active : ""}`} onClick={() => setActiveLengthTab("tabFull")}>
                             <span>50</span>
                         </div>
-                        <div className={styles.length_option}>
+                        <div className={`${styles.length_option} ${activeLengthTab === "tabEntireLength" ? styles.length_option_active : ""}`} onClick={() => setActiveLengthTab("tabEntireLength")}>
                             <span>전체</span>
                         </div>
                     </div>
@@ -86,7 +87,7 @@ function MyRecord() {
             <div className={styles.contents_box}>
               <div className={styles.contents}>
                     {/* <div className={styles.record_of_turn_type_box}> */}
-                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>사이드</span>
@@ -102,7 +103,7 @@ function MyRecord() {
                             <img src={eye} alt="eye"/>
                         </div>
                     </div>
-                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabFlip")) ? "" : styles.record_of_turn_type_box_unactive}`}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabFlip")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>플립</span>
@@ -118,7 +119,7 @@ function MyRecord() {
                             <img src={eye} alt="eye"/>
                         </div>
                     </div>
-                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabStart")) ? "" : styles.record_of_turn_type_box_unactive}`}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabStart")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>스타트</span>
@@ -134,7 +135,7 @@ function MyRecord() {
                             <img src={hide} alt="eye"/>
                         </div>
                     </div>
-                    <div className={`${styles.record_of_turn_type_box} ${((activeTab === "tabEntire") || (activeTab === "tabFin")) ? "" : styles.record_of_turn_type_box_unactive}`}>
+                    <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabFin")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>오리발</span>
