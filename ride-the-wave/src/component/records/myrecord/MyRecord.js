@@ -12,11 +12,11 @@ import MyRecordModal from '../../modal/MyRecordModal';
 function MyRecord() {
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
+    const [showModal, setShowModal] = useState(false);
     const [activeSide, setActiveSide] = useState(true);
     const [activeFlip, setActiveFlip] = useState(true);
     const [activeStart, setActiveStart] = useState(true);
     const [activeFin, setActiveFin] = useState(true);
-    const [showModal, setShowModal] = useState(false);
 
     const openModal = () => {
         setShowModal(true);

@@ -12,7 +12,7 @@ function Login() {
     const handleLogin = () => {
         if (isUsernameValid(username)) {
             console.log(username);
-            navigate('/myrecord');
+            navigate('/myrecord', { state: 'myrecord'});
         } else {
             console.log("이름을 입력하세요.");
         }

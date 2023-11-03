@@ -3,11 +3,14 @@ import styles from './Review.module.css';
 import logo from '../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import write from '../img/write.png';
 import question from '../img/question.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import BottomNav from '../common/BottomNav';
 
 
 function Review() {
+  // const location = useLocation();
+  // console.log(location.state.page);
+
   return (
     <div className={styles.Review}>
         <div className={styles.header}>
