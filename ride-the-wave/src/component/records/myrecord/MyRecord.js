@@ -92,10 +92,10 @@ function MyRecord() {
                             <div className={styles.record}>
                                 <span>사이드</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                                 <span>10.00</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                                 <span>21.00</span>
                             </div>
                         </div>
@@ -108,10 +108,10 @@ function MyRecord() {
                             <div className={styles.record}>
                                 <span>플립</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                                 <span>10.00</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                                 <span>21.00</span>
                             </div>
                         </div>
@@ -124,10 +124,10 @@ function MyRecord() {
                             <div className={styles.record}>
                                 <span>스타트</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                                 <span>10.00</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                                 <span>21.00</span>
                             </div>
                         </div>
@@ -140,10 +140,10 @@ function MyRecord() {
                             <div className={styles.record}>
                                 <span>오리발</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                                 <span>10.00</span>
                             </div>
-                            <div className={styles.record}>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                                 <span>21.00</span>
                             </div>
                         </div>

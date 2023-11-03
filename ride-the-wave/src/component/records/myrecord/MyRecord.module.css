@@ -247,6 +247,10 @@
     /* background-color: #0093ff; */
 }
 
+.record_unactive {
+    display: none;
+}
+
 .show {
     flex: 0.1;
     display: flex;
