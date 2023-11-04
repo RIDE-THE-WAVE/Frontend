@@ -224,6 +224,10 @@
     /* background-color: #5553ff; */
 }
 
+.record_unactive {
+    display: none;
+}
+
 /* *************** */
 
 

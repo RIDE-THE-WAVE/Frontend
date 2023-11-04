@@ -10,28 +10,29 @@ import BottomNav from '../../common/BottomNav';
 
 function GroupRecords() {
     // 개인 기록(마이페이지)와 겹치는 구간이 매우 많음
-    const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
+    const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
-    // const [activeSide, setActiveSide] = useState(true);
-    // const [activeFlip, setActiveFlip] = useState(true);
-    // const [activeStart, setActiveStart] = useState(true);
-    // const [activeFin, setActiveFin] = useState(true);
 
-    // const toggleActiveSide = () => {
-    //     setActiveSide(!activeSide);
-    // }
+    const [activeSide, setActiveSide] = useState(true);
+    const [activeFlip, setActiveFlip] = useState(true);
+    const [activeStart, setActiveStart] = useState(true);
+    const [activeFin, setActiveFin] = useState(true);
 
-    // const toggleActiveFlip = () => {
-    //     setActiveFlip(!activeFlip);
-    // }
+    const toggleActiveSide = () => {
+        setActiveSide(!activeSide);
+    }
 
-    // const toggleActiveStart = () => {
-    //     setActiveStart(!activeStart);
-    // }
+    const toggleActiveFlip = () => {
+        setActiveFlip(!activeFlip);
+    }
 
-    // const toggleActiveFin= () => {
-    //     setActiveFin(!activeFin);
-    // }
+    const toggleActiveStart = () => {
+        setActiveStart(!activeStart);
+    }
+
+    const toggleActiveFin= () => {
+        setActiveFin(!activeFin);
+    }
 
     return (
         <div className={styles.GroupRecords}>
@@ -86,9 +87,9 @@ function GroupRecords() {
                 <div className={`${styles.turn_type} ${activeTurnTab === "tabFin" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabFin")}>
                     <span>오리발</span>
                 </div>
-                <div className={`${styles.turn_type} ${activeTurnTab === "tabEntireTurn" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabEntireTurn")}>
+                {/* <div className={`${styles.turn_type} ${activeTurnTab === "tabEntireTurn" ? styles.turn_type_active : ""}`} onClick={() => setActiveTurnTab("tabEntireTurn")}>
                     <span>전체</span>
-                </div>
+                </div> */}
             </div>
             <div className={styles.contents_length_option_box}>
                 <div className={styles.length_option_inner_box}>
@@ -104,16 +105,17 @@ function GroupRecords() {
                 </div>
             </div>
             <div className={styles.contents_box}>
+                {/* 모든 턴에 대한 정보를 통째로 갖고 있는 상태에서 해야겠다...?! */}
               <div className={styles.contents}>
                     {/* 무한 스크롤 */}
                     <div className={styles.records}>
                         <div className={styles.record}>
                             <span>이름</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>-</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>-</span>
                         </div>
                     </div>
@@ -121,10 +123,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -132,10 +134,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -143,10 +145,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -154,10 +156,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -165,10 +167,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -176,10 +178,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -187,10 +189,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -198,10 +200,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -209,10 +211,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
@@ -220,10 +222,10 @@ function GroupRecords() {
                         <div className={styles.record}>
                             <span>이름</span>                        
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
                             <span>10.00.00</span>
                         </div>
-                        <div className={styles.record}>
+                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
                             <span>20.00.00</span>
                         </div>
                     </div>
