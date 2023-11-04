@@ -121,6 +121,7 @@ function MyRecord() {
             </div>
             <div className={styles.contents_box}>
               <div className={styles.contents}>
+                {/* 아래는 공통 컴포넌트로 뺄 수 있다. 눈이미지 제외*/}
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>

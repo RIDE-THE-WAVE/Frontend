@@ -12,28 +12,8 @@ function GroupRecords() {
     // 개인 기록(마이페이지)와 겹치는 구간이 매우 많음
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
-
-    const [activeSide, setActiveSide] = useState(true);
-    const [activeFlip, setActiveFlip] = useState(true);
-    const [activeStart, setActiveStart] = useState(true);
-    const [activeFin, setActiveFin] = useState(true);
-
-    const toggleActiveSide = () => {
-        setActiveSide(!activeSide);
-    }
-
-    const toggleActiveFlip = () => {
-        setActiveFlip(!activeFlip);
-    }
-
-    const toggleActiveStart = () => {
-        setActiveStart(!activeStart);
-    }
-
-    const toggleActiveFin= () => {
-        setActiveFin(!activeFin);
-    }
-
+    const [activeClassTime, setActiveClassTime] = useState('six');
+    
     return (
         <div className={styles.GroupRecords}>
             <div className={styles.header}>
@@ -106,132 +86,155 @@ function GroupRecords() {
             </div>
             <div className={styles.contents_box}>
                 {/* 모든 턴에 대한 정보를 통째로 갖고 있는 상태에서 해야겠다...?! */}
-              <div className={styles.contents}>
-                    {/* 무한 스크롤 */}
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>
+                <div className={styles.contents}>
+                    {/* 반복문으로 구현 및 무한 스크롤 */}
+                    {/* 한 사람의 기록 시작 */}
+                    <div className={styles.content}>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabSide") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 사이드</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>-</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFlip") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 플립</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>-</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabStart") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 스타트</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFin") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 오리발</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
                     </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
+                    {/* 한 사람의 기록 끝 */}
+                    {/* 한 사람의 기록 시작 */}
+                    <div className={styles.content}>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabSide") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 사이드</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFlip") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 플립</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabStart") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 스타트</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
-                        </div>
-                    </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
-                        </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFin") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 오리발</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
                     </div>
-                    <div className={styles.records}>
-                        <div className={styles.record}>
-                            <span>이름</span>                        
+                    {/* 한 사람의 기록 끝 */}
+                    {/* 한 사람의 기록 시작 */}
+                    <div className={styles.content}>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabSide") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 사이드</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                            <span>10.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFlip") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 플립</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
-                        <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                            <span>20.00.00</span>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabStart") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 스타트</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
+                        </div>
+                        <div className={`${styles.records} ${(activeClassTime === "six") && (activeTurnTab === "tabFin") ? "" : styles.records_unactive}`}>
+                            <div className={styles.record}>
+                                <span>6시 - 이름 - 오리발</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
+                                <span>10.00</span>
+                            </div>
+                            <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
+                                <span>21.00</span>
+                            </div>
                         </div>
                     </div>
-                  </div>
-              </div>
-                <BottomNav />
+                    {/* 한 사람의 기록 끝 */}
+                </div>
+            </div>
+            <BottomNav />
         </div>
     );
 }
