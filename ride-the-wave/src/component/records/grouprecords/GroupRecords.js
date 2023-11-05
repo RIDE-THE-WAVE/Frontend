@@ -9,12 +9,16 @@ import BottomNav from '../../common/BottomNav';
 
 
 function GroupRecords() {
+    const [username, setUsername] = useState('');
     // 개인 기록(마이페이지)와 겹치는 구간이 매우 많음
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [classToggle, setClassToggle] = useState(false);
     const [showBtn, setShowBtn] = useState(6);
-    const [showData, setShowData] = useState(showBtn);
+
+    const findUser = () => {
+        console.log(username);
+    };
 
     const handleShowBtn = (selectedClass) => {
         setShowBtn(selectedClass);
@@ -36,13 +40,12 @@ function GroupRecords() {
                 </Link>
                 <div className={styles.user_search_box}>
                     <div className={styles.user_search_inner_box}>
-                        {/* 제목 박스가 들어갈 예정 */}
-                        <div className={styles.user_search_img}>
+                        <div className={styles.user_search_img} onClick={findUser}>
+                            {/* 버튼 누르면 해당 하는 사람 찾아야함 */}
                             <img src={search_record} alt="search_record" />
                         </div>
-                        {/* Login 의 입력 받는 창 넣기 */}
                         <div className={styles.user_search}>
-                            <span>이름</span>
+                            <input type="text" placeholder="이름" value={username} onChange={(e) => setUsername(e.target.value)} />
                         </div>
                         <div className={styles.empty}></div>
                     </div>

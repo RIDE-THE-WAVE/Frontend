@@ -76,6 +76,13 @@
     background-color: #5553ff; */
 }
 
+.user_search > input {
+    font-size: 0.7rem;
+    text-align: center;
+    border: none;
+    color:#73D5FF;
+}
+
 .empty {
     flex: 0.2;
 }
