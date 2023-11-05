@@ -76,6 +76,13 @@
     background-color: #5553ff; */
 }
 
+.user_search > input {
+    font-size: 0.7rem;
+    text-align: center;
+    border: none;
+    color:#73D5FF;
+}
+
 .empty {
     flex: 0.2;
 }
@@ -89,10 +96,11 @@
     color: white;
     font-weight: bold;
     font-size: 0.9rem;
+    /* background-color: #0000ff; */
 }
 
 .contents_period_toggle {
-    flex: 0.4;
+    flex: 0.3;
     display: flex;
     justify-content: center;
     /* outline: 3px solid purple; */
@@ -105,11 +113,28 @@
 }
 
 .contents_class_toggle {
-    flex: 0.1;
+    flex: 0.3;
     display: flex;
-    justify-content: center;
     /* outline: 3px solid purple; */
     /* background-color: #9993ff; */
+}
+
+.contents_class_toggle > div:first-child {
+    float: left;
+}
+
+.toggle {
+    position: relative;
+    /* background-color: #00ff00; */
+}
+
+.classBtn_active {
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    border-bottom: #2457C5 0.2rem solid;
+    border-top: #2457C5 0.2rem solid;
+    color: #2457C5;
 }
 
 .contents_type_toggle {
@@ -140,6 +165,10 @@
     justify-content: space-evenly;
     padding: 0.6rem;
     border-radius: 1.7rem;
+    /* background-color: #2457C5; */
+}
+
+.turn_type_active {
     background-color: #2457C5;
 }
 
@@ -167,10 +196,15 @@
     flex: 0.3;
     padding: 0.5rem;
     border-radius: 1rem;
-    background-color: #2457C5;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    /* background-color: #2457C5;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); */
     /* outline: 3px solid purple; */
     /* background-color: #9993ff; */
+}
+
+.length_option_active {
+    background-color: #2457C5;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ******** */
@@ -187,12 +221,16 @@
 }
 
 .contents {
-    width: 20rem;
+    width: 85%;
     display: flex;
     flex-direction: column;
     gap:1.5rem;
     /* outline: 3px solid green; */
     /* background-color: #0093ff; */
+}
+
+.content_unactive {
+    display: none;
 }
 
 .records {
@@ -207,12 +245,20 @@
     justify-content: center;
 }
 
+.records_unactive {
+    display:none;
+}
+
 .record {
     flex: 0.4;
     display: flex;
     justify-content: center;
     /* outline: 3px solid cyan; */
     /* background-color: #5553ff; */
+}
+
+.record_unactive {
+    display: none;
 }
 
 /* *************** */

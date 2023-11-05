@@ -61,11 +61,19 @@
     /* background-color: #5553ff; */
 }
 
-.put_search_data_section > span {
+.put_search_data_section > input {
+    text-align: center;
+    border: none;
     margin-right: 2em;
     font-weight: bold;
     color: #2457C5;
 }
+
+/* .put_search_data_section > span {
+    margin-right: 2em;
+    font-weight: bold;
+    color: #2457C5;
+} */
 
 .search_img {
     color: white;
