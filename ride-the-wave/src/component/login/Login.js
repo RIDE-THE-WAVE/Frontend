@@ -17,6 +17,11 @@ function Login() {
             console.log("이름을 입력하세요.");
         }
     }
+    const handleLoginByEnter = (e) => {
+        if (e.key === 'Enter') {
+            handleLogin();
+        }
+    }
     
     return (
         <div className={styles.Login}>
@@ -29,7 +34,12 @@ function Login() {
                     <div className={styles.search_box}>
                         <div className={styles.put_search_data_section}>
                             <div></div>
-                            <input type="text" placeholder="이름을 입력하세요." value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <input
+                                type="text"
+                                placeholder="이름을 입력하세요."
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                onKeyUp={handleLoginByEnter} />
                             <div onClick={handleLogin}>
                                 <div className={styles.search_img}>
                                     <img src={search_client} alt="search_client"/>
