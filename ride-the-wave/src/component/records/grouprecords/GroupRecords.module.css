@@ -108,7 +108,6 @@
 .contents_class_toggle {
     flex: 0.3;
     display: flex;
-    /* justify-content: center; */
     /* outline: 3px solid purple; */
     /* background-color: #9993ff; */
 }
