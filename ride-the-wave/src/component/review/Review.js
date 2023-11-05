@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Review.module.css';
 import logo from '../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import write from '../img/write.png';
-import question from '../img/question.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BottomNav from '../common/BottomNav';
+import ReviewdModal from '../modal/ReviewdModal';
 
 
 function Review() {
-  // const location = useLocation();
-  // console.log(location.state.page);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+      setShowModal(true);
+  }
+  const closeModal = () => {
+      setShowModal(false);
+  }
+  const postReview = (comment) => {
+    console.log(comment);
+}
 
   return (
     <div className={styles.Review}>
@@ -23,14 +32,18 @@ function Review() {
                 <div className={styles.title_inner_box}>
                   {/* 제목 박스가 들어갈 예정 */}
                   <div className={styles.empty}></div>
-                  {/* ㅇㅇㅇㅇㅇㅇ */}
                   <div className={styles.title}>
                     <span>익명 게시판</span>
                   </div>
-                  <div className={styles.title_img}>
+                  <div className={styles.title_img} onClick={openModal}>
                     <img src={write} alt="write" />
                   </div>
                 </div>
+                {showModal && 
+                      <div>
+                          <ReviewdModal closeModal={closeModal} postReview={postReview}/>
+                      </div>
+                }
             </div>
         </div>
         <div className={styles.contents_box}>
