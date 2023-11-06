@@ -30,8 +30,8 @@
     }
 
     .user_name_box {
-        flex: 0.5;
         width: 60%;
+        padding: 0.6rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -255,8 +255,8 @@
     }
 
     .user_name_box {
-        flex: 0.6;
         width: 60%;
+        padding: 0.6rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -267,7 +267,7 @@
     }
 
     .user_name {
-        font-weight: bolder;
+        font-weight: bold;
         font-size: 0.7rem;
     }
 
@@ -280,7 +280,6 @@
         color: white;
         font-weight: bold;
         font-size: 0.75rem;
-        /* background-color: antiquewhite; */
     }
 
     /* 토글 어떻게 할지 고민해보기 */
@@ -294,6 +293,18 @@
         width: 30%;
         display: flex;
         justify-content: center;
+    }
+
+    .toggle {
+        position: relative;
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
     }
 
     .contents_type_toggle {
@@ -390,6 +401,7 @@
         margin-top: 3%;
         font-weight: bolder;
         font-size: 1rem;
+        overflow: scroll;
     }
 
     .contents {
@@ -434,4 +446,3 @@
         width: 1rem;
     }
 }
-
