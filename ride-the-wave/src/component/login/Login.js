@@ -34,16 +34,16 @@ function Login() {
                     <div className={styles.search_box}>
                         <div className={styles.put_search_data_section}>
                             <div></div>
-                            <input
-                                type="text"
-                                placeholder="이름을 입력하세요."
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                onKeyUp={handleLoginByEnter} />
-                            <div onClick={handleLogin}>
-                                <div className={styles.search_img}>
-                                    <img src={search_client} alt="search_client"/>
-                                </div>
+                            <div className={styles.input_box}>
+                                <input
+                                    type="text"
+                                    placeholder="이름을 입력하세요."
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    onKeyUp={handleLoginByEnter} />
+                            </div>
+                            <div className={styles.search_img} onClick={handleLogin}>
+                                <img src={search_client} alt="search_client"/>
                             </div>
                         </div>
                     </div>
