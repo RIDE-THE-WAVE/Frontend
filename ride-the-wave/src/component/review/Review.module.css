@@ -11,83 +11,76 @@
     }
 
     .header {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: end;
-        margin-bottom: 1rem;
-        /* outline: 3px solid blue; */
     }
 
     .logo_box {
+        width: 100%;
         display: flex;
-        justify-content: center;
-    }
-
-    .logo_box > img {
-        width: 3.5rem;
-    }
-
-    .title_box {
-        width: 20rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
+        justify-content: center;
+    }
+
+    .logo_box img {
+        width: 40%;
+    }
+    
+    .title_box {
+        flex: 0.6;
+        width: 60%;
+        display: flex;
+        justify-content: start;
+        text-align: center;
+        font-size: 0.7rem;
         font-weight: bold;
     }
 
     .title_inner_box {
-        flex: 1;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
 
-    .empty {
-        flex:0.12;
-    }
-
     .title {
-        flex:0.65;
-        padding: 1rem;
+        width: 60%;
+        padding: 0.6rem;
+        margin-right: 5px;
         border-radius: 1.5rem;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
         background-color: #2457C5;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .title_img {
-        flex: 0.12;
+        flex:0.4;
         display: flex;
         justify-content: end;
         align-items: center;
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
         border-radius: 50%;
         background-color: #fff;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .title_img > img {
         width: 50%;
         height: 50%;
-        margin: 25%
+        margin: 25%;
     }
 
     /* ********** */
 
     .contents_box {
-        overflow: hidden;
+        overflow: scroll;
         display: flex;
         align-items: center;
         flex-direction: column;
         color:#2457C5;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         font-weight: bold;
-        /* outline: 3px solid blue; */
-        /* background-color: #73D5F1; */
     }
 
 
@@ -95,21 +88,21 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        width: 20rem;
-        gap: 20px;
+        gap: 10px;
         padding: 1rem;
         /* outline: 3px solid green; */
         /* background-color: #0093ff; */
     }
 
     .content {
+        width: 90%;
+        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 1rem;
         border-radius: 0.5rem; 
         background-color: #fff;
-        /* outline: 3px solid purple; */
     }
 
     .comment {
@@ -122,7 +115,6 @@
         align-items: center;
         justify-content: end;
         font-size: 0.7rem;
-        /* outline: 3px solid purple; */
     }
 
     .fix_button {
@@ -158,83 +150,77 @@
     }
 
     .header {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: end;
-        margin-bottom: 1rem;
-        /* outline: 3px solid blue; */
+        margin-bottom: 10px;
     }
 
     .logo_box {
+        width: 100%;
         display: flex;
-        justify-content: center;
-    }
-
-    .logo_box > img {
-        width: 3.5rem;
-    }
-
-    .title_box {
-        width: 20rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
+        justify-content: center;
+    }
+
+    .logo_box img {
+        width: 40%;
+    }
+    
+    .title_box {
+        flex: 0.6;
+        width: 60%;
+        display: flex;
+        justify-content: start;
+        text-align: center;
+        font-size: 0.7rem;
         font-weight: bold;
     }
 
     .title_inner_box {
-        flex: 1;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
 
-    .empty {
-        flex:0.12;
-    }
-
     .title {
-        flex:0.65;
-        padding: 1rem;
+        width: 60%;
+        padding: 0.6rem;
+        margin-right: 5px;
         border-radius: 1.5rem;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
         background-color: #2457C5;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .title_img {
-        flex: 0.12;
+        flex:0.4;
         display: flex;
         justify-content: end;
         align-items: center;
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
         border-radius: 50%;
         background-color: #fff;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .title_img > img {
         width: 50%;
         height: 50%;
-        margin: 25%
+        margin: 25%;
     }
 
     /* ********** */
 
     .contents_box {
-        overflow: hidden;
+        overflow: scroll;
         display: flex;
         align-items: center;
         flex-direction: column;
         color:#2457C5;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         font-weight: bold;
-        /* outline: 3px solid blue; */
-        /* background-color: #73D5F1; */
     }
 
 
@@ -242,21 +228,21 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        width: 20rem;
-        gap: 20px;
+        gap: 10px;
         padding: 1rem;
         /* outline: 3px solid green; */
         /* background-color: #0093ff; */
     }
 
     .content {
+        width: 90%;
+        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 1rem;
         border-radius: 0.5rem; 
         background-color: #fff;
-        /* outline: 3px solid purple; */
     }
 
     .comment {
@@ -269,7 +255,6 @@
         align-items: center;
         justify-content: end;
         font-size: 0.7rem;
-        /* outline: 3px solid purple; */
     }
 
     .fix_button {
@@ -291,4 +276,3 @@
         color: white;
     }
 }
-

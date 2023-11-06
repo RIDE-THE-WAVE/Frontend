@@ -45,7 +45,7 @@ function GroupRecords() {
                     </div>
                 </Link>
                 <div className={styles.user_search_box}>
-                <div className={styles.user_search_inner_box}>
+                    <div className={styles.user_search_inner_box}>
                         <div className={styles.user_search_img} onClick={findUser}>
                             {/* 버튼 누르면 해당 하는 사람 찾아야함 */}
                             <img src={search_record} alt="search_record" />
