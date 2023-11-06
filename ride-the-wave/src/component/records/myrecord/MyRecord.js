@@ -70,7 +70,11 @@ function MyRecord() {
                 </div>
                 <div className={styles.contents_class_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
-                    <span>&nbsp;6AM</span>
+                    <div className={styles.toggle}>
+                        <div className={`${styles.classBtn}`}>
+                            <span>&nbsp;6AM</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.contents_type_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>

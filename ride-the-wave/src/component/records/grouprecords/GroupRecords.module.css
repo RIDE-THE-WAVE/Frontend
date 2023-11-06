@@ -4,44 +4,40 @@
         height: 100vh;
         margin: 0 auto;
         display: grid;
-        grid-template-rows: 1fr 0.2fr 0.35fr 0.5fr 3fr 0.7fr;
+        grid-template-rows: 1fr 0.2fr 0.4fr 0.45fr 3fr 1fr;
         color: white;    
         background-color: #73D5FF;
     }
 
     .header {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: end;
-        margin-bottom: 1rem;
-        /* outline: 3px solid blue;
-        color: white;
-        background-color: #73D5F1; */
+        margin-bottom: 10px;
     }
 
     .logo_box {
+        width: 100%;
         display: flex;
+        text-align: center;
         justify-content: center;
-        /* color: white; */
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
     }
 
-    .logo_box > img {
-        width: 3.5rem;
+    .logo_box img {
+        width: 40%;
     }
 
     .user_search_box {
-        width: 20rem;
+        flex: 0.5;
+        width: 80%;
         display: flex;
         justify-content: start;
         text-align: center;
         font-size: 0.7rem;
         font-weight: bold;
         color:#73D5FF;
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
     }
 
     .user_search_inner_box {
@@ -49,8 +45,6 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        /* outline: 3px solid purple;
-        background-color: #9993ff; */
     }
 
     .user_search_img {
@@ -58,22 +52,18 @@
         display: flex;
         justify-content: end;
         align-items: center;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .user_search_img > img {
-        width: 1.7rem;
+        width: 1.5rem;
     }
 
     .user_search {
         flex: 0.45;
-        padding: 0.5rem;
+        padding: 0.4rem;
         border-radius: 1.5rem;
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
         background-color: #fff;
-        /* outline: 3px solid cyan;
-        background-color: #5553ff; */
     }
 
     .user_search > input {
@@ -90,65 +80,62 @@
     /* *************** */
 
     .contents_info_toggle_box {
-        display: flex;
-        justify-content: space-evenly;
         width: 100%;
+        display: flex;
+        justify-content: end;
         color: white;
         font-weight: bold;
-        font-size: 0.9rem;
-        /* background-color: #0000ff; */
+        font-size: 0.75rem;
     }
 
     .contents_period_toggle {
-        flex: 0.3;
+        width: 30%;
         display: flex;
-        justify-content: center;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
-    }
-
-    .toggle_img > img {
-        width: 1rem;
-        /* margin-top: 0.1rem; */
+        justify-content: end;
     }
 
     .contents_class_toggle {
-        flex: 0.3;
+        width: 30%;
         display: flex;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
-    }
-
-    .contents_class_toggle > div:first-child {
-        float: left;
+        justify-content: center;
     }
 
     .toggle {
         position: relative;
-        /* background-color: #00ff00; */
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
     }
 
     .classBtn_active {
         position:absolute;
-        display: flex;
-        flex-direction: column;
+        justify-content: center;
         border-bottom: #2457C5 0.2rem solid;
         border-top: #2457C5 0.2rem solid;
         color: #2457C5;
     }
 
     .contents_type_toggle {
-        flex: 0.2;
+        width: 30%;
         display: flex;
         justify-content: start;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
+
+    .toggle_img > img {
+        width: 0.9rem;
+    }
+
 
     /* ****************** */
 
     .contents_turn_type {
-        margin: 0 1.2rem;
+        width: 90%;
+        margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -160,12 +147,8 @@
     }
 
     .turn_type {
-        flex: 0.15;
-        display: flex;
-        justify-content: space-evenly;
         padding: 0.6rem;
         border-radius: 1.7rem;
-        /* background-color: #2457C5; */
     }
 
     .turn_type_active {
@@ -179,27 +162,22 @@
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     /* 마이페이지랑 겹치는 코드인데, flex 가 추가된다... */
     .length_option_inner_box {
-        flex: 0.35;
+        flex: 1;
         display: flex;
         text-align: center;
         align-items: center;
-        justify-content: space-evenly;
-        /* background-color: #0093ff; */
+        justify-content: center;
     }
 
     .length_option {
-        flex: 0.3;
+        margin: 10px 0;
         padding: 0.5rem;
         border-radius: 1rem;
-        /* background-color: #2457C5;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); */
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
 
     .length_option_active {
@@ -215,18 +193,16 @@
         justify-content: space-between;
         flex-direction: column;
         font-weight: bold;
-        font-size: 0.95rem;
+        font-size: 0.7rem;
         /* outline: 3px solid blue; */
-        /* background-color: #73D5F1; */
+        overflow:scroll;
     }
 
     .contents {
         width: 85%;
         display: flex;
         flex-direction: column;
-        gap:1.5rem;
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
+        gap: 10px;
     }
 
     .content_unactive {
@@ -236,8 +212,6 @@
     .records {
         display: flex;
         justify-content: space-evenly;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
 
     .records > .record:first-child {
@@ -253,8 +227,6 @@
         flex: 0.4;
         display: flex;
         justify-content: center;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .record_unactive {
@@ -275,38 +247,34 @@
     }
 
     .header {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: end;
-        margin-bottom: 1rem;
-        /* outline: 3px solid blue;
-        color: white;
-        background-color: #73D5F1; */
+        margin-bottom: 10px;
     }
 
     .logo_box {
+        width: 100%;
         display: flex;
+        text-align: center;
         justify-content: center;
-        /* color: white; */
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
     }
 
-    .logo_box > img {
-        width: 3.5rem;
+    .logo_box img {
+        width: 40%;
     }
 
     .user_search_box {
-        width: 20rem;
+        flex: 0.5;
+        width: 80%;
         display: flex;
         justify-content: start;
         text-align: center;
         font-size: 0.7rem;
         font-weight: bold;
         color:#73D5FF;
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
     }
 
     .user_search_inner_box {
@@ -314,8 +282,6 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        /* outline: 3px solid purple;
-        background-color: #9993ff; */
     }
 
     .user_search_img {
@@ -323,22 +289,18 @@
         display: flex;
         justify-content: end;
         align-items: center;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .user_search_img > img {
-        width: 1.7rem;
+        width: 1.5rem;
     }
 
     .user_search {
         flex: 0.45;
-        padding: 0.5rem;
+        padding: 0.4rem;
         border-radius: 1.5rem;
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
         background-color: #fff;
-        /* outline: 3px solid cyan;
-        background-color: #5553ff; */
     }
 
     .user_search > input {
@@ -355,65 +317,62 @@
     /* *************** */
 
     .contents_info_toggle_box {
-        display: flex;
-        justify-content: space-evenly;
         width: 100%;
+        display: flex;
+        justify-content: end;
         color: white;
         font-weight: bold;
-        font-size: 0.9rem;
-        /* background-color: #0000ff; */
+        font-size: 0.75rem;
     }
 
     .contents_period_toggle {
-        flex: 0.3;
+        width: 30%;
         display: flex;
-        justify-content: center;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
-    }
-
-    .toggle_img > img {
-        width: 1rem;
-        /* margin-top: 0.1rem; */
+        justify-content: end;
     }
 
     .contents_class_toggle {
-        flex: 0.3;
+        width: 30%;
         display: flex;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
-    }
-
-    .contents_class_toggle > div:first-child {
-        float: left;
+        justify-content: center;
     }
 
     .toggle {
         position: relative;
-        /* background-color: #00ff00; */
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
     }
 
     .classBtn_active {
         position:absolute;
-        display: flex;
-        flex-direction: column;
+        justify-content: center;
         border-bottom: #2457C5 0.2rem solid;
         border-top: #2457C5 0.2rem solid;
         color: #2457C5;
     }
 
     .contents_type_toggle {
-        flex: 0.2;
+        width: 30%;
         display: flex;
         justify-content: start;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
+
+    .toggle_img > img {
+        width: 0.9rem;
+    }
+
 
     /* ****************** */
 
     .contents_turn_type {
-        margin: 0 1.2rem;
+        width: 90%;
+        margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -425,12 +384,8 @@
     }
 
     .turn_type {
-        flex: 0.15;
-        display: flex;
-        justify-content: space-evenly;
         padding: 0.6rem;
         border-radius: 1.7rem;
-        /* background-color: #2457C5; */
     }
 
     .turn_type_active {
@@ -444,27 +399,22 @@
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     /* 마이페이지랑 겹치는 코드인데, flex 가 추가된다... */
     .length_option_inner_box {
-        flex: 0.35;
+        flex: 1;
         display: flex;
         text-align: center;
         align-items: center;
-        justify-content: space-evenly;
-        /* background-color: #0093ff; */
+        justify-content: center;
     }
 
     .length_option {
-        flex: 0.3;
+        margin: 10px 0;
         padding: 0.5rem;
         border-radius: 1rem;
-        /* background-color: #2457C5;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); */
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
 
     .length_option_active {
@@ -480,18 +430,16 @@
         justify-content: space-between;
         flex-direction: column;
         font-weight: bold;
-        font-size: 0.95rem;
+        font-size: 0.7rem;
         /* outline: 3px solid blue; */
-        /* background-color: #73D5F1; */
+        overflow:scroll;
     }
 
     .contents {
         width: 85%;
         display: flex;
         flex-direction: column;
-        gap:1.5rem;
-        /* outline: 3px solid green; */
-        /* background-color: #0093ff; */
+        gap: 10px;
     }
 
     .content_unactive {
@@ -501,8 +449,6 @@
     .records {
         display: flex;
         justify-content: space-evenly;
-        /* outline: 3px solid purple; */
-        /* background-color: #9993ff; */
     }
 
     .records > .record:first-child {
@@ -518,8 +464,6 @@
         flex: 0.4;
         display: flex;
         justify-content: center;
-        /* outline: 3px solid cyan; */
-        /* background-color: #5553ff; */
     }
 
     .record_unactive {

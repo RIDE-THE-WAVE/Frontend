@@ -4,7 +4,7 @@
         height: 100vh;
         margin: 0 auto;
         display: grid;
-        grid-template-rows: 1fr 0.2fr 0.4fr 0.45fr 3fr 0.7fr;
+        grid-template-rows: 1fr 0.2fr 0.4fr 0.45fr 3fr 1fr;
         color: white;
         background-color: #73D5FF;
     }
@@ -30,7 +30,7 @@
     }
 
     .user_name_box {
-        flex: 0.6;
+        flex: 0.5;
         width: 60%;
         display: flex;
         justify-content: center;
@@ -42,7 +42,7 @@
     }
 
     .user_name {
-        font-weight: bolder;
+        font-weight: bold;
         font-size: 0.7rem;
     }
 
@@ -55,7 +55,6 @@
         color: white;
         font-weight: bold;
         font-size: 0.75rem;
-        /* background-color: antiquewhite; */
     }
 
     /* 토글 어떻게 할지 고민해보기 */
@@ -69,6 +68,18 @@
         width: 30%;
         display: flex;
         justify-content: center;
+    }
+
+    .toggle {
+        position: relative;
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
     }
 
     .contents_type_toggle {
@@ -165,6 +176,7 @@
         margin-top: 3%;
         font-weight: bolder;
         font-size: 1rem;
+        overflow: scroll;
     }
 
     .contents {
