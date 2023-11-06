@@ -47,11 +47,11 @@ function MyRecord() {
     return (
         <div className={styles.MyRecord}>
             <div className={styles.header}>
-                <Link to="/myrecord">
                     <div className={styles.logo_box}>
-                        <img src={logo} alt="logo" />
+                        <Link to="/myrecord">
+                            <img src={logo} alt="logo" />
+                        </Link>
                     </div>
-                </Link>
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
                         {/* 로그인에서 입력 받은 값으로 출력하게 만들어야한다. */}
@@ -70,7 +70,11 @@ function MyRecord() {
                 </div>
                 <div className={styles.contents_class_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
-                    <span>&nbsp;6AM</span>
+                    <div className={styles.toggle}>
+                        <div className={`${styles.classBtn}`}>
+                            <span>&nbsp;6AM</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.contents_type_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>

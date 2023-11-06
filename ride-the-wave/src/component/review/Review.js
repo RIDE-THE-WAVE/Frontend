@@ -30,14 +30,14 @@ function Review() {
             </Link>
             <div className={styles.title_box}>
                 <div className={styles.title_inner_box}>
-                  {/* 제목 박스가 들어갈 예정 */}
-                  <div className={styles.empty}></div>
-                  <div className={styles.title}>
-                    <span>익명 게시판</span>
-                  </div>
-                  <div className={styles.title_img} onClick={openModal}>
-                    <img src={write} alt="write" />
-                  </div>
+                    {/* 제목 박스가 들어갈 예정 */}
+                    {/* <div className={styles.empty}></div> */}
+                    <div className={styles.title}>
+                        <span>익명 게시판</span>
+                    </div>
+                    <div className={styles.title_img} onClick={openModal}>
+                        <img src={write} alt="write" />
+                    </div>
                 </div>
                 {showModal && 
                       <div>
@@ -55,6 +55,7 @@ function Review() {
                     <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
                   </div>
                   <div className={styles.manage_button}>
+                    {/* 본인건지 확인하고 출력해야함 */}
                     <span className={styles.fix_button}>수정</span>
                     <span className={styles.delete_button}>삭제</span>
                   </div>

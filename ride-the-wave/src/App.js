@@ -10,16 +10,16 @@ const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
 
 function App() {
   return (
-    <Router>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/review" element={<Review />} />
-            <Route path="/grouprecords" element={<GroupRecords />} />
-            <Route path="/myrecord" element={<MyRecord />} />
-          </Routes>
-        </Suspense>
-    </Router>
+      <Router>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/review" element={<Review />} />
+              <Route path="/grouprecords" element={<GroupRecords />} />
+              <Route path="/myrecord" element={<MyRecord />} />
+            </Routes>
+          </Suspense>
+      </Router>
   );
 }
 
