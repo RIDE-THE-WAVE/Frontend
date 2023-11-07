@@ -33,7 +33,7 @@ function Login() {
                 <div className={styles.center_bottom_inner_box}>
                     <div className={styles.search_box}>
                         <div className={styles.put_search_data_section}>
-                            <div></div>
+                            {/* <div></div> */}
                             <div className={styles.input_box}>
                                 <input
                                     type="text"

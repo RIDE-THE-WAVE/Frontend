@@ -30,8 +30,6 @@ function Review() {
             </Link>
             <div className={styles.title_box}>
                 <div className={styles.title_inner_box}>
-                    {/* 제목 박스가 들어갈 예정 */}
-                    {/* <div className={styles.empty}></div> */}
                     <div className={styles.title}>
                         <span>익명 게시판</span>
                     </div>
