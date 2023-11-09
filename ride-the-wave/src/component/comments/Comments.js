@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Review.module.css';
+import styles from './Comments.module.css';
 import logo from '../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import write from '../img/write.png';
 import { Link } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import firestore from "./Firebase/Firestore";
+import db from "./Firebase/Firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       // const docRef = doc(firestore, "users", "user_id_001");
-      const docRef = doc(firestore, "records", "user_id_001");
+      const docRef = doc(db, "records", "user_id_001");
       const docRef2 = doc(docRef, "freestyle", "freestyle");
       const docSnap = await getDoc(docRef2);
   

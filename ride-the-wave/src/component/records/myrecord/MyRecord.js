@@ -6,10 +6,13 @@ import question from '../../img/question.png';
 import hide from '../../img/hide.png';
 import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import MyRecordModal from '../../modal/MyRecordModal';
 
 function MyRecord() {
+    const location = useLocation();
+    const receivedData = location.state.data;
+    console.log('receivedData', receivedData);
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);

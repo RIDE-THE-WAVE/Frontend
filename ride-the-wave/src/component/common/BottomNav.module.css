@@ -1,11 +1,10 @@
 @media all and (max-width:767px) {
     .BottomNav_wrapper {
-        width: 100%;
-        overflow: hidden;
         position: fixed;
+        width: 100%;
         left: 50%;
         transform: translate(-50%, -50%);
-        bottom: 15px;
+        bottom: 10px;
         align-items: center;
         flex-direction: column;
     }
@@ -14,8 +13,7 @@
         display: flex;
         justify-content: space-evenly;
         color: white;
-        /* outline: 3px solid green;
-        background-color: #0093ff; */
+        background-color: #73D5FF;
     }
 
     .BottomNav_item {
@@ -43,20 +41,16 @@
         position: fixed;
         left: 50%;
         transform: translate(-50%, -50%);
-        bottom: 15px;
+        bottom: 10px;
         align-items: center;
         flex-direction: column;
-        /* outline: 3px solid blue; */
-        /* color: white; */
-        /* background-color: #73D5F1; */
     }
 
     .BottomNav {
         display: flex;
         justify-content: space-evenly;
         color: white;
-        /* outline: 3px solid green;
-        background-color: #0093ff; */
+        background-color: #73D5FF;
     }
 
     .BottomNav_item {
