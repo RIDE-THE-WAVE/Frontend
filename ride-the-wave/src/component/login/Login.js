@@ -24,7 +24,6 @@ function Login() {
                     records.find((record) => {
                         if (record.id === user.user) {
                             temp.freestyle = record.freestyle;
-
                             temp.backstroke = record.backstroke;
                         }
                     });
@@ -33,6 +32,7 @@ function Login() {
             });
         }
         developData.current_user = "";
+        developData.own_record = [];
         developData.auth = false;
         return developData;
     }, []);
@@ -41,22 +41,22 @@ function Login() {
     const developData = developDataFunc(useSelector((state) => state.users), useSelector((state) => state.records));
 
     const isUsernameValid = (username, data) => {
-        console.log(username, data[0].name);
         if (data.some((user) => user.name === username)) {
-            console.log("참");
             return true;
         }
-    
-        console.log("여기는?");
         return false;
     }
 
     const handleLogin = () => {
         if (isUsernameValid(username, developData)) {
-            console.log("참??");
+            developData.forEach((data) => {
+                if (data.name === username) {
+                    developData.own_record.push(data.freestyle);
+                    developData.own_record.push(data.backstroke);
+                }
+            });
             developData.auth = true;
         } else {
-            console.log("거짓??");
             developData.auth = false;
         }
         developData.current_user = username;
