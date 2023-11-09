@@ -17,16 +17,7 @@ function App() {
     fetchUsers(dispatch);
     fetchRecords(dispatch);
     fetchComments(dispatch);
-  }, [dispatch]);
-
-  const users = useSelector((state) => state.users);
-  const records = useSelector((state) => state.records);
-  const comments = useSelector((state) => state.comments);
-
-  console.log('-------------------');
-  console.log('users:', users);
-  console.log('records:', records);
-  console.log('comments:', comments);
+  }, []);
 
   return (
       <Router>
