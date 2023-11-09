@@ -9,24 +9,6 @@ import { useSelector } from 'react-redux';
 function Login() {
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
-
-    // 권한 체크로 수정 필요
-    const isUsernameValid = (username) => username.trim() !== "";
-
-    const handleLogin = () => {
-        if (isUsernameValid(username)) {
-            // console.log(username);
-            navigate('/myrecord', { state: { username: username, data: developData }});
-        } else {
-            console.log("이름을 입력하세요.");
-        }
-    }
-    const handleLoginByEnter = (e) => {
-        if (e.key === 'Enter') {
-            handleLogin();
-        }
-    }
-
     const developDataFunc = useCallback((users, records) => {
         const developData = [];
         if (Array.isArray(users)) {
@@ -50,12 +32,42 @@ function Login() {
                 developData.push(temp);
             });
         }
+        developData.current_user = "";
         developData.auth = false;
         return developData;
     }, []);
 
     // 데이터 가공
     const developData = developDataFunc(useSelector((state) => state.users), useSelector((state) => state.records));
+
+    const isUsernameValid = (username, data) => {
+        console.log(username, data[0].name);
+        if (data.some((user) => user.name === username)) {
+            console.log("참");
+            return true;
+        }
+    
+        console.log("여기는?");
+        return false;
+    }
+
+    const handleLogin = () => {
+        if (isUsernameValid(username, developData)) {
+            console.log("참??");
+            developData.auth = true;
+        } else {
+            console.log("거짓??");
+            developData.auth = false;
+        }
+        developData.current_user = username;
+        navigate('/myrecord', { state: { username: username, data: developData }});
+    }
+
+    const handleLoginByEnter = (e) => {
+        if (e.key === 'Enter') {
+            handleLogin();
+        }
+    }
     
     return (
         <div className={styles.Login}>
