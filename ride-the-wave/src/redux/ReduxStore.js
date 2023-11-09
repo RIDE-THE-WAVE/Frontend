@@ -1,12 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import recordsReducer from './recordsReducer';
 import userReducer from './usersReducer';
-import reviewReducer from './recordsReducer';
+import commentsReducer from './commentsReducer';
 
 const rootReducer = combineReducers({
     records: recordsReducer,
-    user: userReducer,
-    review: reviewReducer,
+    users: userReducer,
+    comments: commentsReducer,
 });
 
 const ReduxStore = configureStore({
