@@ -12,7 +12,6 @@ import MyRecordModal from '../../modal/MyRecordModal';
 function MyRecord() {
     const location = useLocation();
     const receivedData = location.state.data;
-    console.log('receivedData', receivedData);
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
@@ -58,7 +57,7 @@ function MyRecord() {
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
                         {/* 로그인에서 입력 받은 값으로 출력하게 만들어야한다. */}
-                        <span>김재환B</span>
+                        <span>{receivedData.current_user}</span>
                     </div>
                 </div>
             </div>
