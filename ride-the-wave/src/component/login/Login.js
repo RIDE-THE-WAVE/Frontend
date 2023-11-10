@@ -4,7 +4,6 @@ import logo from '../img/logo.png';
 import search_client from '../img/search_client.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDevelopedData } from '../../Firebase/fetchData';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -29,12 +28,12 @@ function Login() {
         } else {
             developedData.auth = false;
         }
+        developedData.current_user = username;
         navigate('/myrecord', { state: { username: username }});
     }
 
     const handleLoginByEnter = (e) => {
         if (e.key === 'Enter') {
-            console.log('Login : ', developedData);
             handleLogin();
         }
     }
