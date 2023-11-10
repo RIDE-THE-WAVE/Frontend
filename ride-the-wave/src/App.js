@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Loading from './component/common/Loading';
-import { fetchComments, fetchRecords, fetchUsers } from './Firebase/fetchData';
+import { fetchComments, fetchDevelopedData, fetchRecords, fetchUsers } from './Firebase/fetchData';
 
 // 전처리 때 하지 않고 필요할 때만 불러오기 때문에 현재 상황에서는 효과적이다.
 const Login = lazy(() => import('./component/login/Login'));
@@ -18,6 +18,13 @@ function App() {
     fetchRecords(dispatch);
     fetchComments(dispatch);
   }, []);
+  
+  const users = useSelector((state) => state.users);
+  const records = useSelector((state) => state.records);
+
+  useEffect(() => {
+      fetchDevelopedData(users, records, dispatch);
+  }, [users, records]);
 
   return (
       <Router>
