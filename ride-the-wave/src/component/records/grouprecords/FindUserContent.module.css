@@ -1,0 +1,472 @@
+@media all and (max-width:767px) {
+    .GroupRecords {
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: 1fr 0.2fr 0.4fr 0.45fr 3fr 1fr;
+        color: white;    
+        background-color: #73D5FF;
+    }
+
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        margin-bottom: 10px;
+    }
+
+    .logo_box {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .logo_box img {
+        width: 40%;
+    }
+
+    .user_search_box {
+        flex: 0.5;
+        width: 80%;
+        display: flex;
+        justify-content: start;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+        color:#73D5FF;
+    }
+
+    .user_search_inner_box {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .user_search_img {
+        flex: 0.2;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .user_search_img > img {
+        width: 1.5rem;
+    }
+
+    .user_search {
+        flex: 0.45;
+        padding: 0.4rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
+        background-color: #fff;
+    }
+
+    .user_search > input {
+        font-size: 0.7rem;
+        text-align: center;
+        border: none;
+        color:#73D5FF;
+    }
+
+    .empty {
+        flex: 0.2;
+    }
+
+    /* *************** */
+
+    .contents_info_toggle_box {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        color: white;
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+
+    .contents_period_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .contents_class_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .toggle {
+        position: relative;
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .classBtn_active {
+        position:absolute;
+        justify-content: center;
+        border-bottom: #2457C5 0.2rem solid;
+        border-top: #2457C5 0.2rem solid;
+        color: #2457C5;
+    }
+
+    .contents_type_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: start;
+    }
+
+    .toggle_img > img {
+        width: 0.9rem;
+    }
+
+
+    /* ****************** */
+
+    .contents_turn_type {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 0.2rem solid #fff;
+        border-radius: 2rem; 
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+
+    .turn_type {
+        padding: 0.6rem;
+        border-radius: 1.7rem;
+    }
+
+    .turn_type_active {
+        background-color: #2457C5;
+    }
+
+    /* ****************** */
+
+    .contents_length_option_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+
+    /* 마이페이지랑 겹치는 코드인데, flex 가 추가된다... */
+    .length_option_inner_box {
+        flex: 1;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .length_option {
+        margin: 10px 0;
+        padding: 0.5rem;
+        border-radius: 1rem;
+    }
+
+    .length_option_active {
+        background-color: #2457C5;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ******** */
+
+    .contents_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 0.7rem;
+        /* outline: 3px solid blue; */
+        overflow:scroll;
+    }
+
+    .contents {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content_unactive {
+        display: none;
+    }
+
+    .records {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .records > .record:first-child {
+        flex: 0.3;
+        justify-content: center;
+    }
+
+    .records_unactive {
+        display:none;
+    }
+
+    .record {
+        flex: 0.4;
+        display: flex;
+        justify-content: center;
+    }
+
+    .record_unactive {
+        display: none;
+    }
+}
+
+@media all and (min-width:768px) {
+    .GroupRecords {
+        width: 768px;
+        height: 100vh;
+         
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: 1fr 0.2fr 0.35fr 0.5fr 3fr 0.7fr;
+        color: white;    
+        background-color: #73D5FF;
+    }
+
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        margin-bottom: 10px;
+    }
+
+    .logo_box {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .logo_box img {
+        width: 40%;
+    }
+
+    .user_search_box {
+        flex: 0.5;
+        width: 80%;
+        display: flex;
+        justify-content: start;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+        color:#73D5FF;
+    }
+
+    .user_search_inner_box {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .user_search_img {
+        flex: 0.2;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .user_search_img > img {
+        width: 1.5rem;
+    }
+
+    .user_search {
+        flex: 0.45;
+        padding: 0.4rem;
+        border-radius: 1.5rem;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); 
+        background-color: #fff;
+    }
+
+    .user_search > input {
+        font-size: 0.7rem;
+        text-align: center;
+        border: none;
+        color:#73D5FF;
+    }
+
+    .empty {
+        flex: 0.2;
+    }
+
+    /* *************** */
+
+    .contents_info_toggle_box {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        color: white;
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+
+    .contents_period_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .contents_class_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .toggle {
+        position: relative;
+        display: flex;
+        justify-content: start;
+    }
+
+    .classBtn {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .classBtn_active {
+        position:absolute;
+        justify-content: center;
+        border-bottom: #2457C5 0.2rem solid;
+        border-top: #2457C5 0.2rem solid;
+        color: #2457C5;
+    }
+
+    .contents_type_toggle {
+        width: 30%;
+        display: flex;
+        justify-content: start;
+    }
+
+    .toggle_img > img {
+        width: 0.9rem;
+    }
+
+
+    /* ****************** */
+
+    .contents_turn_type {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 0.2rem solid #fff;
+        border-radius: 2rem; 
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+
+    .turn_type {
+        padding: 0.6rem;
+        border-radius: 1.7rem;
+    }
+
+    .turn_type_active {
+        background-color: #2457C5;
+    }
+
+    /* ****************** */
+
+    .contents_length_option_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+
+    /* 마이페이지랑 겹치는 코드인데, flex 가 추가된다... */
+    .length_option_inner_box {
+        flex: 1;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .length_option {
+        margin: 10px 0;
+        padding: 0.5rem;
+        border-radius: 1rem;
+    }
+
+    .length_option_active {
+        background-color: #2457C5;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ******** */
+
+    .contents_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 0.7rem;
+        /* outline: 3px solid blue; */
+        overflow:scroll;
+    }
+
+    .contents {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content_unactive {
+        display: none;
+    }
+
+    .records {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .records > .record:first-child {
+        flex: 0.3;
+        justify-content: center;
+    }
+
+    .records_unactive {
+        display:none;
+    }
+
+    .record {
+        flex: 0.4;
+        display: flex;
+        justify-content: center;
+    }
+
+    .record_unactive {
+        display: none;
+    }
+}
