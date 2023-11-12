@@ -69,7 +69,7 @@ function MyRecord() {
                 */}
                 <div className={styles.contents_period_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
-                    <span>&nbsp;{developedData.auth ? developedData.current_user_data.term : " - "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;{developedData.auth ? developedData.current_user_data.term : " - "}</span>
                 </div>
                 <div className={styles.contents_class_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
