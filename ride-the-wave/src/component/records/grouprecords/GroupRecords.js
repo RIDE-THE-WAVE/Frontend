@@ -7,29 +7,40 @@ import { Link } from 'react-router-dom';
 import BottomNav from '../../common/BottomNav';
 import { useSelector } from 'react-redux';
 import GroupRecordsContents from './GroupRecordsContents';
-
-
+import FindUserContent from './FindUserContent';
 
 function GroupRecords() {
     const developedData = useSelector((state) => state.developedData);
     const [username, setUsername] = useState('');
+    const [findUserTab, setFindUserTab] = useState(false);
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [classToggle, setClassToggle] = useState(false);
     const [showBtn, setShowBtn] = useState((developedData.auth ? developedData.current_user_data.class : 6));
     const sixClass = developedData.filter((data) => data.class === 6);
     const sevenClass = developedData.filter((data) => data.class === 7);
-
+    
     const getRecords = () => {
-        if (showBtn === 6) {
+        if (findUserTab === true && developedData.auth === true) {
+            const findUser = developedData.filter((data) => data.name === username);
+            if (findUser.length === 0) {
+                if (showBtn === 6) {
+                    return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
+                } else if (showBtn === 7) {
+                    return <GroupRecordsContents recordDatas={sevenClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
+                }
+            } else {
+                return <FindUserContent findUser={findUser} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} />
+            }
+        } else if (findUserTab === false && showBtn === 6) {
             return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
-        } else if (showBtn === 7) {
+        } else if (findUserTab === false && showBtn === 7) {
             return <GroupRecordsContents recordDatas={sevenClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
         }
     };
 
     const findUser = () => {
-        console.log(username);
+        setFindUserTab(true);
     };
 
     const findUserByEnter = (e) => {
@@ -39,6 +50,7 @@ function GroupRecords() {
     };
 
     const handleShowBtn = (selectedClass) => {
+        setFindUserTab(false);
         setShowBtn(selectedClass);
         handleToggle();
     };
