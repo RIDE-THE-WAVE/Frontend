@@ -7,7 +7,7 @@ import BottomNav from '../common/BottomNav';
 import ReviewdModal from '../modal/ReviewdModal';
 
 
-function Review() {
+function Comments() {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -21,7 +21,7 @@ function Review() {
 }
 
   return (
-    <div className={styles.Review}>
+    <div className={styles.comments}>
         <div className={styles.header}>
             <Link to="/review">
               <div className={styles.logo_box}>
@@ -110,4 +110,4 @@ function Review() {
 );
 }
 
-export default Review;
+export default Comments;
