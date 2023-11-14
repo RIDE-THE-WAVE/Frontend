@@ -72,6 +72,7 @@
     /* ********** */
 
     .contents_box {
+        width: 100%;
         overflow: scroll;
         display: flex;
         align-items: center;
@@ -79,6 +80,7 @@
         color:#2457C5;
         font-size: 0.75rem;
         font-weight: bold;
+        /* background-color: antiquewhite; */
     }
 
 
