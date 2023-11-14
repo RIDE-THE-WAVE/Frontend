@@ -6,18 +6,18 @@ import question from '../../img/question.png';
 import hide from '../../img/hide.png';
 import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
-import { Link, useLocation } from 'react-router-dom';
 import MyRecordModal from '../../modal/MyRecordModal';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function MyRecord() {
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(true);
-    const [activeFlip, setActiveFlip] = useState(true);
-    const [activeStart, setActiveStart] = useState(true);
-    const [activeFin, setActiveFin] = useState(true);
+    const [activeSide, setActiveSide] = useState(true); 
+    const [activeFlip, setActiveFlip] = useState(true); 
+    const [activeStart, setActiveStart] = useState(true); 
+    const [activeFin, setActiveFin] = useState(true); 
     const developedData = useSelector((state) => state.developedData);
     const record = developedData.current_user_data.freestyle?.[0];
 
@@ -135,10 +135,10 @@ function MyRecord() {
                                 <span>사이드</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.side_25  ? record.side_25  : " - "}</span>
+                                <span>{developedData.auth && record?.side_25  ? record?.side_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.side_50  ? record.side_50  : " - "}</span>
+                                <span>{developedData.auth && record?.side_50  ? record?.side_50  : " - "}</span>
                             </div>
                         </div>
                         <div className={styles.show} onClick={() => toggleActiveSide()} >
@@ -151,10 +151,10 @@ function MyRecord() {
                                 <span>플립</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.flip_25  ? record.flip_25  : " - "}</span>
+                                <span>{developedData.auth && record?.flip_25  ? record?.flip_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.flip_50  ? record.flip_50  : " - "}</span>
+                                <span>{developedData.auth && record?.flip_50  ? record?.flip_50  : " - "}</span>
                             </div>
                         </div>
                         <div className={styles.show} onClick={() => toggleActiveFlip()} >
@@ -167,10 +167,10 @@ function MyRecord() {
                                 <span>스타트</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.start_25  ? record.start_25  : " - "}</span>
+                                <span>{developedData.auth && record?.start_25  ? record?.start_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.start_50  ? record.start_50  : " - "}</span>
+                                <span>{developedData.auth && record?.start_50  ? record?.start_50  : " - "}</span>
                             </div>
                         </div>
                         <div className={styles.show} onClick={() => toggleActiveStart()} >
@@ -183,10 +183,10 @@ function MyRecord() {
                                 <span>오리발</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.fin_25  ? record.fin_25  : " - "}</span>
+                                <span>{developedData.auth && record?.fin_25  ? record?.fin_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.fin_50  ? record.fin_50  : " - "}</span>
+                                <span>{developedData.auth && record?.fin_50  ? record?.fin_50  : " - "}</span>
                             </div>
                         </div>
                         <div className={styles.show} onClick={() => toggleActiveFin()} >
