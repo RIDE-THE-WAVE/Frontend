@@ -1,5 +1,5 @@
 // options 이름 바꿔도 괜찮을 듯?
-// 액션 함수들을 정의하는 파일
+// 액션 변수들을 정의하는 파일
 
 export const setUsers = (options) => ({
     type: 'SET_USERS',
