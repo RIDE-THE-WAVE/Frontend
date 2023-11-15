@@ -16,6 +16,12 @@ export const setUserComments = (options) => ({
     payload: options,
 });
 
+export const setAddComment = (options) => ({
+    type: 'ADD_COMMENT',
+    payload: options,
+});
+
+
 export const setDevelopData = (options) => ({
     type: 'SET_DEVELOPED_DATA',
     payload: options,

@@ -6,12 +6,11 @@ function ReviewdModal({closeModal, postReview}) {
   const postReviewByEnter = (e) => {
     if (e.key === 'Enter') {
       if (comment.trim() === '') {
-        setComment('');
         alert('댓글을 입력하세요.');
-        return;
+        return ;
       }
+      console.log('comment??', comment);
       postReview(comment);
-      setComment('');
     }
   }
   const closeModalByEscape = (e) => {

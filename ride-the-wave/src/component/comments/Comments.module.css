@@ -63,6 +63,10 @@
         background-color: #fff;
     }
 
+    .title_img_unactive {
+        display: none;
+    }
+
     .title_img > img {
         width: 50%;
         height: 50%;
