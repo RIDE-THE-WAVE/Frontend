@@ -1,5 +1,5 @@
 @media all and (max-width:767px) {
-    .Review {
+    .comments {
         width: 100%;
         height: 100vh;
         margin: 0 auto;
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
         margin-bottom: 10px;
     }
 
@@ -72,6 +72,7 @@
     /* ********** */
 
     .contents_box {
+        width: 100%;
         overflow: scroll;
         display: flex;
         align-items: center;
@@ -79,6 +80,7 @@
         color:#2457C5;
         font-size: 0.75rem;
         font-weight: bold;
+        /* background-color: antiquewhite; */
     }
 
 
@@ -111,7 +113,7 @@
     .manage_button {
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
         font-size: 0.7rem;
     }
 
@@ -136,7 +138,7 @@
 }
 
 @media all and (min-width:768px) {
-    .Review {
+    .comments {
         width: 768px;
         height: 100vh;
         margin: 0 auto;
@@ -152,7 +154,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
         margin-bottom: 10px;
     }
 
@@ -248,7 +250,7 @@
     .manage_button {
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
         font-size: 0.7rem;
     }
 

@@ -4,11 +4,13 @@ import logo from '../img/logo.png';
 import search_client from '../img/search_client.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { setAuth, setCurrentUser, setCurrentUserData, setDevelopData } from '../../redux/action';
 
 function Login() {
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
     const developedData = useSelector((state) => state.developedData);
+    const dispatch = useDispatch();
 
     const isUsernameValid = (username, data) => {
         if (data.some((user) => user.name === username)) {
@@ -21,14 +23,14 @@ function Login() {
         if (isUsernameValid(username, developedData)) {
             developedData.forEach((data) => {
                 if (data.name === username) {
-                    developedData.current_user_data = data;
+                    dispatch(setCurrentUserData(data));
                 }
             });
-            developedData.auth = true;
+            dispatch(setAuth(true));
         } else {
-            developedData.auth = false;
+            dispatch(setAuth(false));
         }
-        developedData.current_user = username;
+        dispatch(setCurrentUser(username));
         navigate('/myrecord', { state: { username: username }});
     }
 

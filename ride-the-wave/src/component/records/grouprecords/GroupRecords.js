@@ -17,8 +17,10 @@ function GroupRecords() {
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [classToggle, setClassToggle] = useState(false);
     const [showBtn, setShowBtn] = useState((developedData.auth ? developedData.current_user_data.class : 6));
-    const sixClass = developedData.filter((data) => data.class === 6);
-    const sevenClass = developedData.filter((data) => data.class === 7);
+    const dataForUsersArray = Object.keys(developedData).filter(key => !isNaN(key));
+    const usersData = dataForUsersArray.map(key => developedData[key]);
+    const sixClass = usersData.filter((data) => data.class === 6);
+    const sevenClass = usersData.filter((data) => data.class === 7);
     
     const getRecords = () => {
         if (findUserTab === true && developedData.auth === true) {
