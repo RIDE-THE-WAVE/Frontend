@@ -21,6 +21,10 @@ export const setAddComment = (options) => ({
     payload: options,
 });
 
+export const setDeleteComment = (options) => ({
+    type: 'DELETE_COMMENT',
+    payload: options,
+});
 
 export const setDevelopData = (options) => ({
     type: 'SET_DEVELOPED_DATA',
