@@ -24,7 +24,10 @@ function GroupRecords() {
     
     const getRecords = () => {
         if (findUserTab === true && developedData.auth === true) {
-            const findUser = developedData.filter((data) => data.name === username);
+            const userArrayKey = Object.keys(developedData).filter(key => !isNaN(key));
+            const userArray = userArrayKey.map((key) => developedData[key]);
+            const findUser = userArray.filter((data) => data.name === username);
+            console.log('aaa',findUser);
             if (findUser.length === 0) {
                 if (showBtn === 6) {
                     return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
@@ -32,6 +35,7 @@ function GroupRecords() {
                     return <GroupRecordsContents recordDatas={sevenClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
                 }
             } else {
+                console.log(findUser);
                 return <FindUserContent findUser={findUser} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} />
             }
         } else if (findUserTab === false && showBtn === 6) {
