@@ -18,6 +18,7 @@ const commentsReducer = (state = initialState, action) => {
           ...state.slice(commentForFixIndex + 1),
         ];
       }
+      return ;
     case 'DELETE_COMMENT':
       return state.map((comment) => (comment.id === action.payload) ? { ...comment, available: false } : comment);
     default:

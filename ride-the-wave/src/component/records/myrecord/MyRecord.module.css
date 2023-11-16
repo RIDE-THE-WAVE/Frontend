@@ -31,6 +31,7 @@
 
     .user_name_box {
         width: 60%;
+        height: 15px;
         padding: 0.6rem;
         display: flex;
         justify-content: center;
@@ -256,6 +257,7 @@
 
     .user_name_box {
         width: 60%;
+        height: 15px;
         padding: 0.6rem;
         display: flex;
         justify-content: center;
