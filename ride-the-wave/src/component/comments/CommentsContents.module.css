@@ -30,6 +30,13 @@
       margin-bottom: 1rem;
   }
 
+  .comment > textarea {
+      width: 90%;
+      border: 2px solid #2457C5;
+      border-radius: 0.1rem;
+      font-size: 0.8rem;
+  }
+
   .manage_button {
       display: flex;
       align-items: center;
@@ -91,6 +98,13 @@
   .comment {
       width: 100%;
       margin-bottom: 1rem;
+  }
+
+  .comment > textarea {
+    width: 90%;
+    border: 2px solid #2457C5;
+    border-radius: 0.1rem;
+    font-size: 0.8rem;
   }
 
   .manage_button {

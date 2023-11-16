@@ -32,8 +32,8 @@ function ReviewdModal({closeModal, postReview}) {
         <div className={styles.comment}>
             <textarea
                 ref={textareaRef}              
-                placeholder="댓글을 입력하세요"
                 value={comment}
+                placeholder="댓글을 입력하세요"
                 onChange={(e) => setComment(e.target.value)}
                 onKeyUp={postReviewByEnter}
             />
