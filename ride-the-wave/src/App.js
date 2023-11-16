@@ -14,16 +14,22 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchUsers(dispatch);
-    fetchRecords(dispatch);
-    fetchComments(dispatch);
+    const fetchData = async () => {
+      fetchUsers(dispatch);
+      fetchRecords(dispatch);
+      fetchComments(dispatch);
+    }
+    fetchData();
   }, []);
   
   const users = useSelector((state) => state.users);
   const records = useSelector((state) => state.records);
 
   useEffect(() => {
+    const fetchData = async () => {
       fetchDevelopedData(users, records, dispatch);
+    }
+    fetchData();
   }, [users, records]);
 
   return (
