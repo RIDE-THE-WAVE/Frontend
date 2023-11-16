@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.css';
 import logo from '../img/logo.png';
 import search_client from '../img/search_client.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuth, setCurrentUser, setCurrentUserData, setDevelopData } from '../../redux/action';
+import { setAuth, setCurrentUser, setCurrentUserData } from '../../redux/action';
 
 function Login() {
     const [username, setUsername] = useState('');
