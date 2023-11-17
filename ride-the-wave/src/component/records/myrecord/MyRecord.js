@@ -14,21 +14,23 @@ import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
+    const developedData = useSelector((state) => state.developedData);
+    const record = developedData.current_user_data.freestyle?.[0];
+    const freestyleShowOpt = developedData.current_user_data.records_display_option?.[0]?.freestyle;
+    // console.log(showOpt);
     const dispatch = useDispatch();
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(true); 
-    const [activeFlip, setActiveFlip] = useState(true); 
-    const [activeStart, setActiveStart] = useState(true); 
-    const [activeFin, setActiveFin] = useState(true); 
+    const [activeSide, setActiveSide] = useState(freestyleShowOpt?.side); 
+    const [activeFlip, setActiveFlip] = useState(freestyleShowOpt?.flip); 
+    const [activeStart, setActiveStart] = useState(freestyleShowOpt?.start); 
+    const [activeFin, setActiveFin] = useState(freestyleShowOpt?.fin); 
     const [handleTurn, setHandleTurn] = useState({
         id: '',
         type: '',
         show: true,
     }); // side, flip, start, fin
-    const developedData = useSelector((state) => state.developedData);
-    const record = developedData.current_user_data.freestyle?.[0];
 
     const openModal = () => {
         setShowModal(true);
@@ -41,6 +43,9 @@ function MyRecord() {
     // 바뀐 값들을 전체 기록에 적용해야한다.
     // 기록이 기간별로 더 많아지면 어떡하지..?
     const toggleActiveSide = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setHandleTurn(prevState => ({
             ...prevState,
             id: user.id,
@@ -51,6 +56,9 @@ function MyRecord() {
     }
 
     const toggleActiveFlip = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setHandleTurn(prevState => ({
             ...prevState,
             id: user.id,
@@ -61,6 +69,9 @@ function MyRecord() {
     }
 
     const toggleActiveStart = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setHandleTurn(prevState => ({
             ...prevState,
             id: user.id,
@@ -71,6 +82,9 @@ function MyRecord() {
     }
 
     const toggleActiveFin= (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setHandleTurn(prevState => ({
             ...prevState,
             id: user.id,
@@ -100,7 +114,6 @@ function MyRecord() {
                     'freestyle.side': handleTurn.show,
                 });
                 dispatch(setSide(handleTurn));
-                console.log('handleTurn', handleTurn);
             } else if (handleTurn.type === 'flip') {
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
@@ -119,7 +132,6 @@ function MyRecord() {
                     'freestyle.flip': handleTurn.show,
                 });
                 dispatch(setFlip(handleTurn));
-                console.log('handleTurn', handleTurn);
             } else if (handleTurn.type === 'fin') {
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
@@ -138,7 +150,6 @@ function MyRecord() {
                     'freestyle.fin': handleTurn.show,
                 });
                 dispatch(setFin(handleTurn));
-                console.log('handleTurn', handleTurn);
             } else if (handleTurn.type === 'start') {
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
@@ -157,7 +168,6 @@ function MyRecord() {
                     'freestyle.start': handleTurn.show,
                 });
                 dispatch(setStart(handleTurn));
-                console.log('handleTurn', handleTurn);
             }
         }
         updateData();
