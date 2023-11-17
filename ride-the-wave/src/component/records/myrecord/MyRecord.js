@@ -9,29 +9,29 @@ import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
+import { setCurrentUserData, setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
-    const developedData = useSelector((state) => state.developedData);
-    const record = developedData.current_user_data.freestyle?.[0];
-    const freestyleShowOpt = developedData.current_user_data.records_display_option?.[0]?.freestyle;
-    // console.log(showOpt);
     const dispatch = useDispatch();
+    const developedData = useSelector((state) => state.developedData);
+    console.log('developedData : ', developedData);
+    const record = developedData.current_user_data.freestyle?.[0];
+    // current 유저가 아닌 배열에서 찾거나, current 유저도 업데이트해줘야함...
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(freestyleShowOpt?.side); 
-    const [activeFlip, setActiveFlip] = useState(freestyleShowOpt?.flip); 
-    const [activeStart, setActiveStart] = useState(freestyleShowOpt?.start); 
-    const [activeFin, setActiveFin] = useState(freestyleShowOpt?.fin); 
+    const [activeSide, setActiveSide] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.side); 
+    const [activeFlip, setActiveFlip] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.flip); 
+    const [activeStart, setActiveStart] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.start); 
+    const [activeFin, setActiveFin] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.fin); 
     const [handleTurn, setHandleTurn] = useState({
         id: '',
         type: '',
         show: true,
     }); // side, flip, start, fin
-
+    
     const openModal = () => {
         setShowModal(true);
     }
@@ -46,13 +46,12 @@ function MyRecord() {
         if (!developedData.auth) {
             return;
         }
-        setHandleTurn(prevState => ({
-            ...prevState,
+        setActiveSide(!activeSide);
+        setHandleTurn(({
             id: user.id,
             type: 'side',
             show: !activeSide,
         }));
-        setActiveSide(!activeSide);
     }
 
     const toggleActiveFlip = (user) => {
@@ -96,6 +95,7 @@ function MyRecord() {
 
     useEffect(() => {
         const updateData = async () => {
+            // console.log('handleTurn : ', handleTurn);
             if (handleTurn.type === 'side') {
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
@@ -113,8 +113,10 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.side': handleTurn.show,
                 });
+                // console.log('handleTurn : ', handleTurn);
                 dispatch(setSide(handleTurn));
             } else if (handleTurn.type === 'flip') {
+                // dispatch(setFlip(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -131,8 +133,8 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.flip': handleTurn.show,
                 });
-                dispatch(setFlip(handleTurn));
             } else if (handleTurn.type === 'fin') {
+                // dispatch(setFin(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -149,8 +151,8 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.fin': handleTurn.show,
                 });
-                dispatch(setFin(handleTurn));
             } else if (handleTurn.type === 'start') {
+                // dispatch(setStart(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -167,10 +169,13 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.start': handleTurn.show,
                 });
-                dispatch(setStart(handleTurn));
             }
         }
         updateData();
+        // const data = usersData.find((data) => data?.id === developedData.current_user_data.id);
+        // console.log('data : ', data);
+        // dispatch(setCurrentUserData(data));
+        // console.log('current-user-data : ', developedData.current_user_data);
     }, [handleTurn]);
 
     return (

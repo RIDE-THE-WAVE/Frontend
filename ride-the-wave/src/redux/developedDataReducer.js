@@ -9,6 +9,7 @@ const developedDataReducer = (state = initialState, action) => {
     case 'SET_DEVELOPED_DATA':
       return action.payload;
     case 'SET_CURRENT_USER_DATA':
+      // console.log('action.payload : ', action.payload);
       return{
         ...state,
         current_user_data: action.payload,
@@ -24,24 +25,21 @@ const developedDataReducer = (state = initialState, action) => {
         auth: action.payload,
       };
     case 'SET_SIDE':
-      updatedUserArray = userArray.map((data) => {
-        if (data.id === action.payload.id) {
-          // 해당 객체를 찾았으면 새로운 객체를 생성하여 id를 업데이트
-          return {
-            ...data,
+        return {
+          ...state,
+          current_user_data: {
+            ...state.current_user_data,
             records_display_option: [
               {
-                ...data.records_display_option[0],
+                ...state.current_user_data.records_display_option[0],
                 freestyle: {
-                  ...data.records_display_option[0].freestyle,
+                  ...state.current_user_data.records_display_option[0].freestyle,
                   side: action.payload.show,
                 }
               }
             ],
-          };
-        }
-        return data; // 해당 객체가 아니면 그대로 반환
-      });
+          }
+        };
     case 'SET_FLIP':
       updatedUserArray = userArray.map((data) => {
         if (data.id === action.payload.id) {
