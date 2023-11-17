@@ -29,7 +29,7 @@ function CommentsContents({commentsDataArray}) {
     if (querySnapshot.empty) {
       return;
     }
-    const commentRef = doc(db, "comments", querySnapshot.docs[0].id);
+    const commentRef = await doc(db, "comments", querySnapshot.docs[0].id);
     await updateDoc(commentRef, { content: editingComment.content });
     dispatch(setUpdateComment(editingComment));
     setEditingComment({
