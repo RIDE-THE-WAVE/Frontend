@@ -9,7 +9,7 @@ import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSide } from '../../../redux/action';
+import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
@@ -30,8 +30,6 @@ function MyRecord() {
     const developedData = useSelector((state) => state.developedData);
     const record = developedData.current_user_data.freestyle?.[0];
 
-    // console.log(developedData);
-
     const openModal = () => {
         setShowModal(true);
     }
@@ -50,6 +48,36 @@ function MyRecord() {
             show: !activeSide,
         }));
         setActiveSide(!activeSide);
+    }
+
+    const toggleActiveFlip = (user) => {
+        setHandleTurn(prevState => ({
+            ...prevState,
+            id: user.id,
+            type: 'flip',
+            show: !activeFlip,
+        }));
+        setActiveFlip(!activeFlip);
+    }
+
+    const toggleActiveStart = (user) => {
+        setHandleTurn(prevState => ({
+            ...prevState,
+            id: user.id,
+            type: 'start',
+            show: !activeStart,
+        }));
+        setActiveStart(!activeStart);
+    }
+
+    const toggleActiveFin= (user) => {
+        setHandleTurn(prevState => ({
+            ...prevState,
+            id: user.id,
+            type: 'fin',
+            show: !activeFin,
+        }));
+        setActiveFin(!activeFin);
     }
 
     useEffect(() => {
@@ -73,22 +101,67 @@ function MyRecord() {
                 });
                 dispatch(setSide(handleTurn));
                 console.log('handleTurn', handleTurn);
+            } else if (handleTurn.type === 'flip') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.flip': handleTurn.show,
+                });
+                dispatch(setFlip(handleTurn));
+                console.log('handleTurn', handleTurn);
+            } else if (handleTurn.type === 'fin') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.fin': handleTurn.show,
+                });
+                dispatch(setFin(handleTurn));
+                console.log('handleTurn', handleTurn);
+            } else if (handleTurn.type === 'start') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.start': handleTurn.show,
+                });
+                dispatch(setStart(handleTurn));
+                console.log('handleTurn', handleTurn);
             }
         }
         updateData();
     }, [handleTurn]);
-
-    const toggleActiveFlip = (user) => {
-        setActiveFlip(!activeFlip);
-    }
-
-    const toggleActiveStart = (user) => {
-        setActiveStart(!activeStart);
-    }
-
-    const toggleActiveFin= (user) => {
-        setActiveFin(!activeFin);
-    }
 
     return (
         <div className={styles.MyRecord}>
