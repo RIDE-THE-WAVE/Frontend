@@ -27,7 +27,6 @@ function GroupRecords() {
             const userArrayKey = Object.keys(developedData).filter(key => !isNaN(key));
             const userArray = userArrayKey.map((key) => developedData[key]);
             const findUser = userArray.filter((data) => data.name === username);
-            console.log('aaa',findUser);
             if (findUser.length === 0) {
                 if (showBtn === 6) {
                     return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
