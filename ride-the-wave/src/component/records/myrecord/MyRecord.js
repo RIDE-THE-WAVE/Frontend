@@ -9,16 +9,14 @@ import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUserData, setFin, setFlip, setSide, setStart } from '../../../redux/action';
+import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
-    console.log('developedData : ', developedData);
     const record = developedData.current_user_data.freestyle?.[0];
-    // current 유저가 아닌 배열에서 찾거나, current 유저도 업데이트해줘야함...
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
@@ -32,6 +30,7 @@ function MyRecord() {
         show: true,
     }); // side, flip, start, fin
     
+    console.log('developedData', developedData);
     const openModal = () => {
         setShowModal(true);
     }
@@ -58,44 +57,40 @@ function MyRecord() {
         if (!developedData.auth) {
             return;
         }
-        setHandleTurn(prevState => ({
-            ...prevState,
+        setActiveFlip(!activeFlip);
+        setHandleTurn(({
             id: user.id,
             type: 'flip',
             show: !activeFlip,
         }));
-        setActiveFlip(!activeFlip);
     }
 
     const toggleActiveStart = (user) => {
         if (!developedData.auth) {
             return;
         }
-        setHandleTurn(prevState => ({
-            ...prevState,
+        setActiveStart(!activeStart);
+        setHandleTurn(({
             id: user.id,
             type: 'start',
             show: !activeStart,
         }));
-        setActiveStart(!activeStart);
     }
 
     const toggleActiveFin= (user) => {
         if (!developedData.auth) {
             return;
         }
-        setHandleTurn(prevState => ({
-            ...prevState,
+        setActiveFin(!activeFin);
+        setHandleTurn(({
             id: user.id,
             type: 'fin',
             show: !activeFin,
         }));
-        setActiveFin(!activeFin);
     }
 
     useEffect(() => {
         const updateData = async () => {
-            // console.log('handleTurn : ', handleTurn);
             if (handleTurn.type === 'side') {
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
@@ -113,10 +108,8 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.side': handleTurn.show,
                 });
-                // console.log('handleTurn : ', handleTurn);
                 dispatch(setSide(handleTurn));
             } else if (handleTurn.type === 'flip') {
-                // dispatch(setFlip(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -133,8 +126,8 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.flip': handleTurn.show,
                 });
+                dispatch(setFlip(handleTurn));
             } else if (handleTurn.type === 'fin') {
-                // dispatch(setFin(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -151,8 +144,8 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.fin': handleTurn.show,
                 });
+                dispatch(setFin(handleTurn));
             } else if (handleTurn.type === 'start') {
-                // dispatch(setStart(handleTurn));
                 const querySnapshot = await getDocs(collection(db, "users"));
                 if (querySnapshot.empty) {
                     return;
@@ -169,13 +162,10 @@ function MyRecord() {
                 await updateDoc(recordsDisplayOptionRef, {
                     'freestyle.start': handleTurn.show,
                 });
+                dispatch(setStart(handleTurn));
             }
         }
         updateData();
-        // const data = usersData.find((data) => data?.id === developedData.current_user_data.id);
-        // console.log('data : ', data);
-        // dispatch(setCurrentUserData(data));
-        // console.log('current-user-data : ', developedData.current_user_data);
     }, [handleTurn]);
 
     return (
@@ -188,16 +178,11 @@ function MyRecord() {
                     </div>
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
-                        {/* 로그인에서 입력 받은 값으로 출력하게 만들어야한다. */}
                         <span>{developedData.current_user}</span>
                     </div>
                 </div>
             </div>
             <div className={styles.contents_info_toggle_box}>
-                {/* 
-                    토글 넣기 - 디비에서 긁어서 
-                    myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
-                */}
                 <div className={styles.contents_period_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
                     <span>&nbsp;{developedData.auth ? developedData.current_user_data.term : " - "}</span>

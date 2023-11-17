@@ -1,15 +1,10 @@
 const initialState = {};
 
 const developedDataReducer = (state = initialState, action) => {
-  const userArrayKey = Object.keys(state).filter(key => !isNaN(key));
-  const userArray = userArrayKey.map((key) => state[key]);
-  let updatedUserArray;
-
   switch (action.type) {
     case 'SET_DEVELOPED_DATA':
       return action.payload;
     case 'SET_CURRENT_USER_DATA':
-      // console.log('action.payload : ', action.payload);
       return{
         ...state,
         current_user_data: action.payload,
@@ -25,8 +20,25 @@ const developedDataReducer = (state = initialState, action) => {
         auth: action.payload,
       };
     case 'SET_SIDE':
+        const updateUserSide = state.users.map((data) =>
+        data.id === action.payload.id
+          ? {
+              ...data,
+              records_display_option: [
+                {
+                  ...data.records_display_option[0],
+                  freestyle: {
+                    ...data.records_display_option[0].freestyle,
+                    side: action.payload.show,
+                  },
+                },
+              ],
+            }
+          : data
+      );
         return {
           ...state,
+          users: updateUserSide,
           current_user_data: {
             ...state.current_user_data,
             records_display_option: [
@@ -41,62 +53,104 @@ const developedDataReducer = (state = initialState, action) => {
           }
         };
     case 'SET_FLIP':
-      updatedUserArray = userArray.map((data) => {
-        if (data.id === action.payload.id) {
-          // 해당 객체를 찾았으면 새로운 객체를 생성하여 id를 업데이트
-          return {
-            ...data,
+      const updateUserFlip = state.users.map((data) =>
+        data.id === action.payload.id
+          ? {
+              ...data,
+              records_display_option: [
+                {
+                  ...data.records_display_option[0],
+                  freestyle: {
+                    ...data.records_display_option[0].freestyle,
+                    side: action.payload.show,
+                  },
+                },
+              ],
+            }
+          : data
+      );
+        return {
+          ...state,
+          users: updateUserFlip,
+          current_user_data: {
+            ...state.current_user_data,
             records_display_option: [
               {
-                ...data.records_display_option[0],
+                ...state.current_user_data.records_display_option[0],
                 freestyle: {
-                  ...data.records_display_option[0].freestyle,
-                  flip: action.payload.show,
+                  ...state.current_user_data.records_display_option[0].freestyle,
+                  side: action.payload.show,
                 }
               }
             ],
-          };
-        }
-        return data; // 해당 객체가 아니면 그대로 반환
-      });
+          }
+        };
     case 'SET_START':
-      updatedUserArray = userArray.map((data) => {
-        if (data.id === action.payload.id) {
-          // 해당 객체를 찾았으면 새로운 객체를 생성하여 id를 업데이트
-          return {
-            ...data,
+      const updateUserStart = state.users.map((data) =>
+        data.id === action.payload.id
+          ? {
+              ...data,
+              records_display_option: [
+                {
+                  ...data.records_display_option[0],
+                  freestyle: {
+                    ...data.records_display_option[0].freestyle,
+                    side: action.payload.show,
+                  },
+                },
+              ],
+            }
+          : data
+      );
+        return {
+          ...state,
+          users: updateUserStart,
+          current_user_data: {
+            ...state.current_user_data,
             records_display_option: [
               {
-                ...data.records_display_option[0],
+                ...state.current_user_data.records_display_option[0],
                 freestyle: {
-                  ...data.records_display_option[0].freestyle,
-                  start: action.payload.show,
+                  ...state.current_user_data.records_display_option[0].freestyle,
+                  side: action.payload.show,
                 }
               }
             ],
-          };
-        }
-        return data; // 해당 객체가 아니면 그대로 반환
-      });
+          }
+        };
     case 'SET_FIN':
-      updatedUserArray = userArray.map((data) => {
-        if (data.id === action.payload.id) {
-          // 해당 객체를 찾았으면 새로운 객체를 생성하여 id를 업데이트
-          return {
-            ...data,
+      const updateUserFin = state.users.map((data) =>
+        data.id === action.payload.id
+          ? {
+              ...data,
+              records_display_option: [
+                {
+                  ...data.records_display_option[0],
+                  freestyle: {
+                    ...data.records_display_option[0].freestyle,
+                    side: action.payload.show,
+                  },
+                },
+              ],
+            }
+          : data
+      );
+        return {
+          ...state,
+          users: updateUserFin,
+          current_user_data: {
+            ...state.current_user_data,
             records_display_option: [
               {
-                ...data.records_display_option[0],
+                ...state.current_user_data.records_display_option[0],
                 freestyle: {
-                  ...data.records_display_option[0].freestyle,
-                  fin: action.payload.show,
+                  ...state.current_user_data.records_display_option[0].freestyle,
+                  side: action.payload.show,
                 }
               }
             ],
-          };
-        }
-        return data; // 해당 객체가 아니면 그대로 반환
-      });
+          }
+        };
     default:
       return state;
   }

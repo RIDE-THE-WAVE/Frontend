@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAuth, setCurrentUser, setCurrentUserData } from '../../redux/action';
 
 function Login() {
-    const [username, setUsername] = useState('');
-    const navigate = useNavigate();
-    const developedData = useSelector((state) => state.developedData);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const developedData = useSelector((state) => state.developedData);
 
     const isUsernameValid = (username, data) => {
         if (data.some((user) => user.name === username)) {
@@ -20,8 +20,8 @@ function Login() {
     }
 
     const handleLogin = () => {
-        if (isUsernameValid(username, developedData)) {
-            developedData.forEach((data) => {
+        if (isUsernameValid(username, developedData.users)) {
+            developedData.users.forEach((data) => {
                 if (data.name === username) {
                     dispatch(setCurrentUserData(data));
                 }

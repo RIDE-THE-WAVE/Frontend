@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      fetchDevelopedData(users, records, dispatch);
+      await fetchDevelopedData(users, records, dispatch);
     }
     fetchData();
   }, [users, records]);

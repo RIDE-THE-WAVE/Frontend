@@ -99,6 +99,7 @@ export const fetchComments = async (dispatch) => {
 export const fetchDevelopedData = async (users, records, dispatch) => {
   try {    
     const developedData = [];
+    developedData.users = [];
     if (Array.isArray(users)) {
         users.forEach((user) => {
             const temp = {};
@@ -116,7 +117,7 @@ export const fetchDevelopedData = async (users, records, dispatch) => {
                     }
                 });
             }
-            developedData.push(temp);
+            developedData.users.push(temp);
         });
     }
     developedData.current_user_data = "";
