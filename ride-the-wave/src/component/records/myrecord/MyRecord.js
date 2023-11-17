@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './MyRecord.module.css';
 import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import arrow from '../../img/arrow.png';
@@ -8,9 +8,13 @@ import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSide } from '../../../redux/action';
+import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
+import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
+    const dispatch = useDispatch();
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
@@ -18,8 +22,15 @@ function MyRecord() {
     const [activeFlip, setActiveFlip] = useState(true); 
     const [activeStart, setActiveStart] = useState(true); 
     const [activeFin, setActiveFin] = useState(true); 
+    const [handleTurn, setHandleTurn] = useState({
+        id: '',
+        type: '',
+        show: true,
+    }); // side, flip, start, fin
     const developedData = useSelector((state) => state.developedData);
     const record = developedData.current_user_data.freestyle?.[0];
+
+    // console.log(developedData);
 
     const openModal = () => {
         setShowModal(true);
@@ -31,19 +42,51 @@ function MyRecord() {
 
     // 바뀐 값들을 전체 기록에 적용해야한다.
     // 기록이 기간별로 더 많아지면 어떡하지..?
-    const toggleActiveSide = () => {
+    const toggleActiveSide = (user) => {
+        setHandleTurn(prevState => ({
+            ...prevState,
+            id: user.id,
+            type: 'side',
+            show: !activeSide,
+        }));
         setActiveSide(!activeSide);
     }
 
-    const toggleActiveFlip = () => {
+    useEffect(() => {
+        const updateData = async () => {
+            if (handleTurn.type === 'side') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.side': handleTurn.show,
+                });
+                dispatch(setSide(handleTurn));
+                console.log('handleTurn', handleTurn);
+            }
+        }
+        updateData();
+    }, [handleTurn]);
+
+    const toggleActiveFlip = (user) => {
         setActiveFlip(!activeFlip);
     }
 
-    const toggleActiveStart = () => {
+    const toggleActiveStart = (user) => {
         setActiveStart(!activeStart);
     }
 
-    const toggleActiveFin= () => {
+    const toggleActiveFin= (user) => {
         setActiveFin(!activeFin);
     }
 
@@ -141,7 +184,7 @@ function MyRecord() {
                                 <span>{developedData.auth && record?.side_50  ? record?.side_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveSide()} >
+                        <div className={styles.show} onClick={() => toggleActiveSide(developedData.current_user_data)} >
                             {activeSide ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -157,7 +200,7 @@ function MyRecord() {
                                 <span>{developedData.auth && record?.flip_50  ? record?.flip_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveFlip()} >
+                        <div className={styles.show} onClick={() => toggleActiveFlip(developedData.current_user_data)} >
                             {activeFlip ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -173,7 +216,7 @@ function MyRecord() {
                                 <span>{developedData.auth && record?.start_50  ? record?.start_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveStart()} >
+                        <div className={styles.show} onClick={() => toggleActiveStart(developedData.current_user_data)} >
                             {activeStart ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -189,7 +232,7 @@ function MyRecord() {
                                 <span>{developedData.auth && record?.fin_50  ? record?.fin_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveFin()} >
+                        <div className={styles.show} onClick={() => toggleActiveFin(developedData.current_user_data)} >
                             {activeFin ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>

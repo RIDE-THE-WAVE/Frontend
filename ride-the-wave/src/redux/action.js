@@ -52,8 +52,8 @@ export const setAuth = (options) => ({
 });
 
 export const setSide = (options) => ({
-        type: 'SET_SIDE',
-        payload: options,
+    type: 'SET_SIDE',
+    payload: options,
 });
 
 export const setFlip = (options) => ({

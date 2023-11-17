@@ -17,9 +17,6 @@ function Comments() {
     const [showModal, setShowModal] = useState(false);
     const commentsData = useSelector((state) => state.comments);
     const developedData = useSelector((state) => state.developedData);
-    // const commentsDataArray = Array.isArray(commentsData) ? commentsData : [];
-    // commentsDataArray.sort((a, b) => b.id - a.id);
-    // console.log(commentsDataArray);
     
     const getComments = () => {
         console.log('commentsData', commentsData);
