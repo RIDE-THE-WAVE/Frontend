@@ -42,6 +42,10 @@ function Comments() {
             closeModal();
             return ;
         }
+        if (comment.trim() === '') {
+            alert('댓글을 입력하세요.');
+            return ;
+        }
         const maxId = Math.max(...commentsData.map((comment) => comment.id));
         const commentData = {
             user: developedData.current_user_data.user,
@@ -51,6 +55,7 @@ function Comments() {
         }
         await addDoc(collection(db, "comments"), commentData);
         dispatch(setAddComment(commentData));
+        console.log('게시');
         closeModal();
     }
     
