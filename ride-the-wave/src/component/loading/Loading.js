@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Loading.module.css';
 import logo from '../img/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 function Loading() {
-    
+    const navigate = useNavigate();
+    useEffect(() => {
+        setTimeout(() => {
+            console.log("왜 안돼?");
+            navigate('/login');
+        }, 2000);
+    }, []);
+
     return (
         <div className={styles.Loading}>
             <div className={styles.center_box}>
