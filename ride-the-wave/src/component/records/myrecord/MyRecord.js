@@ -7,13 +7,14 @@ import hide from '../../img/hide.png';
 import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
+    const {state} = useLocation();
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
     console.log('developedData', developedData);
@@ -32,8 +33,7 @@ function MyRecord() {
         type: '',
         show: true,
     }); // side, flip, start, fin
-    
-    console.log('developedData', developedData);
+
     const openModal = () => {
         setShowModal(true);
     }
@@ -179,7 +179,7 @@ function MyRecord() {
                     </div>
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
-                        <span>{developedData.current_user}</span>
+                        <span>{developedData.current_user ? developedData.current_user : state.username}</span>
                     </div>
                 </div>
             </div>

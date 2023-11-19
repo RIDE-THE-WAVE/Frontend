@@ -13,11 +13,12 @@ const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
 function App() {
   const dispatch = useDispatch();
 
+  console.log('App.js');
   useEffect(() => {
     const fetchData = async () => {
-      fetchUsers(dispatch);
-      fetchRecords(dispatch);
-      fetchComments(dispatch);
+      await fetchUsers(dispatch);
+      await fetchRecords(dispatch);
+      await fetchComments(dispatch);
     }
     fetchData();
   }, []);
@@ -36,7 +37,7 @@ function App() {
       <Router>
           <Suspense fallback={<Loading />}>
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<Login/> } />
               <Route path="/review" element={<Comments />} />
               <Route path="/grouprecords" element={<GroupRecords />} />
               <Route path="/myrecord" element={<MyRecord />} />
