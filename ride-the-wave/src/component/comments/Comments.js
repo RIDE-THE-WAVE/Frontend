@@ -20,7 +20,8 @@ function Comments() {
     
     const getComments = () => {
         console.log('commentsData', commentsData);
-        return <CommentsContents commentsDataArray={commentsData} />
+        const commentsDataArray = [...commentsData].sort((a, b) => b.id - a.id);
+        return <CommentsContents commentsDataArray={commentsDataArray} />
     }
     
     const openModal = () => {
