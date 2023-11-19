@@ -3,7 +3,7 @@ import styles from './CommentsContents.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDeleteComment, setUpdateComment } from '../../redux/action';
 import db from '../../Firebase/Firebase';
-import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 
 function CommentsContents({commentsDataArray}) {

@@ -10,20 +10,23 @@ import MyRecordModal from '../../modal/MyRecordModal';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
-import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
-    const record = developedData.current_user_data.freestyle?.[0];
+    console.log('developedData', developedData);
+    const record = developedData?.current_user_data.freestyle?.[0];
+    const freestyleOptions = developedData?.current_user_data?.records_display_option?.[0]?.freestyle;
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.side); 
-    const [activeFlip, setActiveFlip] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.flip); 
-    const [activeStart, setActiveStart] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.start); 
-    const [activeFin, setActiveFin] = useState(developedData.current_user_data?.records_display_option[0]?.freestyle?.fin); 
+    const [activeSide, setActiveSide] = useState(freestyleOptions?.side || false);
+    const [activeFlip, setActiveFlip] = useState(freestyleOptions?.flip || false);
+    const [activeStart, setActiveStart] = useState(freestyleOptions?.start || false);
+    const [activeFin, setActiveFin] = useState(freestyleOptions?.fin || false);
+
     const [handleTurn, setHandleTurn] = useState({
         id: '',
         type: '',
@@ -39,8 +42,6 @@ function MyRecord() {
         setShowModal(false);
     }
 
-    // 바뀐 값들을 전체 기록에 적용해야한다.
-    // 기록이 기간별로 더 많아지면 어떡하지..?
     const toggleActiveSide = (user) => {
         if (!developedData.auth) {
             return;
@@ -244,7 +245,6 @@ function MyRecord() {
             </div>
             <div className={styles.contents_box}>
               <div className={styles.contents}>
-                {/* 아래는 공통 컴포넌트로 뺄 수 있다. 눈이미지 제외*/}
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
