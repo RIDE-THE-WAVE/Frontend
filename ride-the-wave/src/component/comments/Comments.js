@@ -55,7 +55,6 @@ function Comments() {
         }
         await addDoc(collection(db, "comments"), commentData);
         dispatch(setAddComment(commentData));
-        console.log('게시');
         closeModal();
     }
     
@@ -72,8 +71,7 @@ function Comments() {
                     <div className={styles.title}>
                         <span>익명 게시판</span>
                     </div>
-                    {/* <div className={`${developedData.auth ? styles.title_img : styles.title_img_unactive}`} onClick={openModal}> */}
-                    <div className={styles.title_img} onClick={openModal}>
+                    <div className={`${developedData.auth ? styles.title_img : styles.title_img_unactive}`} onClick={openModal}>
                         <img src={write} alt="write" />
                     </div>
                 </div>

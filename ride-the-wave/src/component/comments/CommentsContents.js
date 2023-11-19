@@ -3,7 +3,7 @@ import styles from './CommentsContents.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDeleteComment, setUpdateComment } from '../../redux/action';
 import db from '../../Firebase/Firebase';
-import { collection, doc, getDocs, updateDoc, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 
 function CommentsContents({commentsDataArray}) {
@@ -14,6 +14,7 @@ function CommentsContents({commentsDataArray}) {
     content: '',
   });
   const user = useSelector((state) => state.developedData.current_user_data?.user);
+  console.log('user', user);
 
   const handleEdit = (comment) => {
     setEditingComment(prevState => ({
@@ -25,12 +26,14 @@ function CommentsContents({commentsDataArray}) {
   }
 
   const handleSave = async (id) => {
-    const querySnapshot = await getDocs(collection(db, "comments"), where("id", "==", id));
-    if (querySnapshot.empty) {
+    const commentsRef = query(collection(db, "comments"), where("id", "==", id));
+    const commentsSnapshot = await getDocs(commentsRef);
+    if (commentsSnapshot.empty) {
+      console.log('commentsSnapshot is empty');
       return;
     }
-    const commentRef = await doc(db, "comments", querySnapshot.docs[0].id);
-    await updateDoc(commentRef, { content: editingComment.content });
+    const commentId = commentsSnapshot.docs[0].id;
+    await updateDoc(doc(db, "comments", commentId), { content: editingComment.content });
     dispatch(setUpdateComment(editingComment));
     setEditingComment({
       id: '',
@@ -40,12 +43,14 @@ function CommentsContents({commentsDataArray}) {
   }
 
   const handleDelete = async (id) => {
-    const querySnapshot = await getDocs(collection(db, "comments"), where("id", "==", id));
-    if (querySnapshot.empty) {
+    const commentsRef = query(collection(db, "comments"), where("id", "==", id));
+    const commentsSnapshot = await getDocs(commentsRef);
+    if (commentsSnapshot.empty) {
+      console.log('commentsSnapshot is empty');
       return;
     }
-    const commentRef = doc(db, "comments", querySnapshot.docs[0].id);
-    await updateDoc(commentRef, { available: false });
+    const commentId = commentsSnapshot.docs[0].id;
+    await updateDoc(doc(db, "comments", commentId), { available: false });
     dispatch(setDeleteComment(id));
   }
 
