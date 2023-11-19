@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './MyRecord.module.css';
 import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import arrow from '../../img/arrow.png';
@@ -6,20 +6,33 @@ import question from '../../img/question.png';
 import hide from '../../img/hide.png';
 import eye from '../../img/eye.png';
 import BottomNav from '../../common/BottomNav';
-import { Link, useLocation } from 'react-router-dom';
 import MyRecordModal from '../../modal/MyRecordModal';
-import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import db from '../../../Firebase/Firebase';
 
 function MyRecord() {
+    const {state} = useLocation();
+    const dispatch = useDispatch();
+    const developedData = useSelector((state) => state.developedData);
+    console.log('developedData', developedData);
+    const record = developedData?.current_user_data.freestyle?.[0];
+    const freestyleOptions = developedData?.current_user_data?.records_display_option?.[0]?.freestyle;
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(true);
-    const [activeFlip, setActiveFlip] = useState(true);
-    const [activeStart, setActiveStart] = useState(true);
-    const [activeFin, setActiveFin] = useState(true);
-    const developedData = useSelector((state) => state.developedData);
-    const record = developedData.current_user_data.freestyle?.[0];
+    const [activeSide, setActiveSide] = useState(freestyleOptions?.side || false);
+    const [activeFlip, setActiveFlip] = useState(freestyleOptions?.flip || false);
+    const [activeStart, setActiveStart] = useState(freestyleOptions?.start || false);
+    const [activeFin, setActiveFin] = useState(freestyleOptions?.fin || false);
+
+    const [handleTurn, setHandleTurn] = useState({
+        id: '',
+        type: '',
+        show: true,
+    }); // side, flip, start, fin
 
     const openModal = () => {
         setShowModal(true);
@@ -29,23 +42,132 @@ function MyRecord() {
         setShowModal(false);
     }
 
-    // 바뀐 값들을 전체 기록에 적용해야한다.
-    // 기록이 기간별로 더 많아지면 어떡하지..?
-    const toggleActiveSide = () => {
+    const toggleActiveSide = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setActiveSide(!activeSide);
+        setHandleTurn(({
+            id: user.id,
+            type: 'side',
+            show: !activeSide,
+        }));
     }
 
-    const toggleActiveFlip = () => {
+    const toggleActiveFlip = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setActiveFlip(!activeFlip);
+        setHandleTurn(({
+            id: user.id,
+            type: 'flip',
+            show: !activeFlip,
+        }));
     }
 
-    const toggleActiveStart = () => {
+    const toggleActiveStart = (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setActiveStart(!activeStart);
+        setHandleTurn(({
+            id: user.id,
+            type: 'start',
+            show: !activeStart,
+        }));
     }
 
-    const toggleActiveFin= () => {
+    const toggleActiveFin= (user) => {
+        if (!developedData.auth) {
+            return;
+        }
         setActiveFin(!activeFin);
+        setHandleTurn(({
+            id: user.id,
+            type: 'fin',
+            show: !activeFin,
+        }));
     }
+
+    useEffect(() => {
+        const updateData = async () => {
+            if (handleTurn.type === 'side') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.side': handleTurn.show,
+                });
+                dispatch(setSide(handleTurn));
+            } else if (handleTurn.type === 'flip') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.flip': handleTurn.show,
+                });
+                dispatch(setFlip(handleTurn));
+            } else if (handleTurn.type === 'fin') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.fin': handleTurn.show,
+                });
+                dispatch(setFin(handleTurn));
+            } else if (handleTurn.type === 'start') {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    return;
+                }
+                const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
+                if (!user || !user.exists()) {
+                    console.log('no data');
+                }
+                const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
+                if (recordsDisplayOptionSnapshot.empty) {
+                    return;
+                }
+                const recordsDisplayOptionRef = await doc(db, "users", user.id, "records_display_option", recordsDisplayOptionSnapshot.docs[0].id);
+                await updateDoc(recordsDisplayOptionRef, {
+                    'freestyle.start': handleTurn.show,
+                });
+                dispatch(setStart(handleTurn));
+            }
+        }
+        updateData();
+    }, [handleTurn]);
 
     return (
         <div className={styles.MyRecord}>
@@ -57,16 +179,11 @@ function MyRecord() {
                     </div>
                 <div className={styles.user_name_box}>
                     <div className={styles.user_name}>
-                        {/* 로그인에서 입력 받은 값으로 출력하게 만들어야한다. */}
-                        <span>{developedData.current_user}</span>
+                        <span>{developedData.current_user ? developedData.current_user : state.username}</span>
                     </div>
                 </div>
             </div>
             <div className={styles.contents_info_toggle_box}>
-                {/* 
-                    토글 넣기 - 디비에서 긁어서 
-                    myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
-                */}
                 <div className={styles.contents_period_toggle}>
                     <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
                     <span>&nbsp;{developedData.auth ? developedData.current_user_data.term : " - "}</span>
@@ -128,20 +245,19 @@ function MyRecord() {
             </div>
             <div className={styles.contents_box}>
               <div className={styles.contents}>
-                {/* 아래는 공통 컴포넌트로 뺄 수 있다. 눈이미지 제외*/}
                     <div className={`${styles.record_of_turn_type_box} ${((activeTurnTab === "tabEntireTurn") || (activeTurnTab === "tabSide")) ? "" : styles.record_of_turn_type_box_unactive}`}>
                         <div className={styles.records}>
                             <div className={styles.record}>
                                 <span>사이드</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.side_25  ? record.side_25  : " - "}</span>
+                                <span>{developedData.auth && record?.side_25  ? record?.side_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.side_50  ? record.side_50  : " - "}</span>
+                                <span>{developedData.auth && record?.side_50  ? record?.side_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveSide()} >
+                        <div className={styles.show} onClick={() => toggleActiveSide(developedData.current_user_data)} >
                             {activeSide ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -151,13 +267,13 @@ function MyRecord() {
                                 <span>플립</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.flip_25  ? record.flip_25  : " - "}</span>
+                                <span>{developedData.auth && record?.flip_25  ? record?.flip_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.flip_50  ? record.flip_50  : " - "}</span>
+                                <span>{developedData.auth && record?.flip_50  ? record?.flip_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveFlip()} >
+                        <div className={styles.show} onClick={() => toggleActiveFlip(developedData.current_user_data)} >
                             {activeFlip ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -167,13 +283,13 @@ function MyRecord() {
                                 <span>스타트</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.start_25  ? record.start_25  : " - "}</span>
+                                <span>{developedData.auth && record?.start_25  ? record?.start_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.start_50  ? record.start_50  : " - "}</span>
+                                <span>{developedData.auth && record?.start_50  ? record?.start_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveStart()} >
+                        <div className={styles.show} onClick={() => toggleActiveStart(developedData.current_user_data)} >
                             {activeStart ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>
@@ -183,13 +299,13 @@ function MyRecord() {
                                 <span>오리발</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabHalf")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.fin_25  ? record.fin_25  : " - "}</span>
+                                <span>{developedData.auth && record?.fin_25  ? record?.fin_25  : " - "}</span>
                             </div>
                             <div className={`${styles.record} ${((activeLengthTab === "tabEntireLength") || (activeLengthTab === "tabFull")) ? "" : styles.record_unactive}`}>
-                                <span>{developedData.auth && record.fin_50  ? record.fin_50  : " - "}</span>
+                                <span>{developedData.auth && record?.fin_50  ? record?.fin_50  : " - "}</span>
                             </div>
                         </div>
-                        <div className={styles.show} onClick={() => toggleActiveFin()} >
+                        <div className={styles.show} onClick={() => toggleActiveFin(developedData.current_user_data)} >
                             {activeFin ? <img src={eye} alt="eye"/> : <img src={hide} alt="eye"/>}
                         </div>
                     </div>

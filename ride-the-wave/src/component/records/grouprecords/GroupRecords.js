@@ -11,25 +11,28 @@ import FindUserContent from './FindUserContent';
 
 function GroupRecords() {
     const developedData = useSelector((state) => state.developedData);
+    console.log('developedData : ', developedData);
     const [username, setUsername] = useState('');
     const [findUserTab, setFindUserTab] = useState(false);
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [classToggle, setClassToggle] = useState(false);
     const [showBtn, setShowBtn] = useState((developedData.auth ? developedData.current_user_data.class : 6));
-    const sixClass = developedData.filter((data) => data.class === 6);
-    const sevenClass = developedData.filter((data) => data.class === 7);
+    const sixClass = developedData.users.filter((data) => data.class === 6);
+    const sevenClass = developedData.users.filter((data) => data.class === 7);
     
     const getRecords = () => {
         if (findUserTab === true && developedData.auth === true) {
-            const findUser = developedData.filter((data) => data.name === username);
+            const findUser = developedData.users.filter((data) => data.name === username);
             if (findUser.length === 0) {
                 if (showBtn === 6) {
+                    console.log('sixClass : ', sixClass);
                     return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
                 } else if (showBtn === 7) {
                     return <GroupRecordsContents recordDatas={sevenClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
                 }
             } else {
+                console.log(findUser);
                 return <FindUserContent findUser={findUser} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} />
             }
         } else if (findUserTab === false && showBtn === 6) {

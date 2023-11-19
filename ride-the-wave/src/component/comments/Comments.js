@@ -1,27 +1,65 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { collection, addDoc } from 'firebase/firestore';
+import db from '../../Firebase/Firebase';
 import styles from './Comments.module.css';
 import logo from '../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import write from '../img/write.png';
-import { Link } from 'react-router-dom';
 import BottomNav from '../common/BottomNav';
 import ReviewdModal from '../modal/ReviewdModal';
+import CommentsContents from './CommentsContents';
+import { setAddComment } from '../../redux/action';
 
 
-function Review() {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-      setShowModal(true);
-  }
-  const closeModal = () => {
-      setShowModal(false);
-  }
-  const postReview = (comment) => {
-    console.log(comment);
-}
-
-  return (
-    <div className={styles.Review}>
+function Comments() {
+    const dispatch = useDispatch();
+    const [showModal, setShowModal] = useState(false);
+    const commentsData = useSelector((state) => state.comments);
+    const developedData = useSelector((state) => state.developedData);
+    
+    const getComments = () => {
+        console.log('commentsData', commentsData);
+        const commentsDataArray = [...commentsData].sort((a, b) => b.id - a.id);
+        return <CommentsContents commentsDataArray={commentsDataArray} />
+    }
+    
+    const openModal = () => {
+        setShowModal(true);
+    }
+    
+    const closeModal = () => {
+        setShowModal(false);
+    }
+    
+    const postReview = async (comment) => {
+        if (!developedData.current_user_data.user) {
+            if (developedData.auth === false) {
+                alert("인증되지 않은 유저입니다.");
+            } else {
+                alert("로그인이 필요합니다.");
+            }
+            closeModal();
+            return ;
+        }
+        if (comment.trim() === '') {
+            alert('댓글을 입력하세요.');
+            return ;
+        }
+        const maxId = Math.max(...commentsData.map((comment) => comment.id));
+        const commentData = {
+            user: developedData.current_user_data.user,
+            content: comment,
+            id: maxId + 1,
+            available: true,
+        }
+        await addDoc(collection(db, "comments"), commentData);
+        dispatch(setAddComment(commentData));
+        closeModal();
+    }
+    
+    return (
+        <div className={styles.comments}>
         <div className={styles.header}>
             <Link to="/review">
               <div className={styles.logo_box}>
@@ -33,7 +71,7 @@ function Review() {
                     <div className={styles.title}>
                         <span>익명 게시판</span>
                     </div>
-                    <div className={styles.title_img} onClick={openModal}>
+                    <div className={`${developedData.auth ? styles.title_img : styles.title_img_unactive}`} onClick={openModal}>
                         <img src={write} alt="write" />
                     </div>
                 </div>
@@ -45,69 +83,11 @@ function Review() {
             </div>
         </div>
         <div className={styles.contents_box}>
-          {/* 액자처럼 만들어야한다. */}
-          <div className={styles.contents}>
-                {/* 하단 클릭바 */}
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    {/* 본인건지 확인하고 출력해야함 */}
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요</span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.comment}>
-                    <span>좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 좋아요 </span>
-                  </div>
-                  <div className={styles.manage_button}>
-                    <span className={styles.fix_button}>수정</span>
-                    <span className={styles.delete_button}>삭제</span>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <BottomNav />
+          {getComments()}
+        </div>
+        <BottomNav />
     </div>
 );
 }
 
-export default Review;
+export default Comments;

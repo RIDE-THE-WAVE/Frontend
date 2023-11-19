@@ -53,7 +53,6 @@ export const fetchRecords = async (dispatch) => {
           ...doc.data(),
         });
       });
-
       const queryBackstrokeSnapShot = await getDocs(collection(db, "records", recordDoc.id, "backstroke"));
       const backstroke = [];
 
@@ -64,7 +63,6 @@ export const fetchRecords = async (dispatch) => {
         });
       });
 
-
       const record = {
         id: recordDoc.id,
         ...recordData,
@@ -73,7 +71,6 @@ export const fetchRecords = async (dispatch) => {
       };
       records.push(record);
     }
-
     dispatch(setRecords(records));
   } catch (error) {
     console.error('Error fetching records:', error);
@@ -102,6 +99,7 @@ export const fetchComments = async (dispatch) => {
 export const fetchDevelopedData = async (users, records, dispatch) => {
   try {    
     const developedData = [];
+    developedData.users = [];
     if (Array.isArray(users)) {
         users.forEach((user) => {
             const temp = {};
@@ -119,7 +117,7 @@ export const fetchDevelopedData = async (users, records, dispatch) => {
                     }
                 });
             }
-            developedData.push(temp);
+            developedData.users.push(temp);
         });
     }
     developedData.current_user_data = "";
