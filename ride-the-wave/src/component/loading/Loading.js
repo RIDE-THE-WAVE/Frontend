@@ -9,7 +9,7 @@ function Loading() {
         setTimeout(() => {
             console.log("왜 안돼?");
             navigate('/login');
-        }, 2000);
+        }, 5000);
     }, []);
 
     return (
