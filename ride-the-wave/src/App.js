@@ -10,7 +10,7 @@ const Login = lazy(() => import('./component/login/Login'));
 const Comments = lazy(() => import('./component/comments/Comments'));
 const GroupRecords = lazy(() => import('./component/records/grouprecords/GroupRecords'));
 const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
-const SetData = lazy(() => import('./component/putdata/setData'));
+const SetData = lazy(() => import('./component/setdata/setData'));
 
 function App() {
   const dispatch = useDispatch();
