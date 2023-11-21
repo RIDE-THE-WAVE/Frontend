@@ -43,7 +43,7 @@ function App() {
               <Route path="/review" element={<Comments />} />
               <Route path="/grouprecords" element={<GroupRecords />} />
               <Route path="/myrecord" element={<MyRecord />} />
-              <Route path="/putdata" element={<SetData />} />
+              <Route path="/setdata" element={<SetData />} />
             </Routes>
           </Suspense>
       </Router>
