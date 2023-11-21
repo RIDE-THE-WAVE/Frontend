@@ -57,12 +57,6 @@ const SetData = () => {
       await setDoc(userDocRef, userData);
       // records_display_option 서브컬렉션에 데이터 추가
       await addDoc(collection(userDocRef, 'records_display_option'), {
-        backstroke: {
-          fin: true,
-          flip: true,
-          side: true,
-          start: true,
-        },
         freestyle: {
           fin: true,
           flip: true,
