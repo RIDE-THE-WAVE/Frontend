@@ -62,7 +62,7 @@ const developedDataReducer = (state = initialState, action) => {
                   ...data.records_display_option[0],
                   freestyle: {
                     ...data.records_display_option[0].freestyle,
-                    side: action.payload.show,
+                    flip: action.payload.show,
                   },
                 },
               ],
@@ -79,7 +79,7 @@ const developedDataReducer = (state = initialState, action) => {
                 ...state.current_user_data.records_display_option[0],
                 freestyle: {
                   ...state.current_user_data.records_display_option[0].freestyle,
-                  side: action.payload.show,
+                  flip: action.payload.show,
                 }
               }
             ],
@@ -95,7 +95,7 @@ const developedDataReducer = (state = initialState, action) => {
                   ...data.records_display_option[0],
                   freestyle: {
                     ...data.records_display_option[0].freestyle,
-                    side: action.payload.show,
+                    start: action.payload.show,
                   },
                 },
               ],
@@ -112,7 +112,7 @@ const developedDataReducer = (state = initialState, action) => {
                 ...state.current_user_data.records_display_option[0],
                 freestyle: {
                   ...state.current_user_data.records_display_option[0].freestyle,
-                  side: action.payload.show,
+                  start: action.payload.show,
                 }
               }
             ],
@@ -128,7 +128,7 @@ const developedDataReducer = (state = initialState, action) => {
                   ...data.records_display_option[0],
                   freestyle: {
                     ...data.records_display_option[0].freestyle,
-                    side: action.payload.show,
+                    fin: action.payload.show,
                   },
                 },
               ],
@@ -145,7 +145,7 @@ const developedDataReducer = (state = initialState, action) => {
                 ...state.current_user_data.records_display_option[0],
                 freestyle: {
                   ...state.current_user_data.records_display_option[0].freestyle,
-                  side: action.payload.show,
+                  fin: action.payload.show,
                 }
               }
             ],

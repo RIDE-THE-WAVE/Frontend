@@ -17,16 +17,15 @@ function MyRecord() {
     const {state} = useLocation();
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
-    console.log('developedData', developedData);
     const record = developedData?.current_user_data.freestyle?.[0];
     const freestyleOptions = developedData?.current_user_data?.records_display_option?.[0]?.freestyle;
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
     const [showModal, setShowModal] = useState(false);
-    const [activeSide, setActiveSide] = useState(freestyleOptions?.side || false);
-    const [activeFlip, setActiveFlip] = useState(freestyleOptions?.flip || false);
-    const [activeStart, setActiveStart] = useState(freestyleOptions?.start || false);
-    const [activeFin, setActiveFin] = useState(freestyleOptions?.fin || false);
+    const [activeSide, setActiveSide] = useState(freestyleOptions?.side);
+    const [activeFlip, setActiveFlip] = useState(freestyleOptions?.flip);
+    const [activeStart, setActiveStart] = useState(freestyleOptions?.start);
+    const [activeFin, setActiveFin] = useState(freestyleOptions?.fin);
 
     const [handleTurn, setHandleTurn] = useState({
         id: '',
