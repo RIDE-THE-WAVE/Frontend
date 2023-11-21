@@ -9,11 +9,11 @@ import db from '../../Firebase/Firebase';
 
 const SetData = () => {
   const [userData, setUserData] = useState({
-    class: '',
+    class: '6',
     id: '',
     name: '',
-    term: '',
-    user: '',
+    term: '202306',
+    user: 'user_id_0',
   });
 
   const [userRecordData, setUserRecordData] = useState({
@@ -98,7 +98,7 @@ const SetData = () => {
           onChange={handleUserInputChange}
         />
       </label>
-      <br />
+      <br /><br />
       <label>
         ID:
         <input
@@ -108,7 +108,7 @@ const SetData = () => {
           onChange={handleUserInputChange}
         />
       </label>
-      <br />
+      <br /><br />
       <label>
         Name:
         <input
@@ -118,7 +118,7 @@ const SetData = () => {
           onChange={handleUserInputChange}
         />
       </label>
-      <br />
+      <br /><br />
       <label>
         Term:
         <input
@@ -128,7 +128,7 @@ const SetData = () => {
           onChange={handleUserInputChange}
         />
       </label>
-      <br />
+      <br /><br />
       <label>
         User:
         <input
@@ -138,7 +138,7 @@ const SetData = () => {
           onChange={handleUserInputChange}
         />
       </label>
-      <br />
+      <br /><br />
         <label>
             Side 25:
             <input
@@ -148,7 +148,7 @@ const SetData = () => {
             onChange={handleRecordInputChange}
             />
         </label>
-        <br />
+        <br /><br />
         <label>
             Side 50:
             <input
@@ -158,7 +158,7 @@ const SetData = () => {
             onChange={handleRecordInputChange}
             />
         </label>
-        <br />
+        <br /><br />
         <label>
             Flip 25:
             <input
@@ -168,7 +168,7 @@ const SetData = () => {
             onChange={handleRecordInputChange}
             />
         </label>
-        <br />
+        <br /><br />
         <label>
             Flip 50:
             <input
@@ -178,27 +178,7 @@ const SetData = () => {
             onChange={handleRecordInputChange}
             />
         </label>
-        <br />
-        <label>
-            Fin 25:
-            <input
-            type="text"
-            name="fin_25"
-            value={userRecordData.fin_25}
-            onChange={handleRecordInputChange}
-            />
-        </label>
-        <br />
-        <label>
-            Fin 50:
-            <input
-            type="text"
-            name="fin_50"
-            value={userRecordData.fin_50}
-            onChange={handleRecordInputChange}
-            />
-        </label>
-        <br />
+        <br /><br />
         <label>
             Start 25:
             <input
@@ -208,13 +188,33 @@ const SetData = () => {
             onChange={handleRecordInputChange}
             />
         </label>
-        <br />
+        <br /><br />
         <label>
             Start 50:
             <input
             type="text"
             name="start_50"
             value={userRecordData.start_50}
+            onChange={handleRecordInputChange}
+            />
+        </label>
+        <br /><br />
+        <label>
+            Fin 25:
+            <input
+            type="text"
+            name="fin_25"
+            value={userRecordData.fin_25}
+            onChange={handleRecordInputChange}
+            />
+        </label>
+        <br /><br />
+        <label>
+            Fin 50:
+            <input
+            type="text"
+            name="fin_50"
+            value={userRecordData.fin_50}
             onChange={handleRecordInputChange}
             />
         </label>
