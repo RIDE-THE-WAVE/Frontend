@@ -16,10 +16,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchUsers(dispatch);
-      await fetchRecords(dispatch);
-      await fetchComments(dispatch);
+    const fetchData = () => {
+      fetchUsers(dispatch);
+      fetchRecords(dispatch);
+      // fetchComments(dispatch);
     }
     fetchData();
   }, []);
@@ -28,8 +28,8 @@ function App() {
   const records = useSelector((state) => state.records);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchDevelopedData(users, records, dispatch);
+    const fetchData = () => {
+      fetchDevelopedData(users, records, dispatch);
     }
     fetchData();
   }, [users, records]);
