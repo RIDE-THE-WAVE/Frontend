@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { collection, addDoc } from 'firebase/firestore';
@@ -10,16 +10,25 @@ import BottomNav from '../common/BottomNav';
 import ReviewdModal from '../modal/ReviewdModal';
 import CommentsContents from './CommentsContents';
 import { setAddComment } from '../../redux/action';
+import { fetchComments } from '../../Firebase/fetchData';
 
 
 function Comments() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    const commentsData = useSelector((state) => state.comments);
     const developedData = useSelector((state) => state.developedData);
+    const commentsData = useSelector((state) => state.comments);
+    
+    useEffect(() => {
+        const fetchData = () => {
+            fetchComments(dispatch);
+        }
+        fetchData();
+    }, []);
+    
     
     const getComments = () => {
-        console.log('commentsData', commentsData);
+        // console.log('commentsData', commentsData);
         const commentsDataArray = [...commentsData].sort((a, b) => b.id - a.id);
         return <CommentsContents commentsDataArray={commentsDataArray} />
     }
