@@ -3,14 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ReduxStore from "./redux/ReduxStore"; // store를 import
+import { PersistGate } from "redux-persist/integration/react"; // redux-persist를 사용하기 위해 import
 import { Provider } from "react-redux"; // Provider를 통해 store를 연동
+import persistStore from 'redux-persist/es/persistStore';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './redux/ReduxStore';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: {
+          ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        }
+    }),
+    devTools: true,
+});
+
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={ReduxStore}>
-      <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
