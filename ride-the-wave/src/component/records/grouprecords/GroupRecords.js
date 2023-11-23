@@ -11,7 +11,7 @@ import FindUserContent from './FindUserContent';
 
 function GroupRecords() {
     const developedData = useSelector((state) => state.developedData);
-    console.log('developedData : ', developedData);
+    // console.log('GR developedData : ', developedData);
     const [username, setUsername] = useState('');
     const [findUserTab, setFindUserTab] = useState(false);
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
@@ -26,13 +26,11 @@ function GroupRecords() {
             const findUser = developedData.users.filter((data) => data.name === username);
             if (findUser.length === 0) {
                 if (showBtn === 6) {
-                    console.log('sixClass : ', sixClass);
                     return <GroupRecordsContents recordDatas={sixClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
                 } else if (showBtn === 7) {
                     return <GroupRecordsContents recordDatas={sevenClass} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} auth={developedData.auth}/>
                 }
             } else {
-                console.log(findUser);
                 return <FindUserContent findUser={findUser} activeTurnTab={activeTurnTab} activeLengthTab={activeLengthTab} />
             }
         } else if (findUserTab === false && showBtn === 6) {
