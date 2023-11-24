@@ -4,6 +4,25 @@ const developedDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_DEVELOPED_DATA':
       return action.payload;
+    case 'SET_RECORDS_DISPLAY_OPTION':
+      const { id, records_display_option } = action.payload;
+      return {
+        ...state,
+        users: state.users.map(user => 
+          user.id === id ? { ...user, records_display_option } : user
+        ),
+      };
+    case 'SET_CURRENT_USER_RECORDS_DISPLAY_OPTION':
+      // 현재 유저는 따로 처리해줘야 한다.
+      return {
+        ...state,
+        current_user_data: {
+          ...state.current_user_data,
+          records_display_option: [
+            ...action.payload.records_display_option,
+          ]
+        },
+      };
     case 'SET_CURRENT_USER_DATA':
       return{
         ...state,

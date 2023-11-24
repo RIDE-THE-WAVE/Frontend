@@ -6,6 +6,16 @@ export const setUsers = (options) => ({
     payload: options,
 });
 
+export const setUsersRecordsDisplayOption = (options) => ({
+    type: 'SET_RECORDS_DISPLAY_OPTION',
+    payload: options,
+});
+
+export const setCurrentUserRecordsDisplayOption = (options) => ({
+    type: 'SET_CURRENT_USER_RECORDS_DISPLAY_OPTION',
+    payload: options,
+});
+
 export const setRecords = (options) => ({
     type: 'SET_RECORDS',
     payload: options,

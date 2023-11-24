@@ -7,7 +7,6 @@ function Loading() {
     const navigate = useNavigate();
     useEffect(() => {
         setTimeout(() => {
-            console.log("왜 안돼?");
             navigate('/login');
         }, 3000);
     }, []);
