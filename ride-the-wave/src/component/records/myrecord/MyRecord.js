@@ -45,13 +45,12 @@ function MyRecord() {
         }
     }, []);
     
-    // useEffect(() => {
-    //     setActiveFin(freestyleOptions?.side);
-    //     setActiveFlip(freestyleOptions?.flip);
-    //     setActiveStart(freestyleOptions?.start);
-    //     setActiveSide(freestyleOptions?.side);
-    // }
-    // , [freestyleOptions]);
+    useEffect(() => {
+        setActiveFin(freestyleOptions?.fin);
+        setActiveFlip(freestyleOptions?.flip);
+        setActiveStart(freestyleOptions?.start);
+        setActiveSide(freestyleOptions?.side);
+    }, [freestyleOptions]);
 
     const openModal = () => {
         setShowModal(true);
