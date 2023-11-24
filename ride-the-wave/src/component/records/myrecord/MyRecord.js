@@ -172,7 +172,7 @@ function MyRecord() {
         <div className={styles.MyRecord}>
             <div className={styles.header}>
                     <div className={styles.logo_box}>
-                        <Link to="/myrecord">
+                        <Link to="/login">
                             <img src={logo} alt="logo" />
                         </Link>
                     </div>

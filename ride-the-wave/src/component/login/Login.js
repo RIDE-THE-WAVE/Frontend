@@ -45,7 +45,7 @@ function Login() {
             <div></div>
             <div className={styles.center_box}>
                 <div className={styles.center_top_inner_box}>
-                    <Link to="/"><img src={logo} alt="logo" /></Link>
+                    <Link to="/login"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={styles.center_bottom_inner_box}>
                     <div className={styles.search_box}>

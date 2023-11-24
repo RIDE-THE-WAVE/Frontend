@@ -63,7 +63,7 @@ function GroupRecords() {
     return (
         <div className={styles.GroupRecords}>
             <div className={styles.header}>
-                <Link to="/grouprecords">
+                <Link to="/login">
                     <div className={styles.logo_box}>
                         <img src={logo} alt="logo" />
                     </div>

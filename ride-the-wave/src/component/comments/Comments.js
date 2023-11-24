@@ -70,7 +70,7 @@ function Comments() {
     return (
         <div className={styles.comments}>
         <div className={styles.header}>
-            <Link to="/review">
+            <Link to="/login">
               <div className={styles.logo_box}>
                   <img src={logo} alt="logo" />
               </div>
