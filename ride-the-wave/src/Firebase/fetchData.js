@@ -1,6 +1,6 @@
 import db from './Firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { setUserComments, setRecords, setUsers, setDevelopData } from '../redux/action';
+import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
+import { setUserComments, setRecords, setUsers, setDevelopData, setUsersRecordsDisplayOption, setCurrentUserRecordsDisplayOption } from '../redux/action';
   
 // users 컬렉션에서 데이터 가져오기
 export const fetchUsers = async (dispatch) => {
@@ -11,16 +11,7 @@ export const fetchUsers = async (dispatch) => {
       for (const userDoc of querySnapshot.docs) {
         const userData = userDoc.data();
 
-        const querySubSnapShot = await getDocs(collection(db, "users", userDoc.id, "records_display_option"));
         const records_display_option = [];
-
-        querySubSnapShot.forEach((doc) => {
-          records_display_option.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
-
         const user = {
           id: userDoc.id,
           ...userData,
@@ -34,6 +25,39 @@ export const fetchUsers = async (dispatch) => {
   }
 };
 
+// 전체 유저의 records_display_option 설정
+export const fetchUsersRecordsDisplayOption = async (usersData, dispatch) => {
+  try {
+    usersData.map(async (userData) => {
+      const docSnap = await getDocs(collection(db, "users", userData.user, "records_display_option"));
+      const records_display_option = docSnap.docs.map((doc) => doc.data());
+      dispatch(setUsersRecordsDisplayOption({
+        id: userData.id,
+        records_display_option
+      }));
+    });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+  }
+};
+
+// 현제 유저의 records_display_option 설정
+export const fetchCurrentUserRecordsDisplayOption = async (usersData, developedData, dispatch) => {
+  try {
+    console.log('여기');
+    const docSnap = await getDocs(collection(db, "users", developedData.current_user_data.user, "records_display_option"));
+    const records_display_option = docSnap.docs.map((doc) => doc.data());
+    console.log('records_display_option', records_display_option);
+    dispatch(setCurrentUserRecordsDisplayOption({
+      id: docSnap.id,
+      records_display_option
+    }));
+  } catch (error) {
+    console.error('Error fetching users:', error);
+  }
+};
+
+
 // records 컬렉션에서 데이터 가져오기
 export const fetchRecords = async (dispatch) => {
   try {
@@ -43,21 +67,12 @@ export const fetchRecords = async (dispatch) => {
     for (const recordDoc of querySnapshot.docs) {
       const recordData = recordDoc.data();
 
+      const freestyle = [];
       // 이 부분 건드려볼 필요가 있다.
       const queryFreestyleSnapShot = await getDocs(collection(db, "records", recordDoc.id, "freestyle"));
-      const freestyle = [];
 
       queryFreestyleSnapShot.forEach((doc) => {
         freestyle.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-      const queryBackstrokeSnapShot = await getDocs(collection(db, "records", recordDoc.id, "backstroke"));
-      const backstroke = [];
-
-      queryBackstrokeSnapShot.forEach((doc) => {
-        backstroke.push({
           id: doc.id,
           ...doc.data(),
         });
@@ -67,7 +82,6 @@ export const fetchRecords = async (dispatch) => {
         id: recordDoc.id,
         ...recordData,
         "freestyle": freestyle,
-        "backstroke": backstroke,
       };
       records.push(record);
     }
@@ -77,7 +91,6 @@ export const fetchRecords = async (dispatch) => {
   }
 };
 
-// // comments 컬렉션에서 데이터 가져오기
 export const fetchComments = async (dispatch) => {
   try {
     const querySnapshot = await getDocs(collection(db, "comments"));

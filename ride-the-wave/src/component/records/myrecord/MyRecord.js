@@ -12,11 +12,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
+import { fetchCurrentUserRecordsDisplayOption, fetchUsersRecordsDisplayOption } from '../../../Firebase/fetchData';
 
 function MyRecord() {
     const {state} = useLocation();
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
+    const usersData = useSelector((state) => state.users);
     const record = developedData?.current_user_data.freestyle?.[0];
     const freestyleOptions = developedData?.current_user_data?.records_display_option?.[0]?.freestyle;
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
@@ -26,12 +28,29 @@ function MyRecord() {
     const [activeFlip, setActiveFlip] = useState(freestyleOptions?.flip);
     const [activeStart, setActiveStart] = useState(freestyleOptions?.start);
     const [activeFin, setActiveFin] = useState(freestyleOptions?.fin);
-
     const [handleTurn, setHandleTurn] = useState({
         id: '',
         type: '',
         show: true,
     }); // side, flip, start, fin
+
+    // console.log('developedData : ', developedData);
+    useEffect(() => {
+        const fetchData = () => {
+            fetchUsersRecordsDisplayOption(usersData, dispatch);
+            fetchCurrentUserRecordsDisplayOption(usersData, developedData, dispatch);
+        }
+        if (developedData.auth && developedData.current_user_data.records_display_option.length === 0) {
+            fetchData();
+        }
+    }, []);
+    
+    useEffect(() => {
+        setActiveFin(freestyleOptions?.fin);
+        setActiveFlip(freestyleOptions?.flip);
+        setActiveStart(freestyleOptions?.start);
+        setActiveSide(freestyleOptions?.side);
+    }, [freestyleOptions]);
 
     const openModal = () => {
         setShowModal(true);
@@ -172,7 +191,7 @@ function MyRecord() {
         <div className={styles.MyRecord}>
             <div className={styles.header}>
                     <div className={styles.logo_box}>
-                        <Link to="/myrecord">
+                        <Link to="/login">
                             <img src={logo} alt="logo" />
                         </Link>
                     </div>
