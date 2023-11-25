@@ -9,13 +9,13 @@ import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
+import { setFin, setFlip, setSide, setStart, setDevelopedDataRecords } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
-import { fetchCurrentUserRecordsDisplayOption, fetchUsersRecordsDisplayOption } from '../../../Firebase/fetchData';
+import { fetchCurrentUserRecordsDisplayOption, fetchRecords, fetchUsersRecordsDisplayOption } from '../../../Firebase/fetchData';
 
 function MyRecord() {
-    const {state} = useLocation();
+    const { state } = useLocation();
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
     const usersData = useSelector((state) => state.users);
@@ -38,7 +38,7 @@ function MyRecord() {
     useEffect(() => {
         const fetchData = () => {
             fetchUsersRecordsDisplayOption(usersData, dispatch);
-            fetchCurrentUserRecordsDisplayOption(usersData, developedData, dispatch);
+            fetchCurrentUserRecordsDisplayOption(developedData, dispatch);
         }
         if (developedData.auth && developedData.current_user_data.records_display_option.length === 0) {
             fetchData();
