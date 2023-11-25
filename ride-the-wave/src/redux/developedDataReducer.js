@@ -2,16 +2,42 @@ const initialState = {};
 
 const developedDataReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case 'SET_DEVELOPED_DATA':
       return action.payload;
+
+    // ****************
+    case 'SET_DEVELOPED_DATA_RECORDS':
+      const updateData = state.users.map((data) =>
+        data.id === action.payload.id
+          ? {
+              ...data,
+              // 주석된 형태가 더 적절한 것 같다.
+              // records: {
+              //   ...data.records,
+                freestyle: {
+                  ...action.payload.record,
+                },
+              // },
+            }
+          : data
+      );
+      return {
+        ...state,
+        users: updateData,
+      }
+
+    // ****************
+
     case 'SET_RECORDS_DISPLAY_OPTION':
       const { id, records_display_option } = action.payload;
       return {
         ...state,
-        users: state.users.map(user => 
+        users: state.users?.map(user => 
           user.id === id ? { ...user, records_display_option } : user
         ),
       };
+
     case 'SET_CURRENT_USER_RECORDS_DISPLAY_OPTION':
       // 현재 유저는 따로 처리해줘야 한다.
       return {
@@ -23,21 +49,25 @@ const developedDataReducer = (state = initialState, action) => {
           ]
         },
       };
+
     case 'SET_CURRENT_USER_DATA':
       return{
         ...state,
         current_user_data: action.payload,
       };
+      
     case 'SET_CURRENT_USER':
       return{
         ...state,
         current_user: action.payload,
       };
+
     case 'SET_AUTH':
       return {
         ...state,
         auth: action.payload,
       };
+
     case 'SET_SIDE':
         const updateUserSide = state.users.map((data) =>
         data.id === action.payload.id
@@ -71,6 +101,7 @@ const developedDataReducer = (state = initialState, action) => {
             ],
           }
         };
+
     case 'SET_FLIP':
       const updateUserFlip = state.users.map((data) =>
         data.id === action.payload.id
@@ -104,6 +135,7 @@ const developedDataReducer = (state = initialState, action) => {
             ],
           }
         };
+
     case 'SET_START':
       const updateUserStart = state.users.map((data) =>
         data.id === action.payload.id
@@ -137,6 +169,7 @@ const developedDataReducer = (state = initialState, action) => {
             ],
           }
         };
+
     case 'SET_FIN':
       const updateUserFin = state.users.map((data) =>
         data.id === action.payload.id
@@ -170,6 +203,7 @@ const developedDataReducer = (state = initialState, action) => {
             ],
           }
         };
+        
     default:
       return state;
   }

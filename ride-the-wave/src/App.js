@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { fetchDevelopedData, fetchRecords, fetchUsers } from './Firebase/fetchData';
+import { fetchDevelopedData, fetchRecords, fetchUsers, fetchUsersRecords } from './Firebase/fetchData';
 import Waiting from './component/common/Waiting';
 
 // 전처리 때 하지 않고 필요할 때만 불러오기 때문에 현재 상황에서는 효과적이다.
@@ -18,27 +18,37 @@ function App() {
   useEffect(() => {
     const fetchData = () => {
       const storedData = localStorage.getItem('persist:root');
-      if (storedData) {
-        const parsedData = JSON.parse(storedData);
-        // console.log('parsedData', parsedData);
-      } else {
-        // console.log('fetchData');
+      if (!storedData) {
         fetchUsers(dispatch);
         fetchRecords(dispatch);
       }
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
   
   const users = useSelector((state) => state.users);
   const records = useSelector((state) => state.records);
+  
+  useEffect(() => {
+    const fetchData = () => {
+      const storedData = localStorage.getItem('persist:root');
+      if (storedData) {
+        console.log('users 업데이트');
+        fetchDevelopedData(users, dispatch);
+      }
+    }
+    fetchData();
+  }, [users]);
 
   useEffect(() => {
     const fetchData = () => {
-      fetchDevelopedData(users, records, dispatch);
+      const storedData = localStorage.getItem('persist:root');
+      if (storedData) {
+        fetchUsersRecords(users, records, dispatch);
+      }
     }
     fetchData();
-  }, [users, records]);
+  }, [records]);
 
   return (
       <Suspense fallback={<Waiting />}>

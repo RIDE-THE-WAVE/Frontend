@@ -5,10 +5,18 @@ import { useNavigate } from 'react-router-dom';
 
 function Loading() {
     const navigate = useNavigate();
+    const developedData = JSON.parse(localStorage.getItem('persist:root'));
+
     useEffect(() => {
-        setTimeout(() => {
-            navigate('/login');
-        }, 3000);
+        if (developedData) {
+            setTimeout(() => {
+                navigate('/login');
+            }, 1000);
+        } else {
+            setTimeout(() => {
+                navigate('/login');
+            }, 5000);
+        }
     }, []);
 
     return (

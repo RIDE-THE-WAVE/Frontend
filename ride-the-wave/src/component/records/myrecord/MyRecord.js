@@ -9,17 +9,18 @@ import BottomNav from '../../common/BottomNav';
 import MyRecordModal from '../../modal/MyRecordModal';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFin, setFlip, setSide, setStart } from '../../../redux/action';
+import { setCurrentUserData, setFin, setFlip, setSide, setStart } from '../../../redux/action';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../../Firebase/Firebase';
-import { fetchCurrentUserRecordsDisplayOption, fetchUsersRecordsDisplayOption } from '../../../Firebase/fetchData';
+import { fetchCurrentUserRecordsDisplayOption, fetchUsersRecordsDisplayOption, fetchCurrentUserRecord } from '../../../Firebase/fetchData';
 
 function MyRecord() {
-    const {state} = useLocation();
+    const { state } = useLocation();
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
     const usersData = useSelector((state) => state.users);
-    const record = developedData?.current_user_data.freestyle?.[0];
+    const recordsData = useSelector((state) => state.records);
+    const record = developedData.current_user_data.freestyle?.[0];
     const freestyleOptions = developedData?.current_user_data?.records_display_option?.[0]?.freestyle;
     const [activeTurnTab, setActiveTurnTab] = useState('tabEntireTurn');
     const [activeLengthTab, setActiveLengthTab] = useState('tabEntireLength');
@@ -34,16 +35,25 @@ function MyRecord() {
         show: true,
     }); // side, flip, start, fin
 
-    // console.log('developedData : ', developedData);
     useEffect(() => {
         const fetchData = () => {
             fetchUsersRecordsDisplayOption(usersData, dispatch);
-            fetchCurrentUserRecordsDisplayOption(usersData, developedData, dispatch);
+            fetchCurrentUserRecordsDisplayOption(developedData, dispatch);
         }
         if (developedData.auth && developedData.current_user_data.records_display_option.length === 0) {
             fetchData();
         }
     }, []);
+    
+    useEffect(() => {
+        if (developedData.auth && developedData.current_user_data.freestyle?.length === 0) {
+            developedData.users.forEach((data) => {
+                if (data.name === developedData.current_user) {
+                    dispatch(setCurrentUserData(data));
+                }
+            });
+        }
+    }, [recordsData]);
     
     useEffect(() => {
         setActiveFin(freestyleOptions?.fin);

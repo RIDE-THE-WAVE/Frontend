@@ -16,6 +16,16 @@ export const setCurrentUserRecordsDisplayOption = (options) => ({
     payload: options,
 });
 
+export const setDevelopedDataRecords = (options) => ({
+    type: 'SET_DEVELOPED_DATA_RECORDS',
+    payload: options,
+});
+
+export const setCurrentUserDevelopedDataRecords = (options) => ({
+    type: 'SET_CURRENT_USER_DEVELOPED_DATA_RECORDS',
+    payload: options,
+});
+
 export const setRecords = (options) => ({
     type: 'SET_RECORDS',
     payload: options,
@@ -80,4 +90,3 @@ export const setFin = (options) => ({
     type: 'SET_FIN',
     payload: options,
 });
-
