@@ -1,6 +1,6 @@
 import db from './Firebase';
-import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
-import { setUserComments, setRecords, setUsers, setDevelopData, setUsersRecordsDisplayOption, setCurrentUserRecordsDisplayOption } from '../redux/action';
+import { collection, getDocs } from 'firebase/firestore';
+import { setUserComments, setRecords, setUsers, setDevelopData, setUsersRecordsDisplayOption, setCurrentUserRecordsDisplayOption, setDevelopedDataRecords } from '../redux/action';
   
 // users 컬렉션에서 데이터 가져오기
 export const fetchUsers = async (dispatch) => {
@@ -25,6 +25,24 @@ export const fetchUsers = async (dispatch) => {
   }
 };
 
+// 전체 유저의 records 설정
+export const fetchUsersRecords = async (users, records, dispatch) => {
+  try {
+    // console.log('users', users[0]);
+    // console.log('records', records[0]);
+    for (let i = 0; i < users.length; i++) {
+    // console.log('users[i] : ', i, ', ', users[i]);
+    // console.log('records[i]', i, ', ', records[i]);
+      dispatch(setDevelopedDataRecords({
+          id: users[i].id,
+          record: records[i].freestyle,
+      }));
+    }
+  } catch (error) {
+    console.error('Error fetching users:', error);
+  }
+};
+
 // 전체 유저의 records_display_option 설정
 export const fetchUsersRecordsDisplayOption = async (usersData, dispatch) => {
   try {
@@ -42,12 +60,11 @@ export const fetchUsersRecordsDisplayOption = async (usersData, dispatch) => {
 };
 
 // 현제 유저의 records_display_option 설정
-export const fetchCurrentUserRecordsDisplayOption = async (usersData, developedData, dispatch) => {
+export const fetchCurrentUserRecordsDisplayOption = async (developedData, dispatch) => {
   try {
     console.log('여기');
     const docSnap = await getDocs(collection(db, "users", developedData.current_user_data.user, "records_display_option"));
     const records_display_option = docSnap.docs.map((doc) => doc.data());
-    console.log('records_display_option', records_display_option);
     dispatch(setCurrentUserRecordsDisplayOption({
       id: docSnap.id,
       records_display_option
@@ -109,7 +126,8 @@ export const fetchComments = async (dispatch) => {
   }
 };
 
-export const fetchDevelopedData = async (users, records, dispatch) => {
+export const fetchDevelopedData = async (users, dispatch) => {
+  // export const fetchDevelopedData = async (users, records, dispatch) => {
   try {    
     const developedData = [];
     developedData.users = [];
@@ -122,14 +140,7 @@ export const fetchDevelopedData = async (users, records, dispatch) => {
             temp.term = user.term;
             temp.class = user.class;
             temp.records_display_option = user.records_display_option;
-            if (Array.isArray(records)) {
-                records.find((record) => {
-                    if (record.id === user.user) {
-                        temp.freestyle = record.freestyle;
-                        temp.backstroke = record.backstroke;
-                    }
-                });
-            }
+            temp.freestyle = [];
             developedData.users.push(temp);
         });
     }

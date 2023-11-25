@@ -34,7 +34,6 @@ function MyRecord() {
         show: true,
     }); // side, flip, start, fin
 
-    // console.log('developedData : ', developedData);
     useEffect(() => {
         const fetchData = () => {
             fetchUsersRecordsDisplayOption(usersData, dispatch);
