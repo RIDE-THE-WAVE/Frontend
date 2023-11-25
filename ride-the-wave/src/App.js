@@ -24,22 +24,11 @@ function App() {
       }
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
   
   const users = useSelector((state) => state.users);
   const records = useSelector((state) => state.records);
-  const developedData = useSelector((state) => state.developedData);
-  // console.log('developedData : ', developedData);
-  // fetchDevelopedData 를 나누자. 하나는 users 업데이트 하는 부분, 하나는 records 업데이트 하는 부분.
-  // 기존 것...
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     fetchDevelopedData(users, records, dispatch);
-  //   }
-  //   fetchData();
-  // }, [users, records]);
- 
-  // 새로운 것...
+  
   useEffect(() => {
     const fetchData = () => {
       const storedData = localStorage.getItem('persist:root');
@@ -54,14 +43,8 @@ function App() {
   useEffect(() => {
     const fetchData = () => {
       const storedData = localStorage.getItem('persist:root');
-      // const jsonData = JSON.parse(storedData).developedData;
       if (storedData) {
-        // 왜 2개의 값이 다른지는 의문...
         fetchUsersRecords(users, records, dispatch);
-
-        // console.log('records 업데이트 및 developedData 업데이트 : ', jsonData);
-        console.log('records 업데이트 및 developedData 업데이트1 : ', developedData);
-        // console.log()
       }
     }
     fetchData();

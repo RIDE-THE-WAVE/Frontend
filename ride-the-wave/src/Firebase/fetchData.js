@@ -1,6 +1,13 @@
 import db from './Firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { setUserComments, setRecords, setUsers, setDevelopData, setUsersRecordsDisplayOption, setCurrentUserRecordsDisplayOption, setDevelopedDataRecords } from '../redux/action';
+import { setUserComments,
+         setRecords,
+         setUsers,
+         setDevelopData,
+         setUsersRecordsDisplayOption,
+         setCurrentUserRecordsDisplayOption,
+         setDevelopedDataRecords,
+        } from '../redux/action';
   
 // users 컬렉션에서 데이터 가져오기
 export const fetchUsers = async (dispatch) => {
@@ -28,14 +35,10 @@ export const fetchUsers = async (dispatch) => {
 // 전체 유저의 records 설정
 export const fetchUsersRecords = async (users, records, dispatch) => {
   try {
-    // console.log('users', users[0]);
-    // console.log('records', records[0]);
     for (let i = 0; i < users.length; i++) {
-    // console.log('users[i] : ', i, ', ', users[i]);
-    // console.log('records[i]', i, ', ', records[i]);
       dispatch(setDevelopedDataRecords({
           id: users[i].id,
-          record: records[i].freestyle,
+          record: records[i]?.freestyle,
       }));
     }
   } catch (error) {
@@ -126,8 +129,8 @@ export const fetchComments = async (dispatch) => {
   }
 };
 
-export const fetchDevelopedData = async (users, dispatch) => {
-  // export const fetchDevelopedData = async (users, records, dispatch) => {
+// export const fetchDevelopedData = async (users, records, dispatch) => {
+  export const fetchDevelopedData = async (users, dispatch) => {
   try {    
     const developedData = [];
     developedData.users = [];
@@ -141,6 +144,14 @@ export const fetchDevelopedData = async (users, dispatch) => {
             temp.class = user.class;
             temp.records_display_option = user.records_display_option;
             temp.freestyle = [];
+            // if (Array.isArray(records)) {
+            //     records.find((record) => {
+            //         if (record.id === user.user) {
+            //             temp.freestyle = record.freestyle;
+            //             return true;
+            //         }
+            //     });
+            // }
             developedData.users.push(temp);
         });
     }
