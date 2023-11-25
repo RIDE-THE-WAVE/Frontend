@@ -36,12 +36,18 @@ function MyRecord() {
     }); // side, flip, start, fin
 
     useEffect(() => {
-        const fetchData = () => {
+        const fetchEntireData = () => {
             fetchUsersRecordsDisplayOption(usersData, dispatch);
+        }
+        const fetchPersonalData = () => {
             fetchCurrentUserRecordsDisplayOption(developedData, dispatch);
         }
         if (developedData.auth && developedData.current_user_data.records_display_option.length === 0) {
-            fetchData();
+            fetchEntireData();
+            fetchPersonalData();
+        }
+        if (!developedData.auth && developedData.users[0].records_display_option.length === 0) {
+            fetchEntireData();
         }
     }, []);
     
@@ -213,11 +219,11 @@ function MyRecord() {
             </div>
             <div className={styles.contents_info_toggle_box}>
                 <div className={styles.contents_period_toggle}>
-                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    {/* <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span> */}
                     <span>&nbsp;{developedData.auth ? developedData.current_user_data.term : " - "}</span>
                 </div>
                 <div className={styles.contents_class_toggle}>
-                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    {/* <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span> */}
                     <div className={styles.toggle}>
                         <div className={`${styles.classBtn}`}>
                             <span>&nbsp;{developedData.current_user_data.class}AM</span>
@@ -225,7 +231,7 @@ function MyRecord() {
                     </div>
                 </div>
                 <div className={styles.contents_type_toggle}>
-                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    {/* <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span> */}
                     <span>&nbsp;자유형</span>
                 </div>
             </div>

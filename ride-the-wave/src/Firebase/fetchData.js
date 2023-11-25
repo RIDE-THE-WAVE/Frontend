@@ -65,7 +65,6 @@ export const fetchUsersRecordsDisplayOption = async (usersData, dispatch) => {
 // 현제 유저의 records_display_option 설정
 export const fetchCurrentUserRecordsDisplayOption = async (developedData, dispatch) => {
   try {
-    console.log('여기');
     const docSnap = await getDocs(collection(db, "users", developedData.current_user_data.user, "records_display_option"));
     const records_display_option = docSnap.docs.map((doc) => doc.data());
     dispatch(setCurrentUserRecordsDisplayOption({

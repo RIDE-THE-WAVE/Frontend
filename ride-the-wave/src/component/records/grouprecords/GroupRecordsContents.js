@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./GroupRecordsContents.module.css";
-import { useSelector } from "react-redux";
 
 function GroupRecordsContents({recordDatas, activeTurnTab, activeLengthTab, auth}) {
 

@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './GroupRecords.module.css';
 import logo from '../../img/logo.png'; // 나중에 공통이미지는 따로 관리하기
 import arrow from '../../img/arrow.png';
 import search_record from '../../img/search_record.png';
 import { Link } from 'react-router-dom';
 import BottomNav from '../../common/BottomNav';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import GroupRecordsContents from './GroupRecordsContents';
 import FindUserContent from './FindUserContent';
+import { fetchCurrentUserRecordsDisplayOption, fetchUsersRecordsDisplayOption } from '../../../Firebase/fetchData';
 
 function GroupRecords() {
+    const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
-    // console.log('GR developedData : ', developedData);
+    const usersData = useSelector((state) => state.users);
+    console.log('GR developedData : ', developedData);
     const [username, setUsername] = useState('');
     const [findUserTab, setFindUserTab] = useState(false);
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');
@@ -21,6 +24,22 @@ function GroupRecords() {
     const sixClass = developedData.users.filter((data) => data.class === 6);
     const sevenClass = developedData.users.filter((data) => data.class === 7);
     
+    useEffect(() => {
+        const fetchEntireData = () => {
+            fetchUsersRecordsDisplayOption(usersData, dispatch);
+        }
+        const fetchPersonalData = () => {
+            fetchCurrentUserRecordsDisplayOption(developedData, dispatch);
+        }
+        if (developedData.auth && developedData.current_user_data.records_display_option.length === 0) {
+            fetchEntireData();
+            fetchPersonalData();
+        }
+        if (!developedData.auth && developedData.users[0].records_display_option.length === 0) {
+            fetchEntireData();
+        }
+    }, []);
+
     const getRecords = () => {
         if (findUserTab === true && developedData.auth === true) {
             const findUser = developedData.users.filter((data) => data.name === username);
@@ -93,7 +112,7 @@ function GroupRecords() {
                     myrecord 와 grouprecord 는 같은 컴포넌트를 사용하므로 common 에 빼줘야한다.
                 */}
                 <div className={styles.contents_period_toggle}>
-                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    {/* <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span> */}
                     <span>&nbsp;202306</span>
                 </div>
                 <div className={styles.contents_class_toggle}>
@@ -128,7 +147,7 @@ function GroupRecords() {
                     </div>
                 </div>
                 <div className={styles.contents_type_toggle}>
-                    <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span>
+                    {/* <span className={styles.toggle_img}><img src={arrow} alt="arrow"/></span> */}
                     <span>&nbsp;자유형</span>
                 </div>
             </div>
