@@ -11,6 +11,7 @@ const Comments = lazy(() => import('./component/comments/Comments'));
 const GroupRecords = lazy(() => import('./component/records/grouprecords/GroupRecords'));
 const MyRecord = lazy(() => import('./component/records/myrecord/MyRecord'));
 const SetData = lazy(() => import('./component/setdata/setData'));
+const NotFound = lazy(() => import('./component/common/NotFound'));
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,8 @@ function App() {
               <Route path="/grouprecords" element={<GroupRecords />} />
               <Route path="/myrecord" element={<MyRecord />} />
               <Route path="/setdata" element={<SetData />} />
+              <Route path="/waiting" element={<Waiting />} />
+              <Route path="/*" element={<NotFound />} />
             </Routes>
         </Router>
       </Suspense>
