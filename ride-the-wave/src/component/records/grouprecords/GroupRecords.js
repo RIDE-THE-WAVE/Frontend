@@ -14,7 +14,7 @@ function GroupRecords() {
     const dispatch = useDispatch();
     const developedData = useSelector((state) => state.developedData);
     const usersData = useSelector((state) => state.users);
-    console.log('GR developedData : ', developedData);
+    // console.log('GR developedData : ', developedData);
     const [username, setUsername] = useState('');
     const [findUserTab, setFindUserTab] = useState(false);
     const [activeTurnTab, setActiveTurnTab] = useState('tabSide');

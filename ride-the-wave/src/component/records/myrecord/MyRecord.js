@@ -133,7 +133,7 @@ function MyRecord() {
                 }
                 const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
                 if (!user || !user.exists()) {
-                    console.log('no data');
+                    // console.log('no data');
                 }
                 const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
                 if (recordsDisplayOptionSnapshot.empty) {
@@ -151,7 +151,7 @@ function MyRecord() {
                 }
                 const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
                 if (!user || !user.exists()) {
-                    console.log('no data');
+                    // console.log('no data');
                 }
                 const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
                 if (recordsDisplayOptionSnapshot.empty) {
@@ -169,7 +169,7 @@ function MyRecord() {
                 }
                 const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
                 if (!user || !user.exists()) {
-                    console.log('no data');
+                    // console.log('no data');
                 }
                 const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
                 if (recordsDisplayOptionSnapshot.empty) {
@@ -187,7 +187,7 @@ function MyRecord() {
                 }
                 const user = await querySnapshot.docs.find((doc) => doc.data().id === handleTurn.id);
                 if (!user || !user.exists()) {
-                    console.log('no data');
+                    // console.log('no data');
                 }
                 const recordsDisplayOptionSnapshot = await getDocs(collection(db, "users", user.id, "records_display_option"));
                 if (recordsDisplayOptionSnapshot.empty) {
