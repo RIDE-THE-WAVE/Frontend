@@ -14,7 +14,7 @@ function CommentsContents({commentsDataArray}) {
     content: '',
   });
   const user = useSelector((state) => state.developedData.current_user_data?.user);
-  console.log('user', user);
+  // console.log('user', user);
 
   const handleEdit = (comment) => {
     setEditingComment(prevState => ({
@@ -29,7 +29,7 @@ function CommentsContents({commentsDataArray}) {
     const commentsRef = query(collection(db, "comments"), where("id", "==", id));
     const commentsSnapshot = await getDocs(commentsRef);
     if (commentsSnapshot.empty) {
-      console.log('commentsSnapshot is empty');
+      // console.log('commentsSnapshot is empty');
       return;
     }
     const commentId = commentsSnapshot.docs[0].id;
@@ -46,7 +46,7 @@ function CommentsContents({commentsDataArray}) {
     const commentsRef = query(collection(db, "comments"), where("id", "==", id));
     const commentsSnapshot = await getDocs(commentsRef);
     if (commentsSnapshot.empty) {
-      console.log('commentsSnapshot is empty');
+      // console.log('commentsSnapshot is empty');
       return;
     }
     const commentId = commentsSnapshot.docs[0].id;

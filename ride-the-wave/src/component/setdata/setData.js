@@ -70,7 +70,7 @@ const SetData = () => {
       await setDoc(recordDocRef,{});
       await addDoc(collection(recordDocRef, 'freestyle'), userRecordData);
 
-      console.log('Data added successfully!');
+      // console.log('Data added successfully!');
     } catch (error) {
       console.error('Error adding data:', error);
     }

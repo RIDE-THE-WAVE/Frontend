@@ -34,7 +34,7 @@ function App() {
     const fetchData = () => {
       const storedData = localStorage.getItem('persist:root');
       if (storedData) {
-        console.log('users 업데이트');
+        // console.log('users 업데이트');
         fetchDevelopedData(users, dispatch);
       }
     }
