@@ -77,7 +77,7 @@
 
     .contents_box {
         width: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -206,6 +206,10 @@
         background-color: #fff;
     }
 
+    .title_img_unactive {
+        display: none;
+    }
+
     .title_img > img {
         width: 50%;
         height: 50%;
@@ -215,7 +219,7 @@
     /* ********** */
 
     .contents_box {
-        overflow: scroll;
+        overflow-y: scroll;
         display: flex;
         align-items: center;
         flex-direction: column;

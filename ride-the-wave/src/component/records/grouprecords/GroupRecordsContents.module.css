@@ -195,7 +195,7 @@
         font-weight: bold;
         font-size: 0.7rem;
         /* outline: 3px solid blue; */
-        overflow:scroll;
+        overflow-y:scroll;
     }
 
     .contents {
@@ -432,7 +432,7 @@
         font-weight: bold;
         font-size: 0.7rem;
         /* outline: 3px solid blue; */
-        overflow:scroll;
+        overflow-y:scroll;
     }
 
     .contents {

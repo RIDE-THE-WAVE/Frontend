@@ -177,7 +177,7 @@
         margin-top: 3%;
         font-weight: bolder;
         font-size: 1rem;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
     .contents {
@@ -403,7 +403,7 @@
         margin-top: 3%;
         font-weight: bolder;
         font-size: 1rem;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
     .contents {
