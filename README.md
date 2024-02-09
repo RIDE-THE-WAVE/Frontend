@@ -1,3 +1,3 @@
 # RIDE THE WAVE
 
-수영앱
+## 
