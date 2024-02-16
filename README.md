@@ -1,4 +1,4 @@
-## 🌊 Version 1.0.0 - RIDE THE WAVE
+## 🌊 RIDE THE WAVE - Version 1.0.0
 
 ### 수업에 측정한 수영 기록과 익명 게시판 애플리케이션
 
