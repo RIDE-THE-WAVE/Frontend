@@ -1,4 +1,6 @@
-## 🌊 RIDE THE WAVE, 수업에 측정한 수영 기록과 익명 게시판 애플리케이션
+## 🌊 Version 1.0.0 - RIDE THE WAVE
+
+### 수업에 측정한 수영 기록과 익명 게시판 애플리케이션
 
 <img src="https://github.com/RIDE-THE-WAVE/Frontend/assets/85930183/151a241e-d22e-4ce1-b3f3-e3b734fbb55c" width="100%">
 
@@ -49,4 +51,8 @@
 ### 👨‍👩‍👧‍👦 Engineer
 
 - [김재환](https://github.com/jae-hwan-kim)
+
+### 📝 Release Note
+
+- [Release Note](https://github.com/RIDE-THE-WAVE/Frontend/blob/develop/Release-Note.md)
 
